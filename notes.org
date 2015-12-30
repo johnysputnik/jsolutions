@@ -1,0 +1,44 @@
+#+TITLE: My Notes
+
+Top Level Pages:
+
+#+INCLUDE: sitemap.org
+
+This page contains random notes and todo items that either don't
+warrant a longer article or are works in progress.
+
+* NEXT [#A] Header
+* NEXT [#A] Tag list as index
+* TODO [#A] Complete the about page
+* TODO [#B] Complete the library page
+* TODO [#B] Summary of articles in ACCU publications
+* TODO [#B] Add all old articles
+
+* Test code fragments
+
+Some C++ code:
+
+#+BEGIN_SRC c++ +n -r
+  template<typename T> (ref:tn)
+  class TestTemplate {
+  private:
+          const T * _element;
+  };
+#+END_SRC
+
+We can jump to [[(tn)][Line (tn)]]
+
+Some lisp code:
+
+#+BEGIN_SRC lisp +n
+  (defun inc (x)
+    (+ x 1))
+#+END_SRC
+
+Some XML:
+
+#+BEGIN_SRC xml +n
+  <test attr="value">
+    Contents
+  </test>
+#+END_SRC

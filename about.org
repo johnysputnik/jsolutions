@@ -1,0 +1,26 @@
+#+TITLE: About the Website
+
+Top Level Pages:
+
+#+INCLUDE: sitemap.org
+
+* Intro
+  [2015-12-29 Tue]
+
+  My goal as a developer has always been to keep learning. I spend a
+  lot of time tinkering with new languages and frameworks and not
+  enough time sharing my experiences and knowledge. I wanted an easy
+  way to integrate my sharing and learning with my work as a freelance
+  developer. My time as a freelance developer appears to be coming to
+  an end, but that is not going to stop me from continuing to learn
+  and share.
+
+  Being a big fan of emacs, in particular the marvelous org-mode
+  package, I wanted to use this as a basis for a solution that would
+  enable rapid sharing of my thoughts, ideas and experience.
+
+  This page is dedicated to my thought process and the solution I am
+  evolving to meet this need.
+
+  The website theme is based on the solarized css from [[http://thomasf.github.io/solarized-css/][Thomas Frossman]], itself
+  based on the solarized colour scheme from [[http://ethanschoonover.com/solarized][Ethan Schoonover]].

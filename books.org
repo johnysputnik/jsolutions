@@ -1,0 +1,74 @@
+#+TITLE: My Library
+
+Top Level Pages:
+
+#+INCLUDE: sitemap.org
+
+This is a list of my collection of technical books, along with other
+books that influence my day to day work.
+
+* Computer Science
+** TODO The Art of Computer Programming (Vol 1) - Knuth
+** TODO The Art of Computer Programming (Vol 2) - Knuth
+** TODO The Art of Computer Programming (Vol 3) - Knuth
+** TODO The Art of Computer Programming (Vol 4a) - Knuth
+
+** Structure and Interpretation of Computer Programs - Abelson & Sussman :lisp:
+
+If there is one book you must read on programming, then this is the
+one. Although it is written with Scheme as the language to develop
+ideas, it has some fascinating discussions about software
+abstraction. There are lots of mind blowing demonstrations in it and
+the [[http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/][video lectures]].
+
+The example that made me smile was the following example of using
+functions and local bindings to create data structures. Given that;
+
+#+BEGIN_SRC scheme
+(car (cons x y))
+; => x
+(cdr (cons x y))
+; => y
+#+END_SRC
+
+Then we can define cons and cdr as:
+
+#+BEGIN_SRC scheme
+  (define (cons x y)
+      (lambda (m) (m x y))) (ref:cons)
+
+  (define (car x)
+      (x (lambda (a d) a))) (ref:car)
+
+  (define (cdr x)
+      (x (lambda (a d) d))) (ref:cdr)
+#+END_SRC
+
+The cons function [[(cons)][returns a lambda]]. This lambda takes a function (in
+the form of a lambda) which is applied to x and y. The car function
+[[(car)][applies the function returned by cons]] using a lambda that return the
+first argument and the cdr function [[(cdr)][applies the function returned by
+cons]] using a lambda that returns the second argument.
+
+Of course this is not terribly efficient, but it shows what is
+possible and blurs the line between code and data yet again, as lisp
+is fond of doing
+
+* Languages
+** C++
+*** TODO C++ Template Metaprogramming - Abrahams & Gurtovoy             :cpp:
+** Lisp
+*** TODO Practical Common List - Siebel                                :lisp:
+* User Interface Design
+* Typography
+* Security
+
+* Others
+
+** Dr Euler's Fabulous Formula - Paul J. Nahim
+   I've just started reading this book about Euler's formula:
+
+   $$e^{i\pi} + 1 = 0$$
+
+   I've not got very far with it and the maths is a little bit above
+   what I am used to.
