@@ -1,5 +1,7 @@
 #+TITLE: My Library
 
+* Introduction
+
 This is a list of my collection of technical books, along with other
 books that influence my day to day work.
 
@@ -10,14 +12,33 @@ reread them, I will add notes to the entries.
 (List is currently incomplete)
 
 * Artificial Intelligence and Expert Systems
+*** Bio Inspired Artificial Intelligence - Floreano & Mattiusi           :ai:
+
+    This is a great book on how advances in biology and neuro science
+    can impact artificial intelligence research and development. It
+    discusses the theory and application of:
+
+    - Evolutionary Systems and Artificial Evolution
+    - Cellular Systems and Artificial Life
+    - Neural Systems and Neural Networks
+    - Developmental Systems (closely linked with Cellular Systems)
+    - Immune Systems
+    - Behavioral Systems and Machine Learning
+    - Collective Systems, Swarms and Cooperation
+
+    The book provides an overview of the current state of the science
+    in each area, usually written in language clear enough for a non
+    scientist to understand, before moving on to discuss the
+    implication of this science on how artificial intelligence could
+    be developed and applied.
+
 *** Expert Systems - Principals and Programming - Giarratano & Riley     :ai:
-*** Machine Learning - Murphy                                            :ai:
+*** Machine Learning A Probablistic Perspective - Murphy                 :ai:
 * Computer Science
 *** The Art of Computer Programming (Vol 1) - Knuth                 :compsci:
 *** The Art of Computer Programming (Vol 2) - Knuth                 :compsci:
 *** The Art of Computer Programming (Vol 3) - Knuth                 :compsci:
 *** The Art of Computer Programming (Vol 4a) - Knuth                :compsci:
-
 * Design and Modeling
 *** Design Patterns - Gamma, Helm, Johnson, Vlissides             :modeling:
 * Languages
@@ -38,7 +59,10 @@ reread them, I will add notes to the entries.
 ** Lisp
 *** Practical Common Lisp - Siebel                                     :lisp:
     A good general introduction to common lisp, including macors,
-    error handling, object oriented programming, file I/O ... the usual.
+    error handling, object oriented programming, file I/O ... the
+    usual.
+
+    My meanderings in lisp for 2016 can be found [[file:2016-lisp.org][here]].
 *** Structure and Interpretation of Computer Programs - Abelson & Sussman :lisp:compsci:
 
 If there is one book you must read on programming, then this is the
@@ -90,7 +114,6 @@ is fond of doing
 
     I've not got very far with it and the maths is a little bit above
     what I am used to.
-
 * Others
 * Security
 *** Applied Cryptography - Schneier                                  :crypto:
