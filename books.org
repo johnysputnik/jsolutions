@@ -1,19 +1,45 @@
 #+TITLE: My Library
 
-Top Level Pages:
-
-#+INCLUDE: sitemap.org
-
 This is a list of my collection of technical books, along with other
 books that influence my day to day work.
 
-* Computer Science
-** TODO The Art of Computer Programming (Vol 1) - Knuth
-** TODO The Art of Computer Programming (Vol 2) - Knuth
-** TODO The Art of Computer Programming (Vol 3) - Knuth
-** TODO The Art of Computer Programming (Vol 4a) - Knuth
+I have to admit to not reading all of these books from cover to cover,
+and some of them have not been opened, let alone read recently. As I
+reread them, I will add notes to the entries.
 
-** Structure and Interpretation of Computer Programs - Abelson & Sussman :lisp:
+(List is currently incomplete)
+
+* Artificial Intelligence and Expert Systems
+*** Expert Systems - Principals and Programming - Giarratano & Riley     :ai:
+*** Machine Learning - Murphy                                            :ai:
+* Computer Science
+*** The Art of Computer Programming (Vol 1) - Knuth                 :compsci:
+*** The Art of Computer Programming (Vol 2) - Knuth                 :compsci:
+*** The Art of Computer Programming (Vol 3) - Knuth                 :compsci:
+*** The Art of Computer Programming (Vol 4a) - Knuth                :compsci:
+
+* Design and Modeling
+*** Design Patterns - Gamma, Helm, Johnson, Vlissides             :modeling:
+* Languages
+** C++
+*** C++ Template Metaprogramming - Abrahams & Gurtovoy                  :cpp:
+*** The C++ Programming Language (4th Edition) - Stroustrup             :cpp:
+*** Classic Data Structures in C++ - Budd                               :cpp:
+*** The C++ Standard Library (2nd Edition) - Josuttis                   :cpp:
+*** Advanced C++ - Coplien                                              :cpp:
+*** Exceptional C++ - Sutter                                            :cpp:
+*** More Exceptional C++ - Sutter                                       :cpp:
+*** Exceptional C++ Style - Sutter                                      :cpp:
+*** C++ Coding Standards - Sutter, Alexandrescu                         :cpp:
+*** Modern C++ Design - Alexandrescu                                    :cpp:
+*** Effective C++ (3rd Edition) - Meyers                                :cpp:
+*** More Effective C++ - Meyers                                         :cpp:
+*** Effective STL - Meyers                                              :cpp:
+** Lisp
+*** Practical Common Lisp - Siebel                                     :lisp:
+    A good general introduction to common lisp, including macors,
+    error handling, object oriented programming, file I/O ... the usual.
+*** Structure and Interpretation of Computer Programs - Abelson & Sussman :lisp:compsci:
 
 If there is one book you must read on programming, then this is the
 one. Although it is written with Scheme as the language to develop
@@ -33,7 +59,7 @@ functions and local bindings to create data structures. Given that;
 
 Then we can define cons and cdr as:
 
-#+BEGIN_SRC scheme
+#+BEGIN_SRC scheme -r
   (define (cons x y)
       (lambda (m) (m x y))) (ref:cons)
 
@@ -54,21 +80,32 @@ Of course this is not terribly efficient, but it shows what is
 possible and blurs the line between code and data yet again, as lisp
 is fond of doing
 
-* Languages
-** C++
-*** TODO C++ Template Metaprogramming - Abrahams & Gurtovoy             :cpp:
-** Lisp
-*** TODO Practical Common List - Siebel                                :lisp:
-* User Interface Design
-* Typography
-* Security
+* Mathematics
+*** Numerical Recipes in C (2nd Edition) - Press                    :c:maths:
+*** Numerical Analysis - Turner                                       :maths:
+*** Dr Euler's Fabulous Formula - Paul J. Nahim                       :maths:
+    I've just started reading this book about Euler's formula:
+
+    $$e^{i\pi} + 1 = 0$$
+
+    I've not got very far with it and the maths is a little bit above
+    what I am used to.
 
 * Others
-
-** Dr Euler's Fabulous Formula - Paul J. Nahim
-   I've just started reading this book about Euler's formula:
-
-   $$e^{i\pi} + 1 = 0$$
-
-   I've not got very far with it and the maths is a little bit above
-   what I am used to.
+* Security
+*** Applied Cryptography - Schneier                                  :crypto:
+*** Modern Cryptanalysis - Swenson                                   :crypto:
+* Typography
+*** The TeXbook - Knuth                                            :tex:typo:
+*** TeX the program - Knuth                                        :tex:typo:
+*** The MetaFont book - Knuth                                      :tex:typo:
+*** MetaFont the program  - Knuth                                  :tex:typo:
+*** Computer Modern Typefaces - Knuth                              :tex:typo:
+*** Digital Typography - Knuth                                         :typo:
+*** The PDF Reference (Version 1.6)                                    :typo:
+*** Fonts & Encoding - Haralambous                                     :typo:
+*** The Unicode Standard 5.0                                           :typo:
+*** XSL-FO Developer's Handbook - Lovell                           :xml:typo:
+*** Understanding Japanese Infomation Processing - Lunde               :typo:
+*** PDF Explained - Whittington                                        :typo:
+* User Interface Design

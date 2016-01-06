@@ -1,15 +1,3 @@
 #+TITLE: Home
 
-* General
-
-  [[file:about.org][About the Website]]
-
-  [[file:books.org][My Library]]
-
-  [[file:notes.org][My Notes]]
-
-* ACCU Publications
-
-* New Languages
-
-* Old Blog Posts
+#+INCLUDE: sitemap.org

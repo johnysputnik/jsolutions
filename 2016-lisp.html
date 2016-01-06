@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Language for 2016 - Common Lisp</title>
+<!-- 2016-01-06 Wed 09:12 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="John Cumming" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet"
+                         href="css/solarized-dark.css"
+                         type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Language for 2016 - Common Lisp</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Introduction</a></li>
+<li><a href="#sec-2">An Overview of Common Lisp Syntax</a></li>
+<li><a href="#sec-3">Core functions</a></li>
+<li><a href="#sec-4">Collections</a></li>
+<li><a href="#sec-5">Creating Variables</a></li>
+<li><a href="#sec-6">Functions</a></li>
+<li><a href="#sec-7">Control Operations</a></li>
+<li><a href="#sec-8">Example 1 - Sum of Square Errors</a>
+<ul>
+<li><a href="#sec-8-1"><span class="todo TODO">TODO</span> Add graph</a></li>
+<li><a href="#sec-8-2"><span class="todo TODO">TODO</span> Check terminolgy</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">Macro Dispatching Characters</a></li>
+<li><a href="#sec-10">Macros</a></li>
+<li><a href="#sec-11">Multimethods</a></li>
+<li><a href="#sec-12">CLOS</a></li>
+<li><a href="#sec-13">Packages</a></li>
+<li><a href="#sec-14">Standard Libraries</a></li>
+<li><a href="#sec-15">Important Libraries</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I have chosen common lisp as my language to learn in more depth for
+2016 as I have dabbled with it over the past year or so, along with
+clojure, another very good lisp based language.
+</p>
+
+<p>
+I chose common lisp as a language as I prefer the syntax over
+clojure and because I believe it should be able to produce more
+efficient code as well as being able to produce stand alone binary
+files without the dependence on the JVM that clojure has.
+</p>
+
+<p>
+I have no specific plan as to how this learning will pan out, other
+than I intend to dive a bit deeper than I have done in the past.
+</p>
+
+<p>
+The tools I use for this learning are SBCL and GNU Emacs with
+Slime. This is all running under OSX El Capitan on a Macbook pro.
+</p>
+
+<p>
+The complete source code for this article can be found <a href="2016-lisp.lisp">here</a> and the
+article formatted as PDF <a href="2016-lisp.pdf">here</a>. The org-mode file used to generate
+this web page and the lisp code can be found <a href="2016-lisp.html">here</a>.
+</p>
+
+<p>
+Some books I have on lisp can be found <a href="books.html#sec-4-2">here</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">An Overview of Common Lisp Syntax</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Common lisp has a simple syntax for processing lists delimited by '('
+and ')'. The lisp processes a list by applying the the first item in
+the list as an operator and the rest as operands. Lists can be
+nested:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">1: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">Comments can be added using a semi colon</span>
+<span class="linenr">2: </span>(+
+<span class="linenr">3: </span> (* 3 4)
+<span class="linenr">4: </span> (+ 2 3))
+</pre>
+</div>
+<pre class="example">
+17
+</pre>
+
+<p>
+This code applies operand '+' to the result of applying operand '*'
+to 3 and 4, and the result of applying operand '+' to 2 and 3.
+</p>
+
+<p>
+A list can be created as a just list of data, by using the 'quote'
+operand or by using a shortcut single quote, the following are both
+equivalent:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">5: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">The following lines are equivalent</span>
+<span class="linenr">6: </span>(equal (quote (1 2 3 4))
+<span class="linenr">7: </span>     '(1 2 3 4))
+</pre>
+</div>
+<pre class="example">
+T
+</pre>
+
+<p>
+More details on collections can be found in <a href="#sec-4">Collections</a>.
+</p>
+
+<p>
+String are, like most languages, delimited with double quotes.
+</p>
+
+<p>
+Backslashes are used as escape characters, much like other
+languages. However, the use of a vertical bar allows special
+characters to be used without escaping:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">8: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">The following items in the list are equivalent</span>
+<span class="linenr">9: </span>(equal 'A\(B\) '|A(B)|)
+</pre>
+</div>
+<pre class="example">
+T
+</pre>
+
+<p>
+A hash symbol is a macro symbol, known as the dispatching macro
+character. There are many of these, for example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">10: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">#' - function abbreviation</span>
+<span class="linenr">11: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">#\ - character object</span>
+<span class="linenr">12: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">,#+ - read-time conditional</span>
+<span class="linenr">13: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">#c - complex number</span>
+<span class="linenr">14: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">#( - vector</span>
+</pre>
+</div>
+
+<p>
+More details can be found in <i>Macro Dispatching Characters</i>.
+</p>
+
+<p>
+A back quote can be used to allow a template to be used when
+generating code, with a comma used to evaluate a form and an '@'
+symbol used to splice a list into the template, for example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">15: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">x</span> '(a b c))
+<span class="linenr">16: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">x</span>
+<span class="linenr">17: </span>`(x)
+<span class="linenr">18: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (x)</span>
+<span class="linenr">19: </span>`(,x)
+<span class="linenr">20: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ((a b c))</span>
+<span class="linenr">21: </span>`(,@x)
+<span class="linenr">22: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (a b c)</span>
+<span class="linenr">23: </span>`(x ,x ,@x foo ,(cadr x) bar ,(cdr x) baz ,@(cdr x))
+<span class="linenr">24: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (x (a b c) a b c foo b bar (b c) baz b c)</span>
+</pre>
+</div>
+
+
+<p>
+This is used extensively when writing macros. For more information
+on macros see <a href="#sec-10">Macros</a>.
+</p>
+
+<p>
+Colons are used in 2 situations. Firstly it can be used to indicate
+the package in which a symbol is defined:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">25: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">reset is a symbol in the network package</span>
+<span class="linenr">26: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">(network:reset)</span>
+</pre>
+</div>
+
+<p>
+Packages are discussed in <a href="#sec-13">Packages</a>.
+</p>
+
+<p>
+It can also be used to denote a keyword, which is a symbol that
+always evaluates to itself and is constant. For example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">27: </span>(eql '<span style="color: #859900;">:foo</span> <span style="color: #859900;">:foo</span>)
+</pre>
+</div>
+<pre class="example">
+T
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Core functions</h2>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Collections</h2>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Creating Variables</h2>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Functions</h2>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Control Operations</h2>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Example 1 - Sum of Square Errors</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+An equation that is used in regression algorithms is the sum of
+the square of errors for a given dataset and function being fitted
+to the data.
+</p>
+
+<p>
+Given a data set of size \(m\) with a single input variable \(x\) and a
+single output value \(y\) for each item in the data set
+and a function that is an attempt to fit a function to the values:
+</p>
+
+<p>
+$$y = f(x)$$
+</p>
+
+<p>
+Then an error can be calculated based on the sum of the square of
+the individual errors, giving an estimate of how well fitted the
+function is to the date:
+</p>
+
+<p>
+$$E = \sum_{n=0}^m(f(x_n) - y_n)^2$$
+</p>
+
+<p>
+Using lisp, we can write some code that takes a data set, computes
+the error based on several functions:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">28: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">First declare some data</span>
+<span class="linenr">29: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span class="linenr">30: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">data</span> '((0.1 . 1.1)
+<span class="linenr">31: </span>                     (0.9 . 3.2)
+<span class="linenr">32: </span>                     (2.1 . 5.9)
+<span class="linenr">33: </span>                     (3.2 . 7.2)
+<span class="linenr">34: </span>                     (3.9 . 9.0)
+<span id="coderef-data-1" class="coderef-off"><span class="linenr">35: </span>                     (5.1 . 11.2)))</span>
+<span class="linenr">36: </span>
+<span class="linenr">37: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">then some equations</span>
+<span class="linenr">38: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span class="linenr">39: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">equation-list</span>
+<span class="linenr">40: </span>  (list #'(<span style="color: #859900;">lambda</span> (x) (+ 1 (* 2 x)))
+<span class="linenr">41: </span>        #'(<span style="color: #859900;">lambda</span> (x) (+ 1 (* x x)))
+<span id="coderef-eqn-1" class="coderef-off"><span class="linenr">42: </span>        #'(<span style="color: #859900;">lambda</span> (x) (+ 1 x))))</span>
+<span class="linenr">43: </span>
+<span class="linenr">44: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">now create a function that applies a function</span>
+<span class="linenr">45: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">to a set of input data</span>
+<span class="linenr">46: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span class="linenr">47: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">apply-function</span> (f d)
+<span id="coderef-apply-1" class="coderef-off"><span class="linenr">48: </span>  (map 'list #'(<span style="color: #859900;">lambda</span> (x) (funcall f (car x))) d))</span>
+<span class="linenr">49: </span>
+<span class="linenr">50: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">A function that returns the error as the difference</span>
+<span class="linenr">51: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">between two values squared</span>
+<span class="linenr">52: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span id="coderef-sq-1" class="coderef-off"><span class="linenr">53: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">square-error</span> (test-data calc-data)</span>
+<span class="linenr">54: </span>  (expt (- test-data calc-data) 2))
+<span class="linenr">55: </span>
+<span class="linenr">56: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">A function that returns the sum of square errors</span>
+<span class="linenr">57: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">of a collection of data and the results</span>
+<span class="linenr">58: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span id="coderef-sumsq-1" class="coderef-off"><span class="linenr">59: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">sum-square-error</span> (f test-data)</span>
+<span class="linenr">60: </span>  (reduce #'+
+<span class="linenr">61: </span>          (map 'list
+<span class="linenr">62: </span>               #'(<span style="color: #859900;">lambda</span> (test calc)
+<span class="linenr">63: </span>                   (square-error (cdr test) calc))
+<span class="linenr">64: </span>               test-data (apply-function f test-data))))
+<span class="linenr">65: </span>
+<span class="linenr">66: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">Now we can run the sum of square errors across all equations</span>
+<span class="linenr">67: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span id="coderef-output-1" class="coderef-off"><span class="linenr">68: </span>(map 'list #'(<span style="color: #859900;">lambda</span> (eq) (sum-square-error eq data))</span>
+<span class="linenr">69: </span>     equation-list)
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="right">0.7400005</td>
+<td class="right">320.44208</td>
+<td class="right">61.350002</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The <a href="#coderef-data-1"class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-data-1');" onmouseout="CodeHighlightOff(this, 'coderef-data-1');">data</a> is defined as a set of cons cells with the car equal to an x
+value and the cdr equal to a y value. This is the test data that will
+be used to check the equations. It uses defparameter, but could
+equally be defined inline at <a href="#coderef-output-1"class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-output-1');" onmouseout="CodeHighlightOff(this, 'coderef-output-1');">Line 68</a>.
+</p>
+
+<p>
+The <a href="#coderef-eqn-1"class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-eqn-1');" onmouseout="CodeHighlightOff(this, 'coderef-eqn-1');">equations</a> are defined as a list of lambda functions modeling the
+following equations for fitting to the data:
+</p>
+
+<p>
+\(y=2x+1\)
+</p>
+
+<p>
+\(y=x^2+1\)
+</p>
+
+<p>
+\(y=x+1\)
+</p>
+
+<p>
+Again, these could have been defined inline at the point of use. 
+</p>
+
+<p>
+The <a href="#coderef-apply-1"class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-apply-1');" onmouseout="CodeHighlightOff(this, 'coderef-apply-1');">apply-function</a> function takes a function as an argument and a
+collection of data as an alist and executes the function taking the
+car of each item in the alist as the x value to calculate the y value.
+</p>
+
+<p>
+The <a href="#coderef-sq-1"class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sq-1');" onmouseout="CodeHighlightOff(this, 'coderef-sq-1');">square-error</a> function takes a single test data y value and a
+single calculated value and calculates the square of the error.
+</p>
+
+<p>
+The <a href="#coderef-sumsq-1"class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-sumsq-1');" onmouseout="CodeHighlightOff(this, 'coderef-sumsq-1');">sum-square-error</a> function takes a function f and applies the
+<i>square-error</i> function to each item in the test data and the
+corresponding calculated output as calculated by the function f.
+</p>
+
+<p>
+The <a href="#coderef-output-1"class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-output-1');" onmouseout="CodeHighlightOff(this, 'coderef-output-1');">output</a> is generated by mapping each equation against the sum of
+square error function with the test data.
+</p>
+
+<p>
+It can clearly be seen from both the results of the sum of square
+errors and the input data that eqn1 is the best fit.
+</p>
+</div>
+
+<div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="todo TODO">TODO</span> Add graph</h3>
+</div>
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="todo TODO">TODO</span> Check terminolgy</h3>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Macro Dispatching Characters</h2>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">Macros</h2>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">Multimethods</h2>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">CLOS</h2>
+</div>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">Packages</h2>
+</div>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14">Standard Libraries</h2>
+</div>
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15">Important Libraries</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: John Cumming</p>
+<p class="date">Created: 2016-01-06 Wed 09:12</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

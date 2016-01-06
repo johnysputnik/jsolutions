@@ -29,4 +29,8 @@
 
 # Temporary files
 *~
-
+*.fasl
+*.fdb_latexmk
+*.fls
+_minted-2016-lisp
+ltxpng

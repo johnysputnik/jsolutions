@@ -1,9 +1,5 @@
 #+TITLE: My Notes
 
-Top Level Pages:
-
-#+INCLUDE: sitemap.org
-
 This page contains random notes and todo items that either don't
 warrant a longer article or are works in progress.
 
