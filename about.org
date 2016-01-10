@@ -18,5 +18,7 @@
   This page is dedicated to my thought process and the solution I am
   evolving to meet this need.
 
-  The website theme is based on the solarized css from [[http://thomasf.github.io/solarized-css/][Thomas Frossman]], itself
-  based on the solarized colour scheme from [[http://ethanschoonover.com/solarized][Ethan Schoonover]].
+  The website theme is based on the solarized css from
+  [[http://thomasf.github.io/solarized-css/][Thomas Frossman]], 
+  itself based on the solarized colour scheme from
+  [[http://ethanschoonover.com/solarized][Ethan Schoonover]].
