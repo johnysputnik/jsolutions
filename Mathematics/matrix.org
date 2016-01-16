@@ -1,0 +1,58 @@
+#+SETUPFILE: org-setup/level2
+#+TITLE: Basic Matrix Mathematics
+
+* Introduction
+
+  Basic matrix operations are useful for implementing machine learning
+  algorithms. These notes provide descriptions of basic operations on
+  matrices.
+
+* Operations
+
+  Matrix addition and subtraction are piecewise:
+
+  $$A \in \mathbb{R}^{mn}, B \in \mathbb{R}^{mn}, C \in
+  \mathbb{R}^{mn}$$
+
+  $$C_{ij} = A_{ij} + B_{ij}$$
+
+  Matrix scalar multiplication - multiply every element by the scalar
+  value:
+
+  $$A \in \mathbb{R}^{mn}, x \in \mathbb{R}, C \in
+  \mathbb{R}^{mn}$$
+
+  $$C_{ij} = A_{ij}x$$
+
+  Matrix vector multiplication:
+  
+  $$A \in \mathbb{R}^{mn}, b \in \mathbb{R}^{n}, c \in
+  \mathbb{R}^{m}$$
+
+  $$c_{i} = \sum_{j=1}^n(b_j \times A_{ij})$$
+  
+  Matrix matrix multiplication:
+
+  $$A \in \mathbb{R}^{mn}, B \in \mathbb{R}^{no}, C \in
+  \mathbb{R}^{mo}$$
+
+  $$c_{ij} = \sum_{j=1}^n(A_{jk} \times B_{ki})$$
+  
+  Matrix multiplication is non-commutative but is associative:
+
+  $$A \times B \neq B \times A$$
+
+  $$(A \times B) \times C = A \times (B \times C)$$
+
+  The identity and inverse of a matrix:
+
+  $$A \times I = A$$
+
+  $$A \times A^{-1} = I$$
+
+  Matrix transposition:
+
+  $$A \in \mathbb{R}^{mn}, A^T \in \mathbb{R}^{nm}$$
+
+  $$ A^{T}_{ij} = A_{ji}$$
+

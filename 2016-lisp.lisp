@@ -3,17 +3,13 @@
 (+
  (* 3 4)
  (+ 2 3))
-;; => 5
 
 ;; The following lines are equivalent
-(quote (1 2 3 4))
-;; => (1 2 3 4)
-'(1 2 3 4)
-;; => (1 2 3 4)
+(equal (quote (1 2 3 4))
+     '(1 2 3 4))
 
 ;; The following items in the list are equivalent
-'(A\(B\) |A(B)|)
-;; => (|A(B)| |A(B)|)
+(equal 'A\(B\) '|A(B)|)
 
 (defparameter x '(a b c))
 ;; x
@@ -30,7 +26,28 @@
 ;; (network:reset)
 
 (eql ':foo :foo)
-;; => T
 
 (eql keyword:foo :foo)
-;; => T
+
+(atom 1)
+
+(atom :test)
+
+(atom nil)
+
+(atom '())
+
+(atom "text")
+
+(atom #(1 2 3))
+
+(defun test-atomicity (x) (atom x))
+(atom 'test-atomicity)
+
+(atom (lambda (x) (atom x)))
+
+(atom '(1 . 3))
+
+(atom '(1 2 3))
+
+(atom (cdr '(1 2 3)))

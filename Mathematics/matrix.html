@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title></title>
-<!-- 2016-01-06 Wed 09:12 -->
+<title>Basic Matrix Mathematics</title>
+<!-- 2016-01-16 Sat 09:28 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="John Cumming" />
@@ -89,7 +89,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet"
-                         href="css/solarized-dark.css"
+                         href="/css/solarized-dark.css"
                          type="text/css"/>
 <script type="text/javascript">
 /*
@@ -137,26 +137,173 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
 </head>
 <body>
+<div id="preamble" class="status">
+<div id="my-header"><h2>jSolutions | <a href="/index.html">home</a></h2></div>
+</div>
 <div id="content">
-<h1 class="title"></h1>
-<ul class="org-ul">
-<li><a href="about.html">About the Website</a>
-</li>
-<li><a href="index.html">Home</a>
-</li>
-<li><a href="2016-lisp.html">Language for 2016 - Common Lisp</a>
-</li>
-<li><a href="books.html">My Library</a>
-</li>
-<li><a href="notes.html">My Notes</a>
-</li>
+<h1 class="title">Basic Matrix Mathematics</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Introduction</a></li>
+<li><a href="#sec-2">Operations</a></li>
 </ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Basic matrix operations are useful for implementing machine learning
+algorithms. These notes provide descriptions of basic operations on
+matrices.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Operations</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Matrix addition and subtraction are piecewise:
+</p>
+
+<p>
+$$A \in \mathbb{R}^{mn}, B \in \mathbb{R}^{mn}, C \in
+  \mathbb{R}^{mn}$$
+</p>
+
+<p>
+$$C_{ij} = A_{ij} + B_{ij}$$
+</p>
+
+<p>
+Matrix scalar multiplication - multiply every element by the scalar
+value:
+</p>
+
+<p>
+$$A \in \mathbb{R}^{mn}, x \in \mathbb{R}, C \in
+  \mathbb{R}^{mn}$$
+</p>
+
+<p>
+$$C_{ij} = A_{ij}x$$
+</p>
+
+<p>
+Matrix vector multiplication:
+</p>
+
+<p>
+$$A \in \mathbb{R}^{mn}, b \in \mathbb{R}^{n}, c \in
+  \mathbb{R}^{m}$$
+</p>
+
+<p>
+$$c_{i} = \sum_{j=1}^n(b_j \times A_{ij})$$
+</p>
+
+<p>
+Matrix matrix multiplication:
+</p>
+
+<p>
+$$A \in \mathbb{R}^{mn}, B \in \mathbb{R}^{no}, C \in
+  \mathbb{R}^{mo}$$
+</p>
+
+<p>
+$$c_{ij} = \sum_{j=1}^n(A_{jk} \times B_{ki})$$
+</p>
+
+<p>
+Matrix multiplication is non-commutative but is associative:
+</p>
+
+<p>
+$$A \times B \neq B \times A$$
+</p>
+
+<p>
+$$(A \times B) \times C = A \times (B \times C)$$
+</p>
+
+<p>
+The identity and inverse of a matrix:
+</p>
+
+<p>
+$$A \times I = A$$
+</p>
+
+<p>
+$$A \times A^{-1} = I$$
+</p>
+
+<p>
+Matrix transposition:
+</p>
+
+<p>
+$$A \in \mathbb{R}^{mn}, A^T \in \mathbb{R}^{nm}$$
+</p>
+
+<p>
+$$ A^{T}_{ij} = A_{ji}$$
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: John Cumming</p>
-<p class="date">Created: 2016-01-06 Wed 09:12</p>
+<p class="date">Created: 2016-01-16 Sat 09:28</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

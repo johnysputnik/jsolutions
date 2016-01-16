@@ -198,9 +198,11 @@ a:visited {
 a:hover {
   color: #cb4b16;
 }
+/*
 h1 {
   color: #d33682;
-}
+}*/
+h1,
 h2,
 h3,
 h4,
@@ -313,4 +315,14 @@ h6 {
 #postamble {
   margin-top: 60px;
   font-size: 0.8em;
+}
+
+#my-header {
+  border-bottom: 1px solid #859900;
+  margin-bottom: 30px;
+}
+
+#my-header h2 {
+  margin-top: 0px;
+  margin-bottom: 10px;
 }

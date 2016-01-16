@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Language for 2016 - Common Lisp</title>
-<!-- 2016-01-06 Wed 11:25 -->
+<!-- 2016-01-16 Sat 09:28 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="John Cumming" />
@@ -89,7 +89,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet"
-                         href="css/solarized-dark.css"
+                         href="/css/solarized-dark.css"
                          type="text/css"/>
 <script type="text/javascript">
 /*
@@ -181,6 +181,9 @@ for the JavaScript code in this tag.
 </script>
 </head>
 <body>
+<div id="preamble" class="status">
+<div id="my-header"><h2>jSolutions | <a href="/index.html">home</a></h2></div>
+</div>
 <div id="content">
 <h1 class="title">Language for 2016 - Common Lisp</h1>
 <div id="table-of-contents">
@@ -189,19 +192,43 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#sec-1">Introduction</a></li>
 <li><a href="#sec-2">An Overview of Common Lisp Syntax</a></li>
-<li><a href="#sec-3">Core functions</a></li>
-<li><a href="#sec-4">Collections</a></li>
-<li><a href="#sec-5">Creating Variables</a></li>
-<li><a href="#sec-6">Functions</a></li>
-<li><a href="#sec-7">Control Operations</a></li>
-<li><a href="#sec-8">Example 1 - Sum of Square Errors</a></li>
-<li><a href="#sec-9">Macro Dispatching Characters</a></li>
-<li><a href="#sec-10">Macros</a></li>
-<li><a href="#sec-11">Multimethods</a></li>
-<li><a href="#sec-12">CLOS</a></li>
-<li><a href="#sec-13">Packages</a></li>
-<li><a href="#sec-14">Standard Libraries</a></li>
-<li><a href="#sec-15">Important Libraries</a></li>
+<li><a href="#sec-3">Example 1 - Sum of Square Errors</a></li>
+<li><a href="#sec-4"><span class="todo NEXT">NEXT</span> Core functions</a></li>
+<li><a href="#sec-5">Data Structures</a>
+<ul>
+<li><a href="#sec-5-1">Atoms</a></li>
+<li><a href="#sec-5-2">Sequences</a>
+<ul>
+<li><a href="#sec-5-2-1">Arrays</a></li>
+<li><a href="#sec-5-2-2">Vectors</a></li>
+<li><a href="#sec-5-2-3">Strings</a></li>
+<li><a href="#sec-5-2-4">Lists</a></li>
+<li><a href="#sec-5-2-5">Manipulating Sequences</a></li>
+</ul>
+</li>
+<li><a href="#sec-5-3">Hash Tables</a></li>
+<li><a href="#sec-5-4">Trees</a></li>
+<li><a href="#sec-5-5">Association Lists</a></li>
+<li><a href="#sec-5-6">Property Lists</a></li>
+<li><a href="#sec-5-7">Records</a></li>
+<li><a href="#sec-5-8">Structures</a></li>
+<li><a href="#sec-5-9">Classes</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">Creating Variables</a></li>
+<li><a href="#sec-7">Functions</a></li>
+<li><a href="#sec-8">Control Operations</a></li>
+<li><a href="#sec-9">Error Handling</a></li>
+<li><a href="#sec-10">Lazyiness</a></li>
+<li><a href="#sec-11">Streams</a></li>
+<li><a href="#sec-12">Macro Dispatching Characters</a></li>
+<li><a href="#sec-13">Macros</a></li>
+<li><a href="#sec-14">Multimethods</a></li>
+<li><a href="#sec-15">CLOS</a></li>
+<li><a href="#sec-16">Packages</a></li>
+<li><a href="#sec-17">Standard Libraries</a></li>
+<li><a href="#sec-18">Important Libraries</a></li>
+<li><a href="#sec-19">Working with GNU Emacs and Slime</a></li>
 </ul>
 </div>
 </div>
@@ -229,7 +256,7 @@ than I intend to dive a bit deeper than I have done in the past.
 
 <p>
 The tools I use for this learning are SBCL and GNU Emacs with
-Slime. This is all running under OSX El Capitan on a Macbook pro.
+Slime. This is all running under OS-X El Capitan on a Macbook pro.
 </p>
 
 <p>
@@ -240,6 +267,11 @@ this web page and the lisp code can be found <a href="2016-lisp.html">here</a>.
 
 <p>
 Some books I have on lisp can be found <a href="books.html#sec-5-2">here</a>.
+</p>
+
+<p>
+I have inter-dispersed larger examples through the code that
+hopefully build on the sections that have preceded.
 </p>
 </div>
 </div>
@@ -262,10 +294,6 @@ nested:
 <span class="linenr">4: </span> (+ 2 3))
 </pre>
 </div>
-<pre class="example">
-17
-</pre>
-
 <p>
 This code applies operand '+' to the result of applying operand '*'
 to 3 and 4, and the result of applying operand '+' to 2 and 3.
@@ -289,7 +317,7 @@ T
 </pre>
 
 <p>
-More details on collections can be found in <a href="#sec-4">Collections</a>.
+More details on collections can be found in <i>Collections</i>.
 </p>
 
 <p>
@@ -355,7 +383,7 @@ symbol used to splice a list into the template, for example:
 
 <p>
 This is used extensively when writing macros. For more information
-on macros see <a href="#sec-10">Macros</a>.
+on macros see <a href="#sec-13">Macros</a>.
 </p>
 
 <p>
@@ -371,7 +399,7 @@ the package in which a symbol is defined:
 </div>
 
 <p>
-Packages are discussed in <a href="#sec-13">Packages</a>.
+Packages are discussed in <a href="#sec-16">Packages</a>.
 </p>
 
 <p>
@@ -391,23 +419,8 @@ T
 </div>
 
 <div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Core functions</h2>
-</div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">Collections</h2>
-</div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">Creating Variables</h2>
-</div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">Functions</h2>
-</div>
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7">Control Operations</h2>
-</div>
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8">Example 1 - Sum of Square Errors</h2>
-<div class="outline-text-2" id="text-8">
+<h2 id="sec-3">Example 1 - Sum of Square Errors</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 An equation that is used in regression algorithms is the sum of
 the square of errors for a given dataset and function being fitted
@@ -637,6 +650,23 @@ To confirm this we can plot the data:
 </tbody>
 </table>
 
+<p>
+using this gnuplot script:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-gnuplot"><span style="color: #2aa198;">set</span> terminal png nocrop enhanced size 400,400
+<span style="color: #2aa198;">set</span> key left box <span style="color: #b58900;">linestyle</span> -1
+<span style="color: #2aa198;">set</span> xlabel <span style="color: #2aa198;">'x'</span>
+<span style="color: #2aa198;">set</span> ylabel <span style="color: #2aa198;">'y'</span>
+<span style="color: #2aa198;">set</span> <span style="color: #b58900;">title</span> <span style="color: #2aa198;">'equation fit'</span>
+<span style="color: #859900;">plot</span> data u 1:2 w p <span style="color: #b58900;">lw</span> 2 <span style="color: #b58900;">title</span> <span style="color: #2aa198;">'data'</span>, \
+     data u 1:3 <span style="color: #b58900;">smooth</span> csplines <span style="color: #b58900;">lw</span> 1 <span style="color: #b58900;">title</span> <span style="color: #2aa198;">'eqn1'</span>, \
+     data u 1:4 <span style="color: #b58900;">smooth</span> csplines <span style="color: #b58900;">lw</span> 1 <span style="color: #b58900;">title</span> <span style="color: #2aa198;">'eqn2'</span>, \
+     data u 1:5 <span style="color: #b58900;">smooth</span> csplines <span style="color: #b58900;">lw</span> 1 <span style="color: #b58900;">title</span> <span style="color: #2aa198;">'eqn3'</span>
+</pre>
+</div>
 
 <div class="figure">
 <p><img src="example1-plot.png" alt="example1-plot.png" />
@@ -645,31 +675,486 @@ To confirm this we can plot the data:
 </div>
 </div>
 
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="todo NEXT">NEXT</span> Core functions</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>cons
+</li>
+<li>car
+</li>
+<li>cdr
+</li>
+<li>lambda
+</li>
+<li>funcall
+</li>
+<li>function
+partial functions
+</li>
+<li>apply
+</li>
+<li>read
+</li>
+<li>eval
+</li>
+<li>cond
+</li>
+<li>quote
+</li>
+<li>atom
+</li>
+<li>null
+</li>
+<li>set setf setq
+</li>
+<li>defun var parameter macro etc
+</li>
+<li>equality checks
+</li>
+<li>declare ?
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Data Structures</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">Atoms</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Atoms are things that are not cons cells, and can be tested using
+the atom predicate:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">70: </span>(atom 1)
+</pre>
+</div>
+<pre class="example">
+T
+</pre>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">71: </span>(atom <span style="color: #859900;">:test</span>)
+</pre>
+</div>
+<pre class="example">
+T
+</pre>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">72: </span>(atom nil)
+</pre>
+</div>
+<pre class="example">
+T
+</pre>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">73: </span>(atom '())
+</pre>
+</div>
+<pre class="example">
+T
+</pre>
+
+<p>
+However, they are not things that cannot be broken down any further:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">74: </span>(atom <span style="color: #2aa198;">"text"</span>)
+</pre>
+</div>
+<pre class="example">
+T
+</pre>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">75: </span>(atom #(1 2 3))
+</pre>
+</div>
+<pre class="example">
+T
+</pre>
+
+<p>
+Symbols are atoms as well:
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">76: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">test-atomicity</span> (x) (atom x))
+<span class="linenr">77: </span>(atom 'test-atomicity)
+</pre>
+</div>
+<pre class="example">
+T
+</pre>
+
+<p>
+And lambda expressions:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">78: </span>(atom (<span style="color: #859900;">lambda</span> (x) (atom x)))
+</pre>
+</div>
+<pre class="example">
+T
+</pre>
+
+<p>
+Examples of some things that are not atoms:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">79: </span>(atom '(1 . 3))
+</pre>
+</div>
+<pre class="example">
+NIL
+</pre>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">80: </span>(atom '(1 2 3))
+</pre>
+</div>
+<pre class="example">
+NIL
+</pre>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">81: </span>(atom (cdr '(1 2 3)))
+</pre>
+</div>
+<pre class="example">
+NIL
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2">Sequences</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Sequences are ordered lists of elements and can be manipulated by a
+variety of standard sequence functions. A sequence is either a
+vector or a list. Vectors are one dimensional arrays and Lists are
+linked lists made up of cons cells and are discussed <a href="#sec-5-2-4">here</a>.
+</p>
+</div>
+<div id="outline-container-sec-5-2-1" class="outline-4">
+<h4 id="sec-5-2-1">Arrays</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<ul class="org-ul">
+<li>simple array
+</li>
+<li>bit array
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-2-2" class="outline-4">
+<h4 id="sec-5-2-2">Vectors</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<ul class="org-ul">
+<li>simple vector
+</li>
+<li>bit vector
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-2-3" class="outline-4">
+<h4 id="sec-5-2-3">Strings</h4>
+<div class="outline-text-4" id="text-5-2-3">
+<p>
+A string is a specialized vector with elements of type
+character. All the sequence functions <i>below</i> can be applied to
+strings.
+</p>
+<ul class="org-ul">
+<li>Manipulating the case of a string
+<ul class="org-ul">
+<li>string-upcase
+</li>
+<li>string-downcase
+</li>
+<li>string-capitalize
+</li>
+<li>nstring-upcase
+</li>
+<li>nstring-downcase
+</li>
+<li>nstring-capitalize
+</li>
+</ul>
+</li>
+<li>Trimming strings
+<ul class="org-ul">
+<li>string-trim
+</li>
+<li>string-left-trim
+</li>
+<li>string-right-trim
+</li>
+</ul>
+</li>
+<li>Converting to and from strings
+<ul class="org-ul">
+<li>intern
+</li>
+<li>symbol-name
+</li>
+<li>string
+</li>
+<li>coerce
+</li>
+<li>parse-integer
+</li>
+<li>read-from-string
+</li>
+<li>write-to-string
+</li>
+</ul>
+</li>
+<li>Comparing strings
+<ul class="org-ul">
+<li>string=
+</li>
+<li>string/=
+</li>
+<li>string-equal
+</li>
+<li>string-not-equal
+</li>
+<li>string&lt;
+</li>
+<li>string&gt;
+</li>
+<li>string&lt;=
+</li>
+<li>string&gt;=
+</li>
+<li>string-lessp
+</li>
+<li>string-greaterp
+</li>
+<li>string-not-lessp
+</li>
+<li>string-not-greaterp
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-2-4" class="outline-4">
+<h4 id="sec-5-2-4">Lists</h4>
+<div class="outline-text-4" id="text-5-2-4">
+<ul class="org-ul">
+<li>Cons Cells
+</li>
+<li>Proper List
+</li>
+<li>Dotted List
+</li>
+<li>Circular List
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-2-5" class="outline-4">
+<h4 id="sec-5-2-5">Manipulating Sequences</h4>
+<div class="outline-text-4" id="text-5-2-5">
+<ul class="org-ul">
+<li>concatenate
+</li>
+<li>copy-seq
+</li>
+<li>count
+</li>
+<li>count-if
+</li>
+<li>count-if-not
+</li>
+<li>delete
+</li>
+<li>delete-duplicates
+</li>
+<li>delete-if
+</li>
+<li>delete-if-not
+</li>
+<li>elt
+</li>
+<li>every
+</li>
+<li>fill
+</li>
+<li>find
+</li>
+<li>find-if
+</li>
+<li>find-if-not
+</li>
+<li>length
+</li>
+<li>map
+</li>
+<li>map-into
+</li>
+<li>merge
+</li>
+<li>mismatch
+</li>
+<li>notany
+</li>
+<li>notevery
+</li>
+<li>nreverse
+</li>
+<li>nsubstitute
+</li>
+<li>nsubstitute-if
+</li>
+<li>nsubstitute-if-not
+</li>
+<li>position
+</li>
+<li>position-if
+</li>
+<li>position-if-not
+</li>
+<li>reduce
+</li>
+<li>remove
+</li>
+<li>remove-duplicates
+</li>
+<li>remove-if
+</li>
+<li>remove-if-not
+</li>
+<li>replace
+</li>
+<li>reverse
+</li>
+<li>search
+</li>
+<li>some
+</li>
+<li>sort
+</li>
+<li>stable-sort
+</li>
+<li>subseq
+</li>
+<li>substitute
+</li>
+<li>substitute-if
+</li>
+<li>substitute-if-not
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3">Hash Tables</h3>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4">Trees</h3>
+</div>
+<div id="outline-container-sec-5-5" class="outline-3">
+<h3 id="sec-5-5">Association Lists</h3>
+</div>
+<div id="outline-container-sec-5-6" class="outline-3">
+<h3 id="sec-5-6">Property Lists</h3>
+</div>
+<div id="outline-container-sec-5-7" class="outline-3">
+<h3 id="sec-5-7">Records</h3>
+</div>
+<div id="outline-container-sec-5-8" class="outline-3">
+<h3 id="sec-5-8">Structures</h3>
+</div>
+<div id="outline-container-sec-5-9" class="outline-3">
+<h3 id="sec-5-9">Classes</h3>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Creating Variables</h2>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Functions</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+currying / partial
+no side effects
+let / flet 
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Control Operations</h2>
+</div>
 <div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9">Macro Dispatching Characters</h2>
+<h2 id="sec-9">Error Handling</h2>
 </div>
 <div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10">Macros</h2>
+<h2 id="sec-10">Lazyiness</h2>
 </div>
 <div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11">Multimethods</h2>
+<h2 id="sec-11">Streams</h2>
 </div>
 <div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12">CLOS</h2>
+<h2 id="sec-12">Macro Dispatching Characters</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+set-macro-character
+symbol macros
+</p>
+</div>
 </div>
 <div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13">Packages</h2>
+<h2 id="sec-13">Macros</h2>
 </div>
 <div id="outline-container-sec-14" class="outline-2">
-<h2 id="sec-14">Standard Libraries</h2>
+<h2 id="sec-14">Multimethods</h2>
 </div>
 <div id="outline-container-sec-15" class="outline-2">
-<h2 id="sec-15">Important Libraries</h2>
+<h2 id="sec-15">CLOS</h2>
+</div>
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16">Packages</h2>
+</div>
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17">Standard Libraries</h2>
+</div>
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18">Important Libraries</h2>
+</div>
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19">Working with GNU Emacs and Slime</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: John Cumming</p>
-<p class="date">Created: 2016-01-06 Wed 11:25</p>
+<p class="date">Created: 2016-01-16 Sat 09:28</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

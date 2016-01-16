@@ -1,0 +1,209 @@
+#+TITLE: Monads and Gonads Notes
+
+* Introduction
+  
+  These are some notes from a talk about Monads by Douglas
+  Crockford. The video can be found on youtube [[http://www.youtube.com/watch?v%3Db0EF0VTs9Dc&feature%3Dyoutu.be][here]]. IT is about 50
+  minutes long.
+
+  I've never completely understood monads and it is said that as soon
+  as you understand them you lose the ability to explain them. Let's
+  see if Doug can clear things up...
+
+* Notes
+
+  Monads are a pattern that comes with the curse stated above.
+
+  Starting with functional programming there are two senses:
+
+** Programming with functions
+ 
+   Started with FORTRAN II in 1958.
+
+   Only becomes interesting when we have first class functions, higher
+   order functions and lexical closure. Allowing passing of functions
+   as arguments, setting as variables etc.
+
+** Pure Functional Programming
+
+   No mutation in functions, a more mathematical approach. Programs
+   are easier to reason about. A function is a map from a set of
+   values to a another set of values with no side effects.
+
+   Memoization and Caching are two examples of a different approach.
+
+   Remove assignments, loops and freeze all arrays and object literals.
+
+   This makes for a completely non practical language as in the real
+   world everything changes. Immutability makes it hard to interact
+   with the real world - no side effects such as IO for example.
+
+** The trick..
+
+   A function can take a function as an argument making each
+   function being different.
+
+   Haskell has the IO Monad. A solution to a problem you should never
+   have. 
+
+   Check out Category Theory as the basis of monads. And learning
+   Haskell helps.
+
+   It's easier to reason about Monads without the type system that
+   Haskell has.
+
+   The following examples in JavaScript all return a monad:
+
+#+BEGIN_SRC javascript +n -r
+  function unit(value)
+  function bind(monad, function(value))
+#+END_SRC
+
+   Axioms:
+
+#+BEGIN_SRC javascript +n -r
+  bind(unit(value), f) ==== f(value)
+  bind(monad, unit) ==== monad
+  bind(bind(monad, f), g) ====
+      bind(monad, function (value) {
+          return bind(f(value), g);
+      })
+#+END_SRC
+
+   This can have an OO transform:
+
+#+BEGIN_SRC javascript +n -r
+  bind(monad, func)
+
+  monad.bind(func)
+#+END_SRC
+
+   Monads are a pattern that can be implemented as a macro in lisp, or
+   as with functions in JavaScript:
+
+#+BEGIN_SRC javascript +n -r
+  function MONAD() {
+      return function unit(value){
+          var monad = Object.create(null);
+          monad.bind = function(func) {
+              return func(value);
+          }
+          return monad;
+      }
+  }
+#+END_SRC
+
+   He also suggest an alternative context color that is based on
+   nested levels.
+
+   An example of an identity monad:
+
+#+BEGIN_SRC javascript +n -r
+  var identity = MONAD();
+  var monad = identity("Hello world.");
+  monad.bind(alert);
+#+END_SRC
+
+   We can now call:
+
+#+BEGIN_SRC javascript +n -r
+  monad.bind(f).bind(g)
+#+END_SRC
+
+   This is similar to the ajax monad. And is similar also to the
+   QString monad used in arg() call.
+
+   We now want to add methods to the monad:
+
+#+BEGIN_SRC javascript +n -r
+  function MONAD() {
+      var prototype = Object.create(null);
+      function unit(value) {
+          var monad = Object.create(prototype);
+          monad.bind = function (func, args) {
+              return func(value, ...args);
+          }
+          return monad;
+      }
+
+      unit.lift = function (name, func) {
+          prototype[name] = function(...args) {
+              return unit(this.bind(func, args));
+          }
+          return unit;
+      };
+
+      return unit;
+  }
+#+END_SRC
+
+   Lift will take an ordinary function add it to the prototype and
+   make it monad aware. An example of it's use:
+
+#+BEGIN_SRC javascript +n -r
+  var ajax = MONAD().lift('alert', alert);
+  var monad = ajax("Hello world.");
+
+  monad.alert();
+#+END_SRC
+
+   A maybe monad for handling null pointer exceptions:
+
+#+BEGIN_SRC javascript +n -r
+  function MONAD(modifier) {
+      var prototype = Object.create(null);
+      function unit(value) {
+          var monad = Object.create(prototype);
+          monad.bind = function (func, args) {
+              return func(value, ...args);
+          };
+          if(typeof modifier === 'function') {
+              modifier(monad, value);
+          }
+          return monadl
+      }
+      return unit;
+  }
+
+  var maybe = MONAD(function (monad, value) {
+      if(value === null || value === undefined) {
+          monad.is_null = true;
+          monad.bind = function() {
+              return monad;
+          }
+      }
+  });
+
+  var monad = maybe(null);
+  monad.bind(alert);
+#+END_SRC
+
+   Here we are changing the bind method to do nothing except return
+   the monad. And we don't have to worry about null pointer
+   exceptions.
+
+
+* Side note - Concurrency
+
+  Threading is bad with mutation. We then use mutexes which come with
+  their own set of problems.
+
+  With purely functional programming we never have this problem but
+  have no mutation.
+
+  Turn based processing - Never wait, never block, finish
+  fast. Asynchronicity can be hard to manage. Used by node.js.
+
+  Nested event handlers are generally bad and promises are a much
+  better solution.
+
+  Composition of promises are monads.
+
+* Side note - Actor Model
+
+  Forms the basis of scheme and solves a lot of our programming
+  problems.
+
+  Futures and Promises as well as Monads generally come out of the
+  Actor Model.
+

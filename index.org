@@ -1,3 +1,20 @@
 #+TITLE: Home
 
-#+INCLUDE: sitemap.org
+   + AI
+     + [[file:AI/logicalreg.org][Basic Logical Regression]]
+     + [[file:AI/matrix.org][Basic Matrix Mathematics]]
+     + [[file:AI/linearreg.org][Linear Regression]]
+   + C++
+     + [[file:C++/iocvariadic.org][iocvariadic]]
+     + [[file:C++/objectfactory.org][objectfactory]]
+     + [[file:C++/qtxmlsyntax.org][qtxmlsyntax]]
+   + CompSci
+     + [[file:CompSci/flexsystems.org][Gerald Jay Sussman on Flexible Systems]]
+     + [[file:CompSci/monadsgonads.org][Monads and Gonads Notes]]
+   + Mathematics
+     + [[file:Mathematics/matrix.org][Basic Matrix Mathematics]]
+     + [[file:Mathematics/e.org][Some notes on e]]
+   + [[file:about.org][About the Website]]
+   + [[file:2016-lisp.org][Language for 2016 - Common Lisp]]
+   + [[file:books.org][My Library]]
+   + [[file:notes.org][My Todo List]]

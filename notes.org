@@ -1,40 +1,39 @@
-#+TITLE: My Notes
+#+TITLE: My Todo List
 
-This page contains random notes and todo items that either don't
-warrant a longer article or are works in progress.
+This page contains a list of todo items for this website. It is
+probably of no interest to anyone except myself.
 
-* NEXT [#A] Header
-* NEXT [#A] Tag list as index
-* TODO [#A] Complete the about page
+* TODO [#A] Add all old articles
+** TODO C++ object factory
+** TODO IOC Container with variadic templates
+** TODO Qt XML Syntax highlighter
+
+* TODO [#A] Build and deploy script (master branch) 
+** TODO Check all config stuff
+** TODO change repo name to www
+   Remember to update submodule on macbook
+   Remember to update on ipad
+** TODO Run emacs script
+** TODO git add / commit
+** TODO merge to correct branch
+** TODO git push
+
+* TODO [#A] Host website on github
+** TODO set up dns
+
+
+
+* TODO [#B] Tag list as index
+  
+  Write a script that retrieves all tags from the files and creates an
+  index of all articles as a page with the tags as headings and the
+  links as a list under each heading.
+
 * TODO [#B] Complete the library page
+
+  Add all books to the library page and
+
 * TODO [#B] Summary of articles in ACCU publications
-* TODO [#B] Add all old articles
 
-* Test code fragments
+  A list of articles by publication issue.
 
-Some C++ code:
-
-#+BEGIN_SRC c++ +n -r
-  template<typename T> (ref:tn)
-  class TestTemplate {
-  private:
-          const T * _element;
-  };
-#+END_SRC
-
-We can jump to [[(tn)][Line (tn)]]
-
-Some lisp code:
-
-#+BEGIN_SRC lisp +n
-  (defun inc (x)
-    (+ x 1))
-#+END_SRC
-
-Some XML:
-
-#+BEGIN_SRC xml +n
-  <test attr="value">
-    Contents
-  </test>
-#+END_SRC

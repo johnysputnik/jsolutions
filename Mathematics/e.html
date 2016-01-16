@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Home</title>
+<title>Some notes on e</title>
 <!-- 2016-01-16 Sat 09:28 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
@@ -137,59 +137,131 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
 <div id="my-header"><h2>jSolutions | <a href="/index.html">home</a></h2></div>
 </div>
 <div id="content">
-<h1 class="title">Home</h1>
-<ul class="org-ul">
-<li>AI
-<ul class="org-ul">
-<li><a href="AI/logicalreg.html">Basic Logical Regression</a>
-</li>
-<li><a href="AI/matrix.html">Basic Matrix Mathematics</a>
-</li>
-<li><a href="AI/linearreg.html">Linear Regression</a>
-</li>
+<h1 class="title">Some notes on e</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Introduction</a></li>
+<li><a href="#sec-2">Logarithms</a></li>
+<li><a href="#sec-3">e as the limit of compound interest</a></li>
+<li><a href="#sec-4">Some infinite series involving \(\pi\)</a></li>
 </ul>
-</li>
-<li>C++
-<ul class="org-ul">
-<li><a href="C++/iocvariadic.html">iocvariadic</a>
-</li>
-<li><a href="C++/objectfactory.html">objectfactory</a>
-</li>
-<li><a href="C++/qtxmlsyntax.html">qtxmlsyntax</a>
-</li>
-</ul>
-</li>
-<li>CompSci
-<ul class="org-ul">
-<li><a href="CompSci/flexsystems.html">Gerald Jay Sussman on Flexible Systems</a>
-</li>
-<li><a href="CompSci/monadsgonads.html">Monads and Gonads Notes</a>
-</li>
-</ul>
-</li>
-<li>Mathematics
-<ul class="org-ul">
-<li><a href="Mathematics/matrix.html">Basic Matrix Mathematics</a>
-</li>
-<li><a href="Mathematics/e.html">Some notes on e</a>
-</li>
-</ul>
-</li>
-<li><a href="about.html">About the Website</a>
-</li>
-<li><a href="2016-lisp.html">Language for 2016 - Common Lisp</a>
-</li>
-<li><a href="books.html">My Library</a>
-</li>
-<li><a href="notes.html">My Todo List</a>
-</li>
-</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Here are some notes on Eli Maor's book, e - The Story of a Number.
+</p>
+
+<p>
+$$e \approx 2.71828$$
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Logarithms</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+$$N=10^L \Rightarrow L=\log_{10} N$$
+</p>
+
+<p>
+$$\log (ab) = \log a + \log b$$
+</p>
+
+<p>
+$$\log (a/b) = \log a - \log b$$
+</p>
+
+<p>
+$$\log a^n = n \log a$$
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">e as the limit of compound interest</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+$$e = \lim_{n \to \infty} (1 + 1/n)^n$$
+</p>
+
+<p>
+$$e = 2 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + ...$$
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Some infinite series involving \(\pi\)</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+$$\frac{2}{\pi} = \frac{\sqrt{2}}{2}\cdot\frac{\sqrt{2 + \sqrt{2}}}{2}\cdot\frac{\sqrt{2 + \sqrt{2 + \sqrt{2}}}}{2}\cdot ...$$
+</p>
+
+<p>
+$$\frac{\pi}{4} = \frac{1}{1} - \frac{1}{3} + \frac{1}{5} -
+\frac{1}{7} + - ...$$
+</p>
+
+<p>
+(Still reading it&#x2026;)
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: John Cumming</p>

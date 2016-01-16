@@ -38,10 +38,11 @@
                  :section-numbers nil
                  :recursive t
                  :auto-sitemap t
-                 :sitemap-filename "sitemap.org"
-                 :sitemap-title ""
+                 :sitemap-filename "index.org"
+                 :sitemap-title "Home"
+                 :html-preamble "<div id=\"my-header\"><h2>jSolutions | <a href=\"/index.html\">home</a></h2></div>"
                  :html-head "<link rel=\"stylesheet\"
-                         href=\"css/solarized-dark.css\"
+                         href=\"/css/solarized-dark.css\"
                          type=\"text/css\"/>"))))
 
 
