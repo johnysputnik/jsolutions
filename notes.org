@@ -6,8 +6,9 @@ probably of no interest to anyone except myself.
 * TODO [#A] Add all old articles
 ** TODO C++ object factory
 ** TODO IOC Container with variadic templates
-** TODO Qt XML Syntax highlighter
 
+** TODO https://sputnikdev.wordpress.com
+   33 of them!
 * TODO [#A] Build and deploy script (master branch) 
 ** TODO Check all config stuff
 ** TODO change repo name to www
@@ -22,6 +23,8 @@ probably of no interest to anyone except myself.
 ** TODO set up dns
 
 
+* TODO Post on how to create a web page with org mode and github
+  Using emacs of course!
 
 * TODO [#B] Tag list as index
   
