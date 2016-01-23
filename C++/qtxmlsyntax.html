@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>qtxmlsyntax</title>
-<!-- 2016-01-16 Sat 09:28 -->
+<title>Qt XML Syntax Highlighter</title>
+<!-- 2016-01-23 Sat 14:44 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="John Cumming" />
@@ -143,11 +143,209 @@ for the JavaScript code in this tag.
 <div id="my-header"><h2>jSolutions | <a href="/index.html">home</a></h2></div>
 </div>
 <div id="content">
-<h1 class="title">qtxmlsyntax</h1>
+<h1 class="title">Qt XML Syntax Highlighter</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Introduction</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Qt provides a base class that can be used for highlighting text in
+QTextDocument instances as displayed in various Qt controls. This
+post shows how this can be used to highlight XML text.
+</p>
+
+<p>
+The documentation for QTextDocument can be found <a href="http://doc.qt.io/qt-5/qsyntaxhighlighter.html">here</a>.
+</p>
+
+<p>
+This example follows the following state transitions, which is
+probably not optimal, but expresses the states reasonably closely,
+enough to get a functioning syntax highlighter. As this blog is
+mainly for my own note taking, I weill leave it to the reader to
+improve it :)
+</p>
+
+
+<div class="figure">
+<p><img src="xmleditor-highlight-states.png" alt="xmleditor-highlight-states.png" />
+</p>
+</div>
+
+<p>
+Here is the class declaration:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c++"><span class="linenr"> 1: </span><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">An XML syntax highlighter</span>
+<span class="linenr"> 2: </span><span style="color: #586e75; font-style: italic;">//</span>
+<span class="linenr"> 3: </span><span style="color: #859900;">class</span> <span style="color: #b58900;">XMLHighlighter</span> : <span style="color: #859900;">public</span> <span style="color: #b58900;">QSyntaxHighlighter</span>
+<span class="linenr"> 4: </span>{
+<span class="linenr"> 5: </span>        Q_OBJECT
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #859900;">public</span>:
+<span class="linenr"> 8: </span>        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">ctor</span>
+<span class="linenr"> 9: </span>        <span style="color: #268bd2;">XMLHighlighter</span>(<span style="color: #b58900;">QTextDocument</span> *<span style="color: #268bd2;">parent</span> = 0);
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #859900;">protected</span>:
+<span class="linenr">12: </span>        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">An overridden highlight method for highlighting</span>
+<span class="linenr">13: </span>        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">patterms based on the rules defined in this class</span>
+<span class="linenr">14: </span>        <span style="color: #586e75; font-style: italic;">//</span>
+<span class="linenr">15: </span>        <span style="color: #b58900;">void</span> <span style="color: #268bd2;">highlightBlock</span>(<span style="color: #859900;">const</span> <span style="color: #b58900;">QString</span> &amp;<span style="color: #268bd2;">text</span>) Q_DECL_OVERRIDE;
+<span class="linenr">16: </span>
+<span class="linenr">17: </span><span style="color: #859900;">private</span>:
+<span class="linenr">18: </span>
+<span class="linenr">19: </span>        <span style="color: #b58900;">QTextCharFormat</span> <span style="color: #268bd2;">validElementFormat</span>; <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">The format for XML elements</span>
+<span class="linenr">20: </span>        <span style="color: #b58900;">QTextCharFormat</span> <span style="color: #268bd2;">attributeNameFormat</span>; <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">The format for XML attribute names</span>
+<span class="linenr">21: </span>        <span style="color: #b58900;">QTextCharFormat</span> <span style="color: #268bd2;">attributeValueFormat</span>; <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">The format for XML attribute values</span>
+<span class="linenr">22: </span>        <span style="color: #b58900;">QTextCharFormat</span> <span style="color: #268bd2;">commentFormat</span>; <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">formatting for XML comments</span>
+<span class="linenr">23: </span>};
+</pre>
+</div>
+
+<p>
+And the method definitions:
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-c++"><span class="linenr"> 24: </span><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">XML syntax highlighter</span>
+<span class="linenr"> 25: </span><span style="color: #586e75; font-style: italic;">//</span>
+<span class="linenr"> 26: </span>
+<span class="linenr"> 27: </span><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">default ctor</span>
+<span class="linenr"> 28: </span><span style="color: #586e75; font-style: italic;">//</span>
+<span class="linenr"> 29: </span><span style="color: #2aa198;">XMLHighlighter</span>::<span style="color: #268bd2;">XMLHighlighter</span>(<span style="color: #b58900;">QTextDocument</span> *<span style="color: #268bd2;">parent</span>)
+<span class="linenr"> 30: </span>    :QSyntaxHighlighter(parent)
+<span class="linenr"> 31: </span>{
+<span class="linenr"> 32: </span>    attributeValueFormat.setForeground(<span style="color: #2aa198;">Qt</span>::darkGreen);
+<span class="linenr"> 33: </span>    attributeValueFormat.setFontWeight(<span style="color: #2aa198;">QFont</span>::Normal);
+<span class="linenr"> 34: </span>
+<span class="linenr"> 35: </span>    validElementFormat.setForeground(<span style="color: #2aa198;">Qt</span>::darkBlue);
+<span class="linenr"> 36: </span>    validElementFormat.setFontWeight(<span style="color: #2aa198;">QFont</span>::Bold);
+<span class="linenr"> 37: </span>
+<span class="linenr"> 38: </span>    attributeNameFormat.setForeground(<span style="color: #2aa198;">Qt</span>::darkRed);
+<span class="linenr"> 39: </span>    attributeNameFormat.setFontWeight(<span style="color: #2aa198;">QFont</span>::Bold);
+<span class="linenr"> 40: </span>
+<span class="linenr"> 41: </span>    commentFormat.setForeground(<span style="color: #2aa198;">Qt</span>::gray);
+<span class="linenr"> 42: </span>    commentFormat.setFontItalic(<span style="color: #2aa198;">true</span>);
+<span class="linenr"> 43: </span>}
+<span class="linenr"> 44: </span>
+<span class="linenr"> 45: </span><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">An overridden highlight method for highlighting</span>
+<span class="linenr"> 46: </span><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">patterms based on the rules defined in this class</span>
+<span class="linenr"> 47: </span><span style="color: #586e75; font-style: italic;">//</span>
+<span class="linenr"> 48: </span><span style="color: #b58900;">void</span> <span style="color: #2aa198;">XMLHighlighter</span>::<span style="color: #268bd2;">highlightBlock</span>(<span style="color: #859900;">const</span> <span style="color: #b58900;">QString</span> &amp;<span style="color: #268bd2;">text</span>)
+<span class="linenr"> 49: </span>{
+<span class="linenr"> 50: </span>
+<span class="linenr"> 51: </span>    <span style="color: #859900;">enum</span> {
+<span class="linenr"> 52: </span>        <span style="color: #268bd2;">NormalState</span> = -1,
+<span class="linenr"> 53: </span>        <span style="color: #268bd2;">Element</span>,
+<span class="linenr"> 54: </span>        <span style="color: #268bd2;">AttributeName</span>,
+<span class="linenr"> 55: </span>        <span style="color: #268bd2;">AttributeEquals</span>,
+<span class="linenr"> 56: </span>        <span style="color: #268bd2;">AttributeValue</span>,
+<span class="linenr"> 57: </span>        <span style="color: #268bd2;">Comment</span>
+<span class="linenr"> 58: </span>    };
+<span class="linenr"> 59: </span>
+<span class="linenr"> 60: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">state</span> = previousBlockState();
+<span class="linenr"> 61: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">offset</span> = 0;
+<span class="linenr"> 62: </span>
+<span class="linenr"> 63: </span>    <span style="color: #859900;">for</span> (<span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span> = 0; i &lt; text.length(); ++i)
+<span class="linenr"> 64: </span>    {
+<span class="linenr"> 65: </span>        <span style="color: #859900;">switch</span>(state)
+<span class="linenr"> 66: </span>        {
+<span class="linenr"> 67: </span>        <span style="color: #859900;">case</span> Element:
+<span class="linenr"> 68: </span>
+<span class="linenr"> 69: </span>            <span style="color: #859900;">if</span> (text.mid(i, 1) == <span style="color: #2aa198;">"&gt;"</span>)
+<span class="linenr"> 70: </span>            {
+<span class="linenr"> 71: </span>                state = NormalState;
+<span class="linenr"> 72: </span>                setFormat(offset, i - offset + 1, validElementFormat);
+<span class="linenr"> 73: </span>            }
+<span class="linenr"> 74: </span>
+<span class="linenr"> 75: </span>            <span style="color: #859900;">if</span> (text.mid(i, 1) == <span style="color: #2aa198;">" "</span>)
+<span class="linenr"> 76: </span>            {
+<span class="linenr"> 77: </span>                state = AttributeName;
+<span class="linenr"> 78: </span>                setFormat(offset, i - offset, validElementFormat);
+<span class="linenr"> 79: </span>                offset = i + 1;
+<span class="linenr"> 80: </span>            }
+<span class="linenr"> 81: </span>
+<span class="linenr"> 82: </span>            <span style="color: #859900;">break</span>;
+<span class="linenr"> 83: </span>        <span style="color: #859900;">case</span> AttributeName:
+<span class="linenr"> 84: </span>
+<span class="linenr"> 85: </span>            <span style="color: #859900;">if</span> (text.mid(i, 1) == <span style="color: #2aa198;">"="</span>)
+<span class="linenr"> 86: </span>            {
+<span class="linenr"> 87: </span>                state = AttributeEquals;
+<span class="linenr"> 88: </span>                setFormat(offset, i - offset, attributeNameFormat);
+<span class="linenr"> 89: </span>                offset = i;
+<span class="linenr"> 90: </span>            }
+<span class="linenr"> 91: </span>
+<span class="linenr"> 92: </span>            <span style="color: #859900;">if</span> (text.mid(i, 1) == <span style="color: #2aa198;">"&gt;"</span>)
+<span class="linenr"> 93: </span>            {
+<span class="linenr"> 94: </span>                state = NormalState;
+<span class="linenr"> 95: </span>                setFormat(offset, i - offset + 1, validElementFormat);
+<span class="linenr"> 96: </span>            }
+<span class="linenr"> 97: </span>
+<span class="linenr"> 98: </span>            <span style="color: #859900;">break</span>;
+<span class="linenr"> 99: </span>        <span style="color: #859900;">case</span> AttributeEquals:
+<span class="linenr">100: </span>
+<span class="linenr">101: </span>            <span style="color: #859900;">if</span> (text.mid(i, 1) == <span style="color: #2aa198;">"\""</span>)
+<span class="linenr">102: </span>            {
+<span class="linenr">103: </span>                state = AttributeValue;
+<span class="linenr">104: </span>                setFormat(offset, i - offset, attributeNameFormat);
+<span class="linenr">105: </span>                offset = i;
+<span class="linenr">106: </span>            }
+<span class="linenr">107: </span>
+<span class="linenr">108: </span>            <span style="color: #859900;">break</span>;
+<span class="linenr">109: </span>        <span style="color: #859900;">case</span> AttributeValue:
+<span class="linenr">110: </span>
+<span class="linenr">111: </span>            <span style="color: #859900;">if</span> (text.mid(i, 1) == <span style="color: #2aa198;">"\""</span>)
+<span class="linenr">112: </span>            {
+<span class="linenr">113: </span>                state = AttributeName;
+<span class="linenr">114: </span>                setFormat(offset, i - offset + 1, attributeValueFormat);
+<span class="linenr">115: </span>                offset = i + 1;
+<span class="linenr">116: </span>            }
+<span class="linenr">117: </span>
+<span class="linenr">118: </span>            <span style="color: #859900;">break</span>;
+<span class="linenr">119: </span>        <span style="color: #859900;">case</span> Comment:
+<span class="linenr">120: </span>
+<span class="linenr">121: </span>            <span style="color: #859900;">if</span> (text.mid(i, 3) == <span style="color: #2aa198;">"--&gt;"</span>)
+<span class="linenr">122: </span>            {
+<span class="linenr">123: </span>                state = NormalState;
+<span class="linenr">124: </span>                setFormat(offset, i - offset + 3, commentFormat);
+<span class="linenr">125: </span>            }
+<span class="linenr">126: </span>        <span style="color: #859900;">default</span>:
+<span class="linenr">127: </span>
+<span class="linenr">128: </span>            <span style="color: #859900;">if</span> (text.mid(i, 4) == <span style="color: #2aa198;">"&gt;!--"</span>)
+<span class="linenr">129: </span>            {
+<span class="linenr">130: </span>                offset = i;
+<span class="linenr">131: </span>                state = Comment;
+<span class="linenr">132: </span>            }
+<span class="linenr">133: </span>            <span style="color: #859900;">else</span> <span style="color: #859900;">if</span> (text.mid(i, 1) == <span style="color: #2aa198;">"&gt;"</span>)
+<span class="linenr">134: </span>            {
+<span class="linenr">135: </span>                offset = i;
+<span class="linenr">136: </span>                state = Element;
+<span class="linenr">137: </span>            }
+<span class="linenr">138: </span>
+<span class="linenr">139: </span>            <span style="color: #859900;">break</span>;
+<span class="linenr">140: </span>        }
+<span class="linenr">141: </span>    }
+<span class="linenr">142: </span>}
+</pre>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: John Cumming</p>
-<p class="date">Created: 2016-01-16 Sat 09:28</p>
+<p class="date">Created: 2016-01-23 Sat 14:44</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

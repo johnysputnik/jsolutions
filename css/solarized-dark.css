@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Inconsolata);
 @import url(http://fonts.googleapis.com/css?family=PT+Sans);
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
+
 article,
 aside,
 details,
@@ -27,7 +28,7 @@ audio:not([controls]) {
   display: none;
 }
 html {
-  font-family: sans-serif;
+  font-family: Inconsolata;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -158,7 +159,7 @@ table {
   border-spacing: 0;
 }
 html {
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Inconsolata', sans-serif;
 }
 pre,
 code {
@@ -171,32 +172,33 @@ h4,
 h5,
 h6 {
   font-family: 'PT Sans Narrow', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
 }
 html {
-  background-color: #073642;
-  color: #839496;
+  /*background-color: #073642;
+  color: #839496;*/
   margin: 1em;
 }
 body {
-  background-color: #002b36;
+  /*background-color: #002b36;*/
   margin: 0 auto;
   max-width: 23cm;
-  border: 1pt solid #586e75;
+  /*border: 1pt solid #586e75;*/
   padding: 1em;
 }
 code {
-  background-color: #073642;
+  /*background-color: #073642;*/
   padding: 2px;
 }
 a {
-  color: #b58900;
+  /*color: #b58900;*/
+  text-decoration: none;
 }
 a:visited {
-  color: #cb4b16;
+  /*color: #cb4b16;*/
 }
 a:hover {
-  color: #cb4b16;
+  /*color: #cb4b16;*/
 }
 /*
 h1 {
@@ -208,17 +210,18 @@ h3,
 h4,
 h5,
 h6 {
-  color: #859900;
+  /*color: #859900;*/
 }
 pre {
-  background-color: #002b36;
-  color: #839496;
-  border: 1pt solid #586e75;
-  padding: 1em;
-  box-shadow: 5pt 5pt 8pt #073642;
+  /*background-color: #002b36;
+  color: #839496;*/
+  border: 1pt solid #dddddd;
+  padding: 0.5em;
+  box-shadow: 0pt 0pt 0pt #073642;
+
 }
 pre code {
-  background-color: #002b36;
+  /*background-color: #002b36;*/
 }
 h1 {
   font-size: 2.8em;
@@ -243,9 +246,8 @@ h6 {
   margin-top: 0px;
 }
 .tag {
-  background-color: #073642;
-  color: #d33682;
-  padding: 0 0.2em;
+  background-color: #dddddd;
+  padding: 0.2em;
 }
 .todo,
 .next,
@@ -263,13 +265,13 @@ h6 {
   -webkit-border-radius: 0.2em;
   -moz-border-radius: 0.2em;
   border-radius: 0.2em;
-  background-color: #2aa198;
+  background-color: #dddddd;
 }
 .NEXT {
   -webkit-border-radius: 0.2em;
   -moz-border-radius: 0.2em;
   border-radius: 0.2em;
-  background-color: #268bd2;
+  background-color: #dddddd;
 }
 .ACTIVE {
   -webkit-border-radius: 0.2em;
@@ -318,11 +320,14 @@ h6 {
 }
 
 #my-header {
-  border-bottom: 1px solid #859900;
   margin-bottom: 30px;
 }
 
 #my-header h2 {
   margin-top: 0px;
   margin-bottom: 10px;
+}
+
+img {
+  width: 80%;
 }

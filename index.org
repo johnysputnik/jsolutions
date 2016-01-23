@@ -5,9 +5,10 @@
      + [[file:AI/matrix.org][Basic Matrix Mathematics]]
      + [[file:AI/linearreg.org][Linear Regression]]
    + C++
-     + [[file:C++/iocvariadic.org][iocvariadic]]
-     + [[file:C++/objectfactory.org][objectfactory]]
-     + [[file:C++/qtxmlsyntax.org][qtxmlsyntax]]
+     + [[file:C++/objectfactory.org][A C++ Object Factory]]
+     + [[file:C++/iocvariadic.org][An IOC Container using Variadic Templates]]
+     + [[file:C++/qtbuildnotes.org][Building Qt with VS2013]]
+     + [[file:C++/qtxmlsyntax.org][Qt XML Syntax Highlighter]]
    + CompSci
      + [[file:CompSci/flexsystems.org][Gerald Jay Sussman on Flexible Systems]]
      + [[file:CompSci/monadsgonads.org][Monads and Gonads Notes]]

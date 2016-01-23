@@ -39,9 +39,6 @@
  (* 3 4)
  (+ 2 3))
 #+END_SRC
-#+RESULTS:
-: 17
-
   This code applies operand '+' to the result of applying operand '*'
   to 3 and 4, and the result of applying operand '+' to 2 and 3.
 

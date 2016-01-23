@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>objectfactory</title>
-<!-- 2016-01-16 Sat 09:28 -->
+<title>A C++ Object Factory</title>
+<!-- 2016-01-23 Sat 14:44 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="John Cumming" />
@@ -143,11 +143,515 @@ for the JavaScript code in this tag.
 <div id="my-header"><h2>jSolutions | <a href="/index.html">home</a></h2></div>
 </div>
 <div id="content">
-<h1 class="title">objectfactory</h1>
+<h1 class="title">A C++ Object Factory</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Introduction</a></li>
+<li><a href="#sec-2">A Simple Solution</a>
+<ul>
+<li><a href="#sec-2-1">The Base Class</a></li>
+<li><a href="#sec-2-2">The Factory Class</a></li>
+<li><a href="#sec-2-3">Some Derived Classes</a></li>
+<li><a href="#sec-2-4">A First Attempt at the Factory Method</a></li>
+<li><a href="#sec-2-5">Running the Application</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">Problems with the Simple Solution</a></li>
+<li><a href="#sec-4">A Revised Factory Class</a></li>
+<li><a href="#sec-5">We can do Better</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+In object oriented programming, it is very common to have a scenario
+where a large number of classes share the same base class and the
+particular implementation needs to be created at runtime based on
+some specific parameters, for example a class name held in a
+string. Standard C++ does not provide the same type of reflection
+mechanism that other languages use to achieve this, such as C#:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #2aa198;">System</span>.<span style="color: #2aa198;">Reflection</span>.<span style="color: #2aa198;">Assembly</span>.GetExecutingAssembly()
+      .CreateInstance(<span style="color: #b58900;">string</span> <span style="color: #268bd2;">className</span>)
+</pre>
+</div>
+
+<p>
+or in java:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java">Class.forName(className).getConstructor(String.<span style="color: #859900;">class</span>).newInstance(arg);
+</pre>
+</div>
+
+<p>
+However, C++ does not allow us to do such things; we have to come up
+with another solution. The basic pattern, or set of patterns, that
+help us achieve this are factory patterns.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">A Simple Solution</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">The Base Class</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Our base class is defined as an abstract class as follows:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr"> 1: </span><span style="color: #cb4b16;">#if</span><span style="color: #cb4b16;">n</span><span style="color: #cb4b16;">def</span> CPPFACTORY_MYBASECLASS_H
+<span class="linenr"> 2: </span><span style="color: #cb4b16;">#define</span> <span style="color: #268bd2;">CPPFACTORY_MYBASECLASS_H</span>
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #859900;">class</span> <span style="color: #b58900;">MyBaseClass</span>
+<span class="linenr"> 5: </span>{
+<span class="linenr"> 6: </span><span style="color: #859900;">public</span>:
+<span class="linenr"> 7: </span>        <span style="color: #859900;">virtual</span> ~<span style="color: #268bd2;">MyBaseClass</span>(){}
+<span class="linenr"> 8: </span>        <span style="color: #859900;">virtual</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">doSomething</span>() = 0;
+<span class="linenr"> 9: </span>};
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #cb4b16;">#endif</span> <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">CPPFACTORY_MYBASECLASS_H</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">The Factory Class</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+A factory method can then be defined as a static method that can be
+used to create instances of MyBaseClass. We could define this as a
+static method on MyBaseClass itself, although it is generally good
+practice in object oriented development that a class serves a
+single purpose. Therefore, lets create a factory class:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">12: </span><span style="color: #cb4b16;">#if</span><span style="color: #cb4b16;">n</span><span style="color: #cb4b16;">def</span> CPPFACTORY_MYFACTORY_H
+<span class="linenr">13: </span><span style="color: #cb4b16;">#define</span> <span style="color: #268bd2;">CPPFACTORY_MYFACTORY_H</span>
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"MyBaseClass.h"</span>
+<span class="linenr">16: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;memory&gt;</span>
+<span class="linenr">17: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;string&gt;</span>
+<span class="linenr">18: </span>
+<span class="linenr">19: </span><span style="color: #859900;">using</span> <span style="color: #859900;">namespace</span> <span style="color: #2aa198;">std</span>;
+<span class="linenr">20: </span>
+<span class="linenr">21: </span><span style="color: #859900;">class</span> <span style="color: #b58900;">MyFactory</span>
+<span class="linenr">22: </span>{
+<span class="linenr">23: </span><span style="color: #859900;">public</span>:
+<span class="linenr">24: </span>        <span style="color: #859900;">static</span> <span style="color: #b58900;">shared_ptr</span>&lt;MyBaseClass&gt; <span style="color: #268bd2;">CreateInstance</span>(<span style="color: #b58900;">string</span> <span style="color: #268bd2;">name</span>);
+<span class="linenr">25: </span>};
+<span class="linenr">26: </span>
+<span class="linenr">27: </span>
+<span class="linenr">28: </span><span style="color: #cb4b16;">#endif</span> <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">CPPFACTORY_MYFACTORY_H</span>
+</pre>
+</div>
+
+<p>
+The factory method is expected to create an instance of a class
+named name that is derived from MyBaseClass and return it as a
+shared pointer, as it will relinquish ownership of the object to
+the caller. We shall return to the implementation of the method
+shortly.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Some Derived Classes</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">29: </span><span style="color: #cb4b16;">#if</span><span style="color: #cb4b16;">n</span><span style="color: #cb4b16;">def</span> CPPFACTORY_DERIVEDCLASSONE_H
+<span class="linenr">30: </span><span style="color: #cb4b16;">#define</span> <span style="color: #268bd2;">CPPFACTORY_DERIVEDCLASSONE_H</span>
+<span class="linenr">31: </span>
+<span class="linenr">32: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"MyBaseClass.h"</span>
+<span class="linenr">33: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;iostream&gt;</span>
+<span class="linenr">34: </span><span style="color: #859900;">using</span> <span style="color: #859900;">namespace</span> <span style="color: #2aa198;">std</span>;
+<span class="linenr">35: </span>
+<span class="linenr">36: </span><span style="color: #859900;">class</span> <span style="color: #b58900;">DerivedClassOne</span> : <span style="color: #859900;">public</span> <span style="color: #b58900;">MyBaseClass</span>
+<span class="linenr">37: </span>{
+<span class="linenr">38: </span><span style="color: #859900;">public</span>:
+<span class="linenr">39: </span>        <span style="color: #268bd2;">DerivedClassOne</span>(){};
+<span class="linenr">40: </span>        <span style="color: #859900;">virtual</span> ~<span style="color: #268bd2;">DerivedClassOne</span>(){};
+<span class="linenr">41: </span>
+<span class="linenr">42: </span>        <span style="color: #859900;">virtual</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">doSomething</span>() { cout &lt;&lt; <span style="color: #2aa198;">"I am class one"</span> &lt;&lt; endl; }
+<span class="linenr">43: </span>};
+<span class="linenr">44: </span>
+<span class="linenr">45: </span><span style="color: #cb4b16;">#endif</span> <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">CPPFACTORY_DERIVEDCLASSONE_H</span>
+</pre>
+</div>
+
+<p>
+and
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">46: </span><span style="color: #cb4b16;">#if</span><span style="color: #cb4b16;">n</span><span style="color: #cb4b16;">def</span> CPPFACTORY_DERIVEDCLASSTWO_H
+<span class="linenr">47: </span><span style="color: #cb4b16;">#define</span> <span style="color: #268bd2;">CPPFACTORY_DERIVEDCLASSTWO_H</span>
+<span class="linenr">48: </span>
+<span class="linenr">49: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"MyBaseClass.h"</span>
+<span class="linenr">50: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;iostream&gt;</span>
+<span class="linenr">51: </span><span style="color: #859900;">using</span> <span style="color: #859900;">namespace</span> <span style="color: #2aa198;">std</span>;
+<span class="linenr">52: </span>
+<span class="linenr">53: </span><span style="color: #859900;">class</span> <span style="color: #b58900;">DerivedClassTwo</span> : <span style="color: #859900;">public</span> <span style="color: #b58900;">MyBaseClass</span>
+<span class="linenr">54: </span>{
+<span class="linenr">55: </span><span style="color: #859900;">public</span>:
+<span class="linenr">56: </span>        <span style="color: #268bd2;">DerivedClassTwo</span>(){};
+<span class="linenr">57: </span>        <span style="color: #859900;">virtual</span> ~<span style="color: #268bd2;">DerivedClassTwo</span>(){};
+<span class="linenr">58: </span>
+<span class="linenr">59: </span>        <span style="color: #859900;">virtual</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">doSomething</span>() { cout &lt;&lt; <span style="color: #2aa198;">"I am class two"</span> &lt;&lt; endl; }
+<span class="linenr">60: </span>};
+<span class="linenr">61: </span>
+<span class="linenr">62: </span><span style="color: #cb4b16;">#endif</span> <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">CPPFACTORY_DERIVEDCLASSTWO_H</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">A First Attempt at the Factory Method</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+A simple solution to the implementation of the factory method would
+be something like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">63: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"MyFactorySimple.h"</span>
+<span class="linenr">64: </span>
+<span class="linenr">65: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"DerivedClassOne.h"</span>
+<span class="linenr">66: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"DerivedClassTwo.h"</span>
+<span class="linenr">67: </span>
+<span class="linenr">68: </span><span style="color: #b58900;">shared_ptr</span>&lt;MyBaseClass&gt; <span style="color: #2aa198;">MyFactory</span>::<span style="color: #268bd2;">CreateInstance</span>(<span style="color: #b58900;">string</span> <span style="color: #268bd2;">name</span>)
+<span class="linenr">69: </span>{
+<span class="linenr">70: </span>        <span style="color: #b58900;">MyBaseClass</span> * <span style="color: #268bd2;">instance</span> = nullptr;
+<span class="linenr">71: </span>
+<span class="linenr">72: </span>        <span style="color: #859900;">if</span>(name == <span style="color: #2aa198;">"one"</span>)
+<span class="linenr">73: </span>                instance = <span style="color: #859900;">new</span> <span style="color: #b58900;">DerivedClassOne</span>();
+<span class="linenr">74: </span>
+<span class="linenr">75: </span>        <span style="color: #859900;">if</span>(name == <span style="color: #2aa198;">"two"</span>)
+<span class="linenr">76: </span>                instance = <span style="color: #859900;">new</span> <span style="color: #b58900;">DerivedClassTwo</span>();
+<span class="linenr">77: </span>
+<span class="linenr">78: </span>        <span style="color: #859900;">if</span>(instance != nullptr)
+<span class="linenr">79: </span>                <span style="color: #859900;">return</span> <span style="color: #2aa198;">std</span>::<span style="color: #b58900;">shared_ptr</span>&lt;<span style="color: #b58900;">MyBaseClass</span>&gt;(<span style="color: #268bd2;">instance</span>);
+<span class="linenr">80: </span>        <span style="color: #859900;">else</span>
+<span class="linenr">81: </span>                <span style="color: #859900;">return</span> nullptr;
+<span class="linenr">82: </span>}
+</pre>
+</div>
+
+<p>
+The factory determines which concrete class to create and has
+knowledge of every class via the class headers.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">Running the Application</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+A simple main function is now needed so that we can test our
+implementation:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">83: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"MyFactorySimple.h"</span>
+<span class="linenr">84: </span>
+<span class="linenr">85: </span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">main</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">argc</span>, <span style="color: #b58900;">char</span>** <span style="color: #268bd2;">argv</span>)
+<span class="linenr">86: </span>{
+<span class="linenr">87: </span>    <span style="color: #859900;">auto</span> <span style="color: #b58900;">instanceOne</span> = <span style="color: #2aa198;">MyFactory</span>::CreateInstance(<span style="color: #2aa198;">"one"</span>);
+<span class="linenr">88: </span>    <span style="color: #859900;">auto</span> <span style="color: #b58900;">instanceTwo</span> = <span style="color: #2aa198;">MyFactory</span>::CreateInstance(<span style="color: #2aa198;">"two"</span>);
+<span class="linenr">89: </span>
+<span class="linenr">90: </span>    instanceOne-&gt;doSomething();
+<span class="linenr">91: </span>    instanceTwo-&gt;doSomething();
+<span class="linenr">92: </span>
+<span class="linenr">93: </span>    <span style="color: #859900;">return</span> 0;
+<span class="linenr">94: </span>}
+</pre>
+</div>
+
+<p>
+A Visual Studio Project (SimpleFactory.vcxproj) is included with
+the source code accompanying this article which can be built and
+run giving the following output:
+</p>
+
+<pre class="example">
+I am class one
+I am class two
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Problems with the Simple Solution</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+On the surface this looks like a good solution and it possibly is in
+some cases. However, what happens if we have a lot of classes
+deriving from MyBaseClass? We keep having to add the includes and
+the compare - construct code. The problem now is that the factory
+has an explicit dependency on all the derived classes, which is not
+ideal. We need to come up with a better solution; one that removes
+the need for constantly adding to the MyFactory::Create. This is
+where the idea of a registry of factory methods can help us.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">A Revised Factory Class</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+One of our main objectives is to remove the dependencies on the
+derived classes from the factory. However, we still need to allow
+the factory to trigger the creation of instances. One way to do this
+is for the main factory class to maintain a registry of factory
+functions that can be defined elsewhere. When the factory class
+needs to create an instance of a derived class, it can look up the
+factory function in this registry. The registry is defined as
+follows:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">95: </span>map&lt;string, function&lt;MyBaseClass*(<span style="color: #b58900;">void</span>)&gt;&gt; factoryFunctionRegistry;
+</pre>
+</div>
+
+<p>
+It is a map, keyed on a string with values as functions that return
+a pointer to an instance of a class based on MyBaseClass. We can
+then have a method on MyFactory which can add a factory function to
+the registry:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr"> 96: </span><span style="color: #b58900;">void</span> <span style="color: #2aa198;">MyFactory</span>::<span style="color: #268bd2;">RegisterFactoryFunction</span>(<span style="color: #b58900;">string</span> <span style="color: #268bd2;">name</span>,
+<span class="linenr"> 97: </span>        <span style="color: #b58900;">function</span>&lt;MyBaseClass*(<span style="color: #b58900;">void</span>)&gt; <span style="color: #268bd2;">classFactoryFunction</span>)
+<span class="linenr"> 98: </span>{
+<span class="linenr"> 99: </span>        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">register the class factory function</span>
+<span class="linenr">100: </span>        factoryFunctionRegistry[name] = classFactoryFunction;
+<span class="linenr">101: </span>}
+</pre>
+</div>
+
+<p>
+The Create method can then be changed as follows:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">102: </span><span style="color: #b58900;">shared_ptr</span>&lt;MyBaseClass&gt; <span style="color: #2aa198;">MyFactory</span>::<span style="color: #268bd2;">Create</span>(<span style="color: #b58900;">string</span> <span style="color: #268bd2;">name</span>)
+<span class="linenr">103: </span>{
+<span class="linenr">104: </span>        <span style="color: #b58900;">MyBaseClass</span> * <span style="color: #268bd2;">instance</span> = nullptr;
+<span class="linenr">105: </span>
+<span class="linenr">106: </span>        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">find name in the registry and call factory method.</span>
+<span class="linenr">107: </span>        <span style="color: #859900;">auto</span> <span style="color: #b58900;">it</span> = factoryFunctionRegistry.find(name);
+<span class="linenr">108: </span>        <span style="color: #859900;">if</span>(it != factoryFunctionRegistry.end())
+<span class="linenr">109: </span>                instance = it-&gt;second();
+<span class="linenr">110: </span>
+<span class="linenr">111: </span>        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">wrap instance in a shared ptr and return</span>
+<span class="linenr">112: </span>        <span style="color: #859900;">if</span>(instance != nullptr)
+<span class="linenr">113: </span>                <span style="color: #859900;">return</span> <span style="color: #2aa198;">std</span>::<span style="color: #b58900;">shared_ptr</span>&lt;<span style="color: #b58900;">MyBaseClass</span>&gt;(<span style="color: #268bd2;">instance</span>);
+<span class="linenr">114: </span>        <span style="color: #859900;">else</span>
+<span class="linenr">115: </span>                <span style="color: #859900;">return</span> nullptr;
+<span class="linenr">116: </span>}
+</pre>
+</div>
+
+<p>
+So how do we go about registering the classes in a way that keeps
+dependencies to a minimum? We cannot easily have instances of the
+derived classes register themselves as we can't create instances
+without the class being registered. The fact that we need the class
+registered, not the object gives us a hint that we may need some
+static variables or members to do this. I stress that the way I am
+going to do this may not be the best in all scenarios. I am deeply
+suspicious of static variables and members, as static initialisation
+can be a minefield. However, I will press on, as the solution serves
+the purpose of this example and it is up to the reader to determine
+whether a solution they use needs to follow different rules and
+design. Firstly we define a method on MyFactory to obtain the
+singleton instance:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">117: </span><span style="color: #b58900;">yFactory</span> * <span style="color: #2aa198;">MyFactory</span>::<span style="color: #268bd2;">Instance</span>()
+<span class="linenr">118: </span>{
+<span class="linenr">119: </span>        <span style="color: #859900;">static</span> <span style="color: #b58900;">MyFactory</span> <span style="color: #268bd2;">factory</span>;
+<span class="linenr">120: </span>        <span style="color: #859900;">return</span> &amp;factory;
+<span class="linenr">121: </span>}
+</pre>
+</div>
+
+<p>
+We cannot call the following from the global context:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">122: </span><span style="color: #2aa198;">MyFactory</span>::Instance()-&gt;RegisterFactoryFunction(name, classFactoryFunction);
+</pre>
+</div>
+
+<p>
+I have therefore created a Registrar class that will do the call for
+us in it's constructor:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">123: </span><span style="color: #859900;">class</span> <span style="color: #b58900;">Registrar</span> {
+<span class="linenr">124: </span><span style="color: #859900;">public</span>:
+<span class="linenr">125: </span>        <span style="color: #268bd2;">Registrar</span>(<span style="color: #b58900;">string</span> <span style="color: #268bd2;">className</span>, <span style="color: #b58900;">function</span>&lt;MyBaseClass*(<span style="color: #b58900;">void</span>)&gt; <span style="color: #268bd2;">classFactoryFunction</span>);
+<span class="linenr">126: </span>};
+<span class="linenr">127: </span>...
+<span class="linenr">128: </span><span style="color: #2aa198;">Registrar</span>::<span style="color: #268bd2;">Registrar</span>(<span style="color: #b58900;">string</span> <span style="color: #268bd2;">name</span>, <span style="color: #b58900;">function</span>&lt;MyBaseClass*(<span style="color: #b58900;">void</span>)&gt; <span style="color: #268bd2;">classFactoryFunction</span>)
+<span class="linenr">129: </span>{
+<span class="linenr">130: </span>        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">register the class factory function </span>
+<span class="linenr">131: </span>        <span style="color: #2aa198;">MyFactory</span>::Instance()-&gt;RegisterFactoryFunction(name, classFactoryFunction);
+<span class="linenr">132: </span>}
+</pre>
+</div>
+
+<p>
+Once we have this, we can create static instances of this in the
+source files of the derived classes as follows (DerivedClassOne):
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">133: </span><span style="color: #859900;">static</span> <span style="color: #b58900;">Registrar</span> <span style="color: #268bd2;">registrar</span>(<span style="color: #2aa198;">"one"</span>,
+<span class="linenr">134: </span>    [](<span style="color: #b58900;">void</span>) -&gt; MyBaseClass * { <span style="color: #859900;">return</span> <span style="color: #859900;">new</span> <span style="color: #b58900;">DervedClassOne</span>();});
+</pre>
+</div>
+
+<p>
+As it turns out, this code can be duplicated in all derived classes
+so a quick pre processor define as follows:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">135: </span><span style="color: #cb4b16;">#define</span> <span style="color: #268bd2;">REGISTER_CLASS</span>(<span style="color: #268bd2;">NAME</span>, <span style="color: #268bd2;">TYPE</span>) \
+<span class="linenr">136: </span>        <span style="color: #859900;">static</span> <span style="color: #b58900;">Registrar</span> <span style="color: #268bd2;">registrar</span>(NAME, \
+<span class="linenr">137: </span>             [](<span style="color: #b58900;">void</span>) -&gt; MyBaseClass * { <span style="color: #859900;">return</span> <span style="color: #859900;">new</span> <span style="color: #b58900;">TYPE</span>();});
+</pre>
+</div>
+
+<p>
+This uses C++ lambda support to declare anonymous
+functions. We then only need add the following to each derived class
+source file:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">138: </span>REGISTER_CLASS(<span style="color: #2aa198;">"one"</span>, DerivedClassOne);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">We can do Better</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Although the #define solution provides a neat implementation we
+could probably do this in a bit more of a C++ style by converting
+the Registrar class into a template class as follows:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">139: </span><span style="color: #859900;">template</span>&lt;<span style="color: #859900;">class</span> <span style="color: #b58900;">T</span>&gt;
+<span class="linenr">140: </span><span style="color: #859900;">class</span> <span style="color: #b58900;">Registrar</span> {
+<span class="linenr">141: </span><span style="color: #859900;">public</span>:
+<span class="linenr">142: </span>   <span style="color: #268bd2;">Registrar</span>(<span style="color: #b58900;">string</span> <span style="color: #268bd2;">className</span>)
+<span class="linenr">143: </span>   {
+<span class="linenr">144: </span>     <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">register the class factory function </span>
+<span class="linenr">145: </span>     <span style="color: #2aa198;">MyFactory</span>::Instance()-&gt;RegisterFactoryFunction(name,
+<span class="linenr">146: </span>        [](<span style="color: #b58900;">void</span>) -&gt; MyBaseClass * { <span style="color: #859900;">return</span> <span style="color: #859900;">new</span> <span style="color: #b58900;">T</span>();});
+<span class="linenr">147: </span>   }
+<span class="linenr">148: </span>};
+</pre>
+</div>
+
+<p>
+And now we can replace the use of the macro by:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">149: </span><span style="color: #859900;">static</span> <span style="color: #b58900;">Registrar</span>&lt;DerivedClassOne&gt; <span style="color: #268bd2;">registrar</span>(<span style="color: #2aa198;">"one"</span>);
+</pre>
+</div>
+
+<p>
+We now have a function registry based factory class defined and the
+main function can now be slightly modified as follows:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span class="linenr">150: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"MyFactory.h"</span>
+<span class="linenr">151: </span>
+<span class="linenr">152: </span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">main</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">argc</span>, <span style="color: #b58900;">char</span>** <span style="color: #268bd2;">argv</span>)
+<span class="linenr">153: </span>{
+<span class="linenr">154: </span>        <span style="color: #859900;">auto</span> <span style="color: #b58900;">instanceOne</span> = <span style="color: #2aa198;">MyFactory</span>::Instance()-&gt;Create(<span style="color: #2aa198;">"one"</span>);
+<span class="linenr">155: </span>        <span style="color: #859900;">auto</span> <span style="color: #b58900;">instanceTwo</span> = <span style="color: #2aa198;">MyFactory</span>::Instance()-&gt;Create(<span style="color: #2aa198;">"two"</span>);
+<span class="linenr">156: </span>
+<span class="linenr">157: </span>        instanceOne-&gt;doSomething();
+<span class="linenr">158: </span>        instanceTwo-&gt;doSomething();
+<span class="linenr">159: </span>
+<span class="linenr">160: </span>        <span style="color: #859900;">return</span> 0;
+<span class="linenr">161: </span>}
+</pre>
+</div>
+
+<p>
+We can now build and run the project and get the following output:
+</p>
+
+<pre class="example">
+I am class one
+I am class two
+</pre>
+
+<p>
+<a href="cppObjectFactory.zip">Source Code</a>
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: John Cumming</p>
-<p class="date">Created: 2016-01-16 Sat 09:28</p>
+<p class="date">Created: 2016-01-23 Sat 14:44</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

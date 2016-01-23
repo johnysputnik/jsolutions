@@ -3,40 +3,23 @@
 This page contains a list of todo items for this website. It is
 probably of no interest to anyone except myself.
 
-* TODO [#A] Add all old articles
-** TODO C++ object factory
-** TODO IOC Container with variadic templates
-
-** TODO https://sputnikdev.wordpress.com
+* TODO [#B] Migrate all posts from https://sputnikdev.wordpress.com
    33 of them!
-* TODO [#A] Build and deploy script (master branch) 
-** TODO Check all config stuff
-** TODO change repo name to www
-   Remember to update submodule on macbook
-   Remember to update on ipad
-** TODO Run emacs script
-** TODO git add / commit
-** TODO merge to correct branch
-** TODO git push
 
-* TODO [#A] Host website on github
-** TODO set up dns
-
-
-* TODO Post on how to create a web page with org mode and github
+* TODO [#B] Post on how to create a web page with org mode and github
   Using emacs of course!
 
-* TODO [#B] Tag list as index
+* TODO [#C] Tag list as index
   
   Write a script that retrieves all tags from the files and creates an
   index of all articles as a page with the tags as headings and the
   links as a list under each heading.
 
-* TODO [#B] Complete the library page
+* TODO [#C] Complete the library page
 
   Add all books to the library page and
 
-* TODO [#B] Summary of articles in ACCU publications
+* TODO [#C] Summary of articles in ACCU publications
 
   A list of articles by publication issue.
 
