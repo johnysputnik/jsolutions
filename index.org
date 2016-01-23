@@ -2,8 +2,9 @@
 
    + AI
      + [[file:AI/logicalreg.org][Basic Logical Regression]]
-     + [[file:AI/matrix.org][Basic Matrix Mathematics]]
      + [[file:AI/linearreg.org][Linear Regression]]
+   + Agile
+     + [[file:Agile/agilesham.org][Is Agile a Sham]]
    + C++
      + [[file:C++/objectfactory.org][A C++ Object Factory]]
      + [[file:C++/iocvariadic.org][An IOC Container using Variadic Templates]]

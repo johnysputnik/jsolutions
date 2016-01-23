@@ -1,4 +1,0 @@
-#+SETUPFILE: org-setup/level2
-#+TITLE: Basic Matrix Mathematics
-
-todo

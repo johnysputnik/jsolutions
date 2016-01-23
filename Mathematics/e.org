@@ -38,3 +38,18 @@ $$\frac{\pi}{4} = \frac{1}{1} - \frac{1}{3} + \frac{1}{5} -
 
 
 
+* The derivative of $e^x$
+
+  $$\frac{de^x}{dx} = e^x$$
+
+* $e$ and its relation to the hyperbola
+
+  $e$ relates to the hyperbola in very similar ways as does $\pi$ to
+  the circle.
+
+  |          | Circular                                     | Hyperbolic                                 |
+  |----------+----------------------------------------------+--------------------------------------------|
+  | Equation | $x^2 + y^2 = 1$                              | $x^2 - y^2 = 1$                            |
+  | Area ?   | $A = \pi r^2 \Rightarrow A = x$ when $r = 1$ | $A = \ln x \Rightarrow A = 1$ when $x = e$ |
+  | Period   | $2\pi$                                       | $2\pi i$                                   |
+
