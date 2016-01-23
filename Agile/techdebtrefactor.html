@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Home</title>
+<title>Technical Debt and Refactoring</title>
 <!-- 2016-01-23 Sat 19:09 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
@@ -143,65 +143,109 @@ for the JavaScript code in this tag.
 <div id="my-header"><h2>jSolutions | <a href="/index.html">home</a></h2></div>
 </div>
 <div id="content">
-<h1 class="title">Home</h1>
-<ul class="org-ul">
-<li>AI
-<ul class="org-ul">
-<li><a href="AI/logicalreg.html">Basic Logical Regression</a>
-</li>
-<li><a href="AI/linearreg.html">Linear Regression</a>
-</li>
-</ul>
-</li>
-<li>Agile
-<ul class="org-ul">
-<li><a href="Agile/agilesham.html">Is Agile a Sham</a>
-</li>
-<li><a href="Agile/dailychecklist.html">My quick daily scrummaster checklist</a>
-</li>
-<li><a href="Agile/techdebtrefactor.html">Technical Debt and Refactoring</a>
-</li>
-<li><a href="Agile/demopc.html">The benefits of a demo PC</a>
-</li>
-</ul>
-</li>
-<li>C++
-<ul class="org-ul">
-<li><a href="C++/objectfactory.html">A C++ Object Factory</a>
-</li>
-<li><a href="C++/iocvariadic.html">An IOC Container using Variadic Templates</a>
-</li>
-<li><a href="C++/qtbuildnotes.html">Building Qt with VS2013</a>
-</li>
-<li><a href="C++/qtxmlsyntax.html">Qt XML Syntax Highlighter</a>
-</li>
-</ul>
-</li>
-<li>CompSci
-<ul class="org-ul">
-<li><a href="CompSci/flexsystems.html">Gerald Jay Sussman on Flexible Systems</a>
-</li>
-<li><a href="CompSci/monadsgonads.html">Monads and Gonads Notes</a>
-</li>
-</ul>
-</li>
-<li>Mathematics
-<ul class="org-ul">
-<li><a href="Mathematics/matrix.html">Basic Matrix Mathematics</a>
-</li>
-<li><a href="Mathematics/e.html">Some notes on e</a>
-</li>
-</ul>
-</li>
-<li><a href="about.html">About the Website</a>
-</li>
-<li><a href="2016-lisp.html">Language for 2016 - Common Lisp</a>
-</li>
-<li><a href="books.html">My Library</a>
-</li>
-<li><a href="notes.html">My Todo List</a>
-</li>
-</ul>
+<h1 class="title">Technical Debt and Refactoring</h1>
+<p>
+Team: "We need to spend some time refactoring"
+</p>
+
+<p>
+PO: "Why do you need to refactor, the product works"
+</p>
+
+<p>
+Team: "We're not happy with the quality of the code, it is getting
+harder to work with"
+</p>
+
+<p>
+PO: "How come you didn't just do it right first time? Aren't you meant
+to be building in quality as you go?"
+</p>
+
+<p>
+Team: "Well yes, but we had to make a compromise on quality in favour
+of getting the product out remember?"
+</p>
+
+<p>
+PO: "Fair enough, but we still need to get stuff out, the refactoring,
+whatever it is, will have to wait"
+</p>
+
+<p>
+How often have you heard that conversation? Why is it that refactoring
+is such a low priority in the minds of the business? This small post
+will explain my thoughts and why Technical Debt is such a useful term
+to use when approaching these issues.
+</p>
+
+<p>
+Refactoring is very much an engineering term. As engineers, we all
+understand it and the neccessity to do it, preferably
+continuously. Hopefully we know as mature software engineers that
+sometime we have to make compromises. Often we make the assumption
+that these compromises can be addressed at a later date, which often
+they can. However, if the business sometimes seems unable to
+understand this, a change of terminology may be needed.
+</p>
+
+<p>
+A business often needs to incur debt in order to move forward. In fact
+in all parts of life one has to incur debt to move forward as I
+reminded each time my mortgage statement so kindly tells me how much
+interest I am paying each month. And it is this interest that is key
+to managing debt. Debt has to be paid off at a rate that keeps the
+debt at acceptable levels after interest has been applied. My mortgage
+is going down slowly, so the money spent on that is tied up for over
+10 years when I could be taking long holidays, buying new cars
+etc. But that is the compromise I made in order to have a fantastic
+home to live in.
+</p>
+
+<p>
+So why am I banging on about my mortgage?
+</p>
+
+<p>
+The term Technical Debt is banded about in some software teams, why?
+Well it is much easier to discuss issues that need refactoring with
+the business using this term, a term it understands, unlike the vague
+engineering term, "refactoring". Technical Debt also has the advantage
+of covering a host of compromises.
+</p>
+
+<p>
+I explain technical debt something like as follows:
+</p>
+
+<p>
+We incur Technical debt every time we make a technical or quality
+compromise, knowingly or unknowingly, or when we identify a technical
+issue that has arisen since an original implementation. These
+compromises are acceptable in some circumstances and it is acceptable
+to incur debt in order to move forward with a product. However, over
+time that Debt acrues interest, we all know that the longer you leave
+issues, the more effort is required to fix them. We also know that a
+compromise in one area could result in neccessary compromises in
+dependencies. ie Technical Debt, if not addressed, increases over
+time. Now we can go on getting more and more in debt but maintaining a
+system with that much debt will require more and more resource and
+effort as time goes on, drawing effort away from investing in value
+for the business. Just like financial debt, Technical debt needs to be
+managed. When we have a let a large amount of debt, we sometimes have
+to pay off a large sum, just to get it down to a manageable level and
+accept that we cannot invest that resource in producing business value
+for a short period. However, we know that after that period we will be
+able to invest more resource and effort into producing business value
+than we did before.
+</p>
+
+<p>
+Technical Debt is a useful term with some even more useful analogies
+and it has enabled our team to sensibly prioritise backlog items with
+no direct business value, safe in the knowledge that it will increase
+our ability to provide value to the business in the future.
+</p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: John Cumming</p>

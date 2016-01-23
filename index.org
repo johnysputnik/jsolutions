@@ -5,6 +5,9 @@
      + [[file:AI/linearreg.org][Linear Regression]]
    + Agile
      + [[file:Agile/agilesham.org][Is Agile a Sham]]
+     + [[file:Agile/dailychecklist.org][My quick daily scrummaster checklist]]
+     + [[file:Agile/techdebtrefactor.org][Technical Debt and Refactoring]]
+     + [[file:Agile/demopc.org][The benefits of a demo PC]]
    + C++
      + [[file:C++/objectfactory.org][A C++ Object Factory]]
      + [[file:C++/iocvariadic.org][An IOC Container using Variadic Templates]]

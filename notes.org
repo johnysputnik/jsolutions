@@ -4,10 +4,15 @@ This page contains a list of todo items for this website. It is
 probably of no interest to anyone except myself.
 
 * TODO [#B] Migrate all posts from https://sputnikdev.wordpress.com
-   33 of them!
+
+  This is my old blog from days gone by, when I dealt with the joys of
+  .NET. I am gradually moving them to this website, which is a
+  reasonably quick process now.
 
 * TODO [#B] Post on how to create a web page with org mode and github
-  Using emacs of course!
+  
+  My son is after a blog ... let's use it as an example. He'll love me
+  for it, teaching hime emacs and all that :)
 
 * TODO [#C] Tag list as index
   
@@ -17,7 +22,7 @@ probably of no interest to anyone except myself.
 
 * TODO [#C] Complete the library page
 
-  Add all books to the library page and
+  Add all books to the library page.
 
 * TODO [#C] Summary of articles in ACCU publications
 

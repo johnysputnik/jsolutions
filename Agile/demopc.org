@@ -1,0 +1,86 @@
+#+TITLE: The benefits of a demo PC
+
+* Introduction
+
+  Here at cm group, we have adopted scrum as a framework for
+  developing our elearning authoring tool. Recently we have set up a
+  demo PC in our kitchen for office based staff, one of the main user
+  groups for the product, to come and check out our latest development
+  efforts. This post will attempt to explain why we have done this,
+  how we hope it will work and the benefits we are hoping to see from
+  it.
+
+* The Sprint Review
+
+  As many of you know, the Sprint Review is a meeting in scrum where
+  the previous sprint is Demo'd; ideally to anyone who is interested,
+  but often only to the product owner. The demo should be a proof that
+  the Acceptance Criteria for the stories have been met and all parts
+  of the product's Definition of Done have been completed. As to how
+  well we are meeting our Definition of Done and how we are improving
+  and refining it is probably best left to another post.
+
+* The Sprint Review Demo PC
+
+  In order to aid the demo, we have a PC set up solely for demo
+  purpose, we install our product at the end of the sprint, create a
+  demo using it (it's handy that the product itself can be used to
+  manage the demo as well) and demo it to the PO and the team as a
+  whole. After the Sprint Review the machine then gets placed in the
+  communal kitchen, a large room, with a rough release notes
+  accompanying it, yes, we need to sort out automating our release
+  notes .... I shall come back to that. The kitchen is used quite a
+  lot, so we are hoping that while waiting for kettles to boil or
+  microwaves to go 'ping' people will take a look and provide
+  feedback.
+
+* Expected feedback
+
+  Obviously, it goes without saying that we expect feedback in terms
+  of the product and features, but also we expect feedback on how best
+  to provide a demo for people. As we have only started this
+  yesterday, we shall have to wait and see how much prompting for
+  feedback will be needed, but traditionally, our internal users are
+  pretty forthcoming with ideas and issues.
+
+* Benefits
+
+** Pride in the Software
+
+   Well we are not just doing this to show off our software
+   ....... well actually, yes we are, partly. One thing that can often
+   be lacking in a software team, especially with inherited legacy
+   code, is a pride in the product itself and this has a massive
+   negative effect on the quality of the product. Fortunately, this is
+   not the case at cm group, we are proud of the product as the users
+   keep telling us that on the whole it is an enjoyable product to use
+   and gets the job done quickly and well. We want to use this demo PC
+   as an opportunity to encourage an even greater pride in our
+   software.
+
+** Improve Quality
+
+   As soon as we start making our output public, there is a greater
+   desire to ensure the quality of the product. This very much goes
+   hand in hand with having a pride in the product.
+
+** Prompt Feedback on Features
+
+   As with all agile processes, it is a principal that issues and
+   feedback should be captured as early as possible. By providing a
+   demo PC in a public area within the company, users can play with
+   new features before an official 'release' and provide feedback
+   early. OK, we do have a way to go before the output from every
+   sprint is releasable, but we are getting there.
+
+** A means of moving towards releasing each sprint
+
+   As stated above, we are not there yet, but a platform where we are
+   installing a product for use will encourage to to automate certain
+   parts of our process, such as Release Notes, that will help us move
+   towards a releasable product at the end of each sprint.
+
+* Summary
+
+  I am certain there are many more benefits from having a demo PC,
+  hopefully I will be able to report back some more as time goes on.
