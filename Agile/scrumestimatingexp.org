@@ -1,0 +1,141 @@
+#+TITLE: Scrum Estimating Experiences
+
+* Introduction
+  
+  I recently posted about Estimating in Scrum and why time based
+  estimating can be problematic and why a focus on the team enables
+  estimation and velocity to be more than just a measure of effort.
+
+  However, we have some very different teams trying to use Scrum,
+  where the assumptions made in that post only partially apply, so I
+  thought I'd share some of my experiences and thoughts on how to
+  manage estimating. As with all Scrum projects, we are in a constant
+  state of inspect and adapt, so these thoughts are based on my
+  understanding on the date of the post and may change over time. We
+  are constantly looking to improve the team's ability to deliver
+  business value in a predictable and incremental manner in a way that
+  can cope with the shifting priorities of the business.
+
+  It is also worth mentioning that these teams are small, so the
+  impact of resourcing changes have a significant impact on Velocity
+  and make planning a challenge.
+
+* Team A - Desktop Product Team
+
+  This team is responsible for the development of a desktop product,
+  currently consists of 2 dedicated  developers and 1 non-dedicated
+  tester. By dedicated I obviously mean resource wise, not motivation
+  wise :) There is a strong sense of 'team' in Team A, despite some
+  remote working going on, so the following assumptions hold true:
+
+  1. The team can estimate well in a relative manner and come to a
+     consensus on the point value of a story.
+  2. The team can organise itself well to manage the sprint backlog
+     and work together, help each other etc.
+  3. There is a strong sense of the team committing to a sprint,
+     rather than individuals.
+  4. Therefore, a consensus based estimation as outlined in my
+     previous post seems to be working quite well and the last 3
+     sprints (out of a total of 4) velocity have been consistent, with
+     expectation of an increase in velocity becoming apparent over
+     time.
+
+  There is lots of room for improvement in this team, particularly in
+  terms of backlog management and definition of done / feature
+  completion, but we're getting there and its all smiles: Scrum looks
+  like it is working.
+
+* Team B - Service Development Team
+
+  This team is very different. It currently has 3 developers, 2 of
+  whom are not dedicated and again one non dedicated tester. As the
+  product is made up of a large collection of deployable components,
+  the responsibility for an individual component usually rests on the
+  shoulders of an individual developer. The sense of 'team' is less
+  than that of Team A. This is the nature of the product and not a
+  reflection of the teams ability to work as a team. The team is also
+  distibuted around the UK and physically meet up Monday mornings for
+  sprint planning.
+
+  The team also has a backlog that is proving difficult to estimate as
+  the features are more Epics than Stories. This is being addresses by
+  the PO. However, questions are being raised as to how to 'do
+  Architecture' with Scrum. This is a subject outside the scope of
+  this post, hoepfully I can come back to it later.
+
+  We therefore find that the assumptions that hold true for team A do
+  not hold true for team B and it is questionable whether estimation
+  should be a consensus, when the commitment to deliver a Story is
+  placed on an individual.
+
+  So how do we go about estimating these stories?
+
+* What we are trying to achieve with estimates
+
+  So back to basics, what are estimates in Scrum trying to achieve.
+
+  1. Relative effort required to complete a story can be calculated.
+  2. Velocity of development can be measured
+  3. Based on velocity, resource capacity and backlog size, roadmaps
+     can be managed
+  4. Product release can be managed
+
+  Ultimately we are trying to achieve the predictable release of the
+  product, by managing our expectation that is based on velocity and
+  the relative size of features.
+
+  In Team A, the estimates and velocity are related to the team and it
+  all works (more or less) very nicely, but here is where we come up
+  against our first problem in Team B. Stories are not 'owned' by the
+  team but 'owned' by an individual. We have to look at a way of
+  measuring velocity and estimating that recognises the way the
+  product is developed:
+
+** Backlog Management
+
+   The backlog needs estimating, we have decided not to use a
+   consensus, but rather the assigned developer will estimate
+   it. Therefore when we estimate the backlog, we assign a developer
+   to that Story and take their estimate, along with the testers
+   estimate. Our backlog could then become partitioned into 'Developer
+   Backlogs' - TFS helps us manage this quite nicely. If a Story is
+   moved from one developer to another, then it is re-estimated. This
+   may throw our Release burndown, but then you would want it to, as
+   the developer change may imply that it will take a different length
+   of time to deliver. The individual developer can then estimate
+   relatively to their own set of stories.
+
+** Velocity
+
+   The velocity of each individual developer then needs to be measured
+   AND NOT COMPARED TO EACH OTHER. From this a Developer burndown can
+   be produced giving the PO an idea as to when the individual
+   backlogs will be complete.
+
+   As the product progresses and stories shift developer, it makes the
+   task of managing release a little more complicated as the Product
+   Backlog (the complete backlog) will only be complete when the last
+   developer has completed their backlog. I would expect that this may
+   necessitate shifting stories between developers as mentioned above.
+
+** Dangers
+
+   The dangers of doing this way is that the team is not accountable
+   as a team, but rather as individuals, which can of course cause all
+   kinds of problems between them. For example, as stated above, an
+   individual's velocity should not be measured against another's. It
+   becomes even more important to not estimate in time as a result as
+   there could be all kinds of conclusions drawn on developers
+   relative velocity that would not be helpful for both the individual
+   and the product.
+
+* Summary
+
+  In the real world, teams are never ideal teams. There is often
+  resource that is non dedicated, and teams often work with a specific
+  responsibility for a product component. All of this makes for a
+  scenario where Scrum has to be adapted to perform in a way to meet
+  the goals it intends to achieve. With a bit of thought this is
+  possible, but not without its dangers. Managing the Product Backlog
+  as a set of Developer Backlogs may be a way forward and only time
+  will tell.

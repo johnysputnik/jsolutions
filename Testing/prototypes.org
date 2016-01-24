@@ -1,0 +1,66 @@
+#+TITLE: Prototypes: Brief Thoughts
+
+* Introduction
+
+  How many times as a developer have I heard the line "It started out
+  as a prototype/ proof of concept, but ended up being used as the
+  product" ? I think it's happened in most companies I have worked in
+  to a greater or lesser extent.
+
+* The Problem
+
+  So firstly I thought I'd ask the question: "Why does a prototype /
+  proof of concept become a full product?"
+
+  My answer would be summarised as follows:
+
+  - We have too large a scope for the prototype.
+  - The prototype is developed using the production technology.
+  - Expectations are incorrectly managed.
+
+* The Solution
+
+  Ok, so maybe 'Solution' is a bit of a sweeping word to use, however
+  for the purposes of this short post it will have to do :)
+
+  Really this is just a collection of thoughts on addressing the
+  problems:
+
+** Reduce the scope of the prototype
+
+   A prototype / proof of concept is in its very nature intended to
+   answer a question. The more general this question becomes, the
+   broader the scope of the prototype. The scope can soon become the
+   scope of the whole product or product feature and then it becomes
+   very easy for business to expect it to be used as the real product.
+
+   Focussing the scope to answer the specific question at hand not
+   only reduces the effort and meets the need of the prototype but
+   also sets expectations for the prototype in such a way that it is
+   less likely to become the product or product feature.
+
+   For example, if there is a specific activity / path you want some
+   questions answered on it is unnecessary to include any features
+   outside that activity.
+
+** Select Technology Appropriately
+
+   By using the technology to be used in the product, the prototype
+   becomes easier to assimilate into the product. Again, examine the
+   question to be answered, what is the most appropriate technology,
+   given the skill set available, for answering that question in the
+   quickest simplest way.
+
+   Another point would be that with a prototype the developer has the
+   opportunity to develop it in a new language or with new technology
+   as an opportunity to not only learn a new technology, but to view
+   the problem from an unexpected angle, perhaps forcing them to think
+   through the problem in more detail.
+
+   Also, by choosing a technology that is not used in the product
+   itself, the prototype cannot just be copied across to the full
+   product.
+
+   I hope my thoughts are of help. They are by no means comprehensive
+   and comments would be very much appreciated, particularly other
+   people's experience of successful prototypes.

@@ -1,0 +1,79 @@
+#+TITLE: Bugs, Non-Bugs and Scrum
+
+* Introduction
+  
+  As a result of some discussion, with regards to using TFS
+  to track issues arising within a sprint, I thought I'd post some
+  thoughts on bugs and scrum.
+
+* Non-Bugs - Issues arising with stories in sprint
+
+  In theory, a Story or PBI is not ‘done’ until it is bug free. I know
+  this is an idealistic view, but does in principal remain
+  true. Furthermore, a story is not done until it meets the Definition
+  of Done, which should include bug free .
+
+  So is an issue in a none-done story a bug? No. Does it need to be
+  recorded and tracked in TFS? Depends. It works for us not to, as we do
+  maintain a pretty close communication within the team and minimise the
+  work in progress such that tracking the item in TFS is not really
+  necessary. Also the Daily Scrum is there to ensure a regular
+  communication with team members to update everyone on the status of
+  the sprint and stories in it, including issues arising. 
+
+* Bugs - Issues arising from 'Done' stories
+
+  One of the important principles of Scrum is a predictable velocity
+  and a velocity that represents delivered value. This second point is
+  important when it comes to bugs.
+
+  If bugs are allowed to contribute to velocity, then velocity no
+  longer represents delivered value and cannot be used as a measure of
+  the teams improvement, as the stories they are associated with have
+  already been marked as done and contributed to velocity. An example:
+
+  Sprint 1: Velocity 10
+
+  - Story 1 completed = 5 points
+  - Story 2 completed = 5 points
+  
+  Sprint 2: Velocity = 10
+
+  - Story 3 completed = 5 points
+  - Bug from story 1 = 2 points
+  - Bug from story 2 = 3 points
+
+  Sprint 3: Velocity = 11
+
+  - Bug from story 1 = 3 points
+  - Bug from story 2 = 3 points
+  - Bug from story 3 = 5 points 
+
+  Just looking at velocity, one would presume that the team is
+  improving its process and efficiency, when clearly this is not the
+  case. The velocities should be 10, 5, 0. A downward trend that
+  indicates that something is drastically wrong and needs to be raised
+  in the retrospective.
+
+* Pre-Scrum Bugs - What to do with these?
+
+  The fact that Bugs generally do not contribute towards velocity is
+  one of the reasons why the Product Backlog and Bug List are often
+  two separate artefacts. However, if there are known bugs from
+  pre-Scrum days, then what to do about those? The answer is really on
+  whether you want the velocity to represent the rate of getting
+  through all known work (Backlog and Bugs) or whether you want, right
+  from the start, to be measuring a velocity based on the delivery of
+  value. I would suggest the second.
+
+* Summary
+
+  So the question is not so much “Should bugs be raised in TFS?” but
+  “Should bugs contribute to velocity?”. TFS is obviously just a tool
+  for helping or hindering the workflow. For us we find it easier to
+  just informally pass issues around as often the developer is already
+  aware of the issue and can state “yeah, just fixing it now”. The
+  daily scrum also helps ensure that at the start of each day everyone
+  is aware of the status of the sprint / stories.
+
+

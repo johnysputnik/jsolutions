@@ -4,8 +4,10 @@
      + [[file:AI/logicalreg.org][Basic Logical Regression]]
      + [[file:AI/linearreg.org][Linear Regression]]
    + Agile
+     + [[file:Agile/bugsnonbugs.org][Bugs, Non-Bugs and Scrum]]
      + [[file:Agile/agilesham.org][Is Agile a Sham]]
      + [[file:Agile/dailychecklist.org][My quick daily scrummaster checklist]]
+     + [[file:Agile/scrumestimatingexp.org][Scrum Estimating Experiences]]
      + [[file:Agile/techdebtrefactor.org][Technical Debt and Refactoring]]
      + [[file:Agile/demopc.org][The benefits of a demo PC]]
    + C++
@@ -19,6 +21,9 @@
    + Mathematics
      + [[file:Mathematics/matrix.org][Basic Matrix Mathematics]]
      + [[file:Mathematics/e.org][Some notes on e]]
+   + Testing
+     + [[file:Testing/autovsunit.org][Automated UI Testing over Unit Testing]]
+     + [[file:Testing/prototypes.org][Prototypes: Brief Thoughts]]
    + [[file:about.org][About the Website]]
    + [[file:2016-lisp.org][Language for 2016 - Common Lisp]]
    + [[file:books.org][My Library]]

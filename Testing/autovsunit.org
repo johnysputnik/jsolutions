@@ -1,0 +1,57 @@
+#+TITLE: Automated UI Testing over Unit Testing
+
+I was chatting yesterday to a colleague about UI testing and its value
+in TDD. While most people still do TDD by using Unit Tests as a driver
+for development, I have recently come round to a different point of
+view that is becoming equally more common. Since working for Nokia, I
+now see the value of Automated UI testing over unit testing as well as
+Manual Testing as a method of proving software satisfies User
+Acceptance Criteria. At Nokia we used Scrum and it became increasingly
+apparent that while unit testing was valuable, Automated UI testing
+was even more so.
+
+So why is it more valuable I ask? Surely unit testing, if done
+correctly and coverage is complete, then this is a very accurate and
+measurable way of testing software? Well, I think using the term
+software is misleading: Unit Testing is a very accurate and measurable
+way of testing units, it is a testing strategy for components. Unit
+testing allows us as developers to make detailed changes to code,
+checking that behaviour that may be hidden from the user is as
+expected. We can then be confident that we have predictable components
+for building the software. The purpose of unit tests is not to test
+User Acceptance Criteria, but to test implementation detail.
+
+So why is Automated UI testing more valuable then ?
+
+Automated UI Testing, if done correctly, tests the software as it
+would be used, as a whole. The tests map directly to User Acceptance
+Criteria and the software can be tested against user stories. If the
+tests pass, then the story is 'done'. If some, or even all, of the
+unit testing is failing, this is very worrying but I would argue that
+the software is releasable, allbeit with some significant technical
+debt.
+
+Inverting this scenario where we have 100% coverage and success in
+Unit Testing, but all the Automated UI testing is failing, we now have
+software that cannot be released, due to the developers complete
+misunderstanding of the UACs. In this case, Unit Testing based TDD has
+failed completely.
+
+These scenarios are obviously fairly extreme, but I hope you see what
+I'm getting at here. I'm a believer in Agile development principles
+and the first Principles of Agile Development is:
+
+"Our highest priority is to satisfy the customer through early and
+continuous delivery of valuable software"
+
+Delivering value is key, and how do we measure value? Well if we are
+following a process like Scrum, then it's meeting UACs on high value
+stories, therefore development should be driven by meeting these UACs,
+driven by, in most cases for a UI application, Automated UI testing.
+
+So in the spirit of the Agile Manifesto, we value:
+
+"Automated UI Testing over Unit Testing"
+
+"That is, while there is value in the items on the right, we value the
+items on the left more"
