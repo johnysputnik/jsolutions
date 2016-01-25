@@ -210,7 +210,7 @@
     below. The graph shows a reducing value that can be used to
     predict the release date.
 
-    [[file:grafx-burndown-chart-example.jpg][Burndown]]
+    [file:grafx-burndown-chart-example.jpg]
 
 *** Sprint Backlog
 
