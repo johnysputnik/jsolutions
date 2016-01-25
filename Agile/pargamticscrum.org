@@ -137,7 +137,7 @@
 
    The Scrum process is a relatively simple one, as shown below:
 
-   [[file:scrum.png][Scrum Process]]
+   [[file:scrum.png]]
 
    The product is defined by a list of User Stories held in a Product
    Backlog. This is managed by the Product Owner.
@@ -210,7 +210,7 @@
     below. The graph shows a reducing value that can be used to
     predict the release date.
 
-    [file:grafx-burndown-chart-example.jpg]
+    [[file:grafx-burndown-chart-example.jpg]]
 
 *** Sprint Backlog
 
