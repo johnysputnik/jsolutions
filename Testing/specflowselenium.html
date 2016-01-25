@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Home</title>
+<title>Specflow and Selenium</title>
 <!-- 2016-01-25 Mon 21:07 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
@@ -143,81 +143,161 @@ for the JavaScript code in this tag.
 <div id="my-header"><h2>jSolutions | <a href="/index.html">home</a></h2></div>
 </div>
 <div id="content">
-<h1 class="title">Home</h1>
-<ul class="org-ul">
-<li>AI
-<ul class="org-ul">
-<li><a href="AI/logicalreg.html">Basic Logical Regression</a>
-</li>
-<li><a href="AI/linearreg.html">Linear Regression</a>
-</li>
+<h1 class="title">Specflow and Selenium</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Introduction</a></li>
+<li><a href="#sec-2">The Problem</a></li>
+<li><a href="#sec-3">The Solution</a>
+<ul>
+<li><a href="#sec-3-1">Deployment</a></li>
+<li><a href="#sec-3-2">Writing the Tests</a></li>
 </ul>
 </li>
-<li>Agile
+<li><a href="#sec-4">Summary</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Here at cmgroup we have been working on some HTML
+prototyping. Whilst doing this we have been working on improving our
+automated testing. This blog entry outlines our strategy and how we
+have achieved it.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">The Problem</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Our requirements for the automated testing were to cover:
+</p>
+
 <ul class="org-ul">
-<li><a href="Agile/pargamticscrum.html">A Pragmatic Application of Scrum</a>
+<li>Multi browser / platform testing of HTML output
 </li>
-<li><a href="Agile/bugsnonbugs.html">Bugs, Non-Bugs and Scrum</a>
+<li>Write the test scripts in a language suitable for product
+management
 </li>
-<li><a href="Agile/agilesham.html">Is Agile a Sham</a>
-</li>
-<li><a href="Agile/dailychecklist.html">My quick daily scrummaster checklist</a>
-</li>
-<li><a href="Agile/scrumestimatingexp.html">Scrum Estimating Experiences</a>
-</li>
-<li><a href="Agile/techdebtrefactor.html">Technical Debt and Refactoring</a>
-</li>
-<li><a href="Agile/demopc.html">The benefits of a demo PC</a>
+<li>Leverage the testing framework provided by VS2010
 </li>
 </ul>
-</li>
-<li>C++
-<ul class="org-ul">
-<li><a href="C++/objectfactory.html">A C++ Object Factory</a>
-</li>
-<li><a href="C++/iocvariadic.html">An IOC Container using Variadic Templates</a>
-</li>
-<li><a href="C++/qtbuildnotes.html">Building Qt with VS2013</a>
-</li>
-<li><a href="C++/qtxmlsyntax.html">Qt XML Syntax Highlighter</a>
-</li>
-</ul>
-</li>
-<li>CompSci
-<ul class="org-ul">
-<li><a href="CompSci/flexsystems.html">Gerald Jay Sussman on Flexible Systems</a>
-</li>
-<li><a href="CompSci/monadsgonads.html">Monads and Gonads Notes</a>
-</li>
-</ul>
-</li>
-<li>Mathematics
-<ul class="org-ul">
-<li><a href="Mathematics/matrix.html">Basic Matrix Mathematics</a>
-</li>
-<li><a href="Mathematics/e.html">Some notes on e</a>
-</li>
-</ul>
-</li>
-<li>Testing
-<ul class="org-ul">
-<li><a href="Testing/autovsunit.html">Automated UI Testing over Unit Testing</a>
-</li>
-<li><a href="Testing/prototypes.html">Prototypes: Brief Thoughts</a>
-</li>
-<li><a href="Testing/specflowselenium.html">Specflow and Selenium</a>
-</li>
-</ul>
-</li>
-<li><a href="about.html">About the Website</a>
-</li>
-<li><a href="2016-lisp.html">Language for 2016 - Common Lisp</a>
-</li>
-<li><a href="books.html">My Library</a>
-</li>
-<li><a href="notes.html">My Todo List</a>
-</li>
-</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">The Solution</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The following technology was chosen. MSTest for obvious reasons; the
+requirement was there to use it. We chose Specflow as it is a very
+nice BDD framework using Gherkin scripts. I have posted examples of
+its use previously on this blog and it meets the 2nd requirement
+above. Thirdly we chose to use selenium as it provides some very
+good dotnet bindings and provides us with the ability to test cross
+browser and platform.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Deployment</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Our test setup is shown in the following diagram:
+</p>
+
+
+<div class="figure">
+<p><img src="selenium.png" alt="selenium.png" />
+</p>
+</div>
+
+<p>
+Firstly we have selenium standalone running on two nodes, one Vista
+and one Windows 7, so we can test on different browsers and
+versions. We are using the current beta version of Selenium2, which
+currently has some stability problems. There is a push to fix a
+whole load of bugs this week in selenium and we are hoping beta2 is
+released shortly.
+</p>
+
+<p>
+We are also running against real browsers using the Chrome Driver,
+Firefox Driver and Internet Explorer Driver, so these two nodes
+have to have a desktop available, i.e. A user logged in at all
+times, which is a only a minor pain.
+</p>
+
+<p>
+Our TFS Build Controller has IIS installed with a virtual directory
+set up against the checked out HTML, JavaScript etc that we are
+testing against. This allows our browser hosts to have a single up
+to date web server to call into.
+</p>
+
+<p>
+The unit tests are then run within MSTest on the build controller,
+executing the Specflow tests, which in turn drive the .NET version
+of Selenium RC, which executes operations on the remote instances
+of selenium server.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Writing the Tests</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+A typical SpecFlow scenario would be written something like the
+following:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-text"><span class="linenr"> 1: </span>Scenario Outline: Display Next Prev Buttons
+<span class="linenr"> 2: </span> Given I am using &lt;browser&gt; on &lt;seleniumhost&gt;
+<span class="linenr"> 3: </span> And A course exists
+<span class="linenr"> 4: </span> When I launch the course
+<span class="linenr"> 5: </span> Then The course is launched in my default browser
+<span class="linenr"> 6: </span> And The next and previous buttons are visible in the browser
+<span class="linenr"> 7: </span> Examples:
+<span class="linenr"> 8: </span>  | browser | seleniumhost        | description |
+<span class="linenr"> 9: </span>  | ie      | 192.168.10.126  | IE8 on Win 7 64bit |
+<span class="linenr">10: </span>  | ie      | 192.168.10.127  | IE7 on Vista 64bit |
+<span class="linenr">11: </span>  | firefox | 192.168.10.126  | FF3.6 on Win 7 64bit |
+<span class="linenr">12: </span>  | chrome  | 192.168.10.126  | Chrome 8 on Win 7 64bit |
+</pre>
+</div>
+
+<p>
+This sets up the tests to execute against the listed hosts, using
+the specifed browsers. This scenario would be run 4 times against
+with a test on IE7 on Vista.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Summary</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+We are presuming that the next beta of selenium2 and the final
+version are going to solve our stability problems. We shall then
+have a great test environment for BDD, able to test our apps using
+the MSTest framework and BDD and believe this will give us a greater
+confidence in our apps meeting the User Acceptance Criteria our
+Product Owners are providing.
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: John Cumming</p>
