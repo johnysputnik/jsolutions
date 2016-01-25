@@ -1,0 +1,88 @@
+#+TITLE: Perhaps we need to change the length of the sprint?
+
+* Introduction
+
+  It's been a while since I've posted to my blog, so I thought I would
+  share our experience of adjusting our sprint length, which we have
+  just done for the current sprint.
+
+* Background
+
+  We are developing an application for authoring eLearning content. We
+  have two developers, myself and one other and a non dedicated
+  tester. Since I started at cm group we have been working at basing
+  our development on scrum, initally starting with a 1 week
+  sprint. This was successful while we were working on a prototype
+  (questions arise as to how agile we were being and why we had
+  sprints for prototypes, see my thoughts on prototyping
+  here). However when we moved away from the prototype we started
+  hitting problems.
+
+* The problems
+
+  The problems can be summarised as follows:
+
+  1. The stories could only be split down so far as to be feasible
+     stories. As we have two developers, it usually meant that stories
+     were ready for testing only after a couple of days.
+  2. Distractions (other essential work that 1 developer and the
+     tester has within their responsibilites) impacted the ability to
+     complete stories quickly.
+  3. We tended to have all stories queued up for testing right until
+     the end of the week, putting a high load on the tester. One week
+     she was off ill on a Thursday, everything needed testing on
+     Friday and problems were found that could not be fixed and
+     retested by the end of the day. We ended up with a zero velocity
+     sprint..... for the second time.
+  
+  It was at point 3 we realised something was not quite right and in
+  true scrum fashion decided to 'inspect and adapt'.
+
+* The solution
+
+  In order to solve this issue, we had to do the following:
+
+  1. Stories should be ready to test earlier in the sprint, this could
+     be done by reducing the scope of the stories, increasing the
+     resource or lengthening the sprint.
+  2. The impact of a lack of resource for a day in a sprint needs to
+     be reduced either by having more resources or again by
+     lengthening the sprint so that time off is proportionally less in
+     respect to the sprint length.
+  3. Reduce distractions from other work. This is difficult, due to
+     the nature of the business and the skill set of the team. Again,
+     an increase in resources would help this and again, a longer
+     sprint may reduce the impact of distractions by spreading them
+     over a longer period. Unfortunately, at the moment, the
+     distractions are something we have to live with. One of the
+     reasons we chose 1 week sprints intially was because we believed
+     we could push back on requests for other work to be completed to
+     the following sprint. Unfortunately this has not always been the
+     case.
+
+  So our options were:
+
+  1. Increase resource - not possible in the short term, although
+     there is ongoing training for another tester to give us the
+     option of 2 possible testers.
+  2. Decrease the size of the stories - as we have already decided,
+     this is not really feasible.
+  3. Increase the sprint length - the simplest option.
+
+* Summary
+
+  So we have decided to go from 1 week to 2 week sprints as we have a
+  small team and story sizes that may warrant a longer sprint length,
+  given our environment.
+
+  However, there are some things that can and should be addressed,
+  which would help us with the problems outlined above:
+
+  1. Increase our automated UI testing to remove the need for so many
+     manual tests and effectively increase our tester resource.
+  2. Educate the business on the impact of distractions and perhaps
+     the need to manage these a bit better than we are.
+  3. Take a good look at why these distractions are occuring in the
+     first place, as some of them our bugs in our product that should
+     have been picked up by good unit testing, something that is
+     lacking in the legacy code we have.
