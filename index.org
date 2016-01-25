@@ -4,6 +4,7 @@
      + [[file:AI/logicalreg.org][Basic Logical Regression]]
      + [[file:AI/linearreg.org][Linear Regression]]
    + Agile
+     + [[file:Agile/pargamticscrum.org][A Pragmatic Application of Scrum]]
      + [[file:Agile/bugsnonbugs.org][Bugs, Non-Bugs and Scrum]]
      + [[file:Agile/agilesham.org][Is Agile a Sham]]
      + [[file:Agile/dailychecklist.org][My quick daily scrummaster checklist]]
