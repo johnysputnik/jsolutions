@@ -20,6 +20,8 @@
    + CompSci
      + [[file:CompSci/flexsystems.org][Gerald Jay Sussman on Flexible Systems]]
      + [[file:CompSci/monadsgonads.org][Monads and Gonads Notes]]
+   + Java
+     + [[file:Java/introjavafx.org][Getting started with JavaFX]]
    + Mathematics
      + [[file:Mathematics/matrix.org][Basic Matrix Mathematics]]
      + [[file:Mathematics/e.org][Some notes on e]]
