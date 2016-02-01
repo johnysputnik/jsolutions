@@ -89,11 +89,11 @@ $$\frac{996 \times 10^0 + 998 \times 10^0}{2} \Longrightarrow 995 \times 10^0$$
   The best solutions are ones that work in situations we didn't expect
   they would.
 
-* Propagation Model
+* Propagator Model
   
   A brief aside into a plumbing model.
 
-  In the propagation model, machines are connected to cells which hold
+  In the propagator model, machines are connected to cells which hold
   the knowledge of a single piece of information about the fact. The
   cells merge the information and the machines read and write the
   information. Providence of information is also carried by the cells.

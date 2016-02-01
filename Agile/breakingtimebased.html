@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Estimating in Scrum : Breaking away from time based estimates.</title>
+<!-- 2016-02-01 Mon 21:45 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="John Cumming" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet"
+                         href="/css/solarized-dark.css"
+                         type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id="my-header"><h2>jSolutions | <a href="/index.html">home</a></h2></div>
+</div>
+<div id="content">
+<h1 class="title">Estimating in Scrum : Breaking away from time based estimates.</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Introduction</a></li>
+<li><a href="#sec-2">Scrum summary</a></li>
+<li><a href="#sec-3">The Discussion</a></li>
+<li><a href="#sec-4">Why dropping reference to time in estimates works</a></li>
+<li><a href="#sec-5">Summary</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I've been having a very interesting discussion at work over
+estimating in a Scrum based process and thought I'd share some of my
+thoughts here as I have been having to prove a few things, at least
+theoretically, to myself and thought this would be worth sharing.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Scrum summary</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+For those of you not familiar with Scrum as a process, it is
+basically an agile process based on short periods called Sprints,
+with all work desribed as Stories within a Product Backlog. The
+basic process is.
+</p>
+
+<ol class="org-ol">
+<li>The backlog is estimated with estiamtes relative to each other,
+in some kind of non time based unit (this is important!)
+</li>
+<li>At the start of each sprint the team commits to delivering
+specific Stories, based on its capacity, known as Velocity (we
+shall come to that later).
+</li>
+<li>The Sprint is started and all Stories are split into tasks and
+estimated in relative sizing, in suchg a way as remaining work
+can be drawn as a graph through the sprint so that progress can
+be checked.
+</li>
+<li>At the end of the Sprint, the total value of the points of the
+Stories completed in the sprint is the teams velocity, which is
+used as input into the next sprint planning.
+</li>
+</ol>
+
+<p>
+This is a simple description, but then Scrum is fundemantally quite
+simple. For more information start <a href="http://en.wikipedia.org/wiki/Scrum_(development)">here</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">The Discussion</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The discussion we were having involved estimating when team members
+had different ability and the thread of this discussion went
+something like this:
+</p>
+
+<p>
+Me: "Estimates should stay the same no matter who is doing the
+task. That way the velocity also represents the experience / skill
+level of the team as a whole. If for example a team doubled in size
+with new junior staff, one would expect the velocity to go up, but
+not to double. So I think the estimate scale should not reflect
+individual experience."
+</p>
+
+<p>
+Colleague: "Estimates should stay the same no matter who is doing
+the task - I don’t think this is right—the reason being, no matter
+how abstract your units of measure are, at some point they do equate
+into tangible periods of time to be measured—otherwise, why keep
+track of them—and it’s a fact that some people are more productive
+than others, for various reasons, from more experience to simply
+being a faster thinker, typist with better hardware, whatever. To
+not take that into account could constantly thwart your planning
+efforts."
+</p>
+
+<p>
+And this is often the difficulty with adopting Scrum, dropping the
+planning based on time. I intend to show why dropping the time based
+approach and specifically dropping the focus on an individual.
+</p>
+
+<p>
+Before I start, I would like to state that Scrum is not a silver
+bullet, even if it works very well for the majority of software
+development.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Why dropping reference to time in estimates works</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Basically I think that: “no matter how abstract your units of
+measure are, at some point they do equate into tangible periods of
+time to be measured” is only half of the truth, they are mapped to
+time with velocity. Without a predictable velocity they are
+meaningless and with a predictable velocity they can be mapped to a
+timescale, it is only with a combination of Story Points and
+Velocity that any planning can be done.
+</p>
+
+<p>
+Also: “You need to measure velocity as a whole, no question, but you
+also need to take into account past history of estimates at the
+individual developer level—by that I mean actively track and review
+expected over actuals and adjust accordingly” I agree that adjustments
+need to be made if on inspection things are being done incorrectly,
+however, estimates at the individual developer level are irrelevant
+because the estimate is a consensus, so no one task is estimated by
+one developer. It may also be the case that two developers work on one
+task so the actual time taken cannot be attributed to one
+developer. It is all hard work tracking those kind of metrics as well
+and, I believe, ultimately unnecessary, which is why I created a
+spread sheet with an example.
+</p>
+
+
+<div class="figure">
+<p><img src="planningss.png" alt="planningss.png" />
+</p>
+</div>
+
+<p>
+Before I go on I am making some assumptions here about the team:
+</p>
+
+<ol class="org-ol">
+<li>The team can estimate well in a relative manner and come to a
+consensus on the point value of a story.
+</li>
+<li>The team can organise itself well to manage the sprint backlog
+and work together, help each other etc.
+</li>
+<li>There is a strong sense of the team committing to a sprint,
+rather than individuals.
+</li>
+</ol>
+
+<p>
+The spread sheet works out how long a set of estimated stories are
+going to take a team of 3 developers.
+</p>
+
+<p>
+The three developers have a capacity for 3,2 and 1 points per day, a
+daily individual velocity if you like. The team therefore has a
+velocity of 6 per day ( a little unrealistic as an example, but
+useful nevertheless).
+</p>
+
+<p>
+So we have a collection of 14 tasks with a Total of 84 points. We
+have a team velocity of 6, so that’s 14 days’ work to clear the
+product backlog as it stands. That is generally a simplified method
+of planning a set of features.
+</p>
+
+<p>
+Now if we were to treat it on an individual basis, then the Block
+Indiv1 shows one way of apportioning the work, with columns G/H/I
+representing the 3 developers. As you can see, by splitting the work
+in this way, all developers work the 14 days and all work is
+done. This is not very realistic as work is rarely apportioned in
+that way. The Seq block shows a more realistic way, with work being
+taken from the top, completed and then the next piece of work picked
+up. Again all come out at roughly 14 days.
+</p>
+
+<p>
+Although these examples are very simplistic and quite theoretical,
+given the assumptions above, I believe this holds true: It does not
+matter that the individual developers have different abilities,
+there is no need to change the estimates for an individual
+developer.
+</p>
+
+<p>
+It’s almost like inverting the whole way we estimate and plan:
+</p>
+
+<p>
+Traditional:
+</p>
+
+<p>
+Given x tasks with estimate y days, the time it takes to deliver is
+(Sum of y) / no of developers …. Here we have to rely on the
+estimate for an individual developer. Delivery is based on a sum of
+values.
+</p>
+
+<p>
+Scrum:
+</p>
+
+<p>
+Given a team with a velocity of x points / day, the time taken to
+deliver y points = y/x days …. And in this equation individual
+developers are irrelevant as are the units of x. Delivery is based
+on a rate of development.
+</p>
+
+<p>
+It puts the focus on the team, not individuals.
+</p>
+
+<p>
+Another point worth saying is that Velocity is not just a metric of
+amount of work done, but a metric of team efficiency (i.e. the rate
+of change of velocity is a measure of the teams increase in
+efficiency). If we start adding in other factors such as shifting
+points we are in danger of masking both of these. Actual work done
+could be 5 or 8 depending upon the developer, for example. How do we
+then plan delivery of the backlog based on the fact that the
+velocity varies and our estimates may need re-estimating based on
+who is doing the work. Also, if we have a velocity of 8 one week and
+13 the next, does this mean the team is more efficient, or does it
+just mean an individual developer has completed the work he
+estimated at 13 instead of 8 that another developer may have done.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Summary</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+I hope this has all makes sense and helps you to see that estimating
+in a non time based manner is simpler and less prone to problems and
+that trying to base estimates and plan on individual skills and
+experience is not only difficult, but unnecessary.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: John Cumming</p>
+<p class="date">Created: 2016-02-01 Mon 21:45</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -5,7 +5,9 @@
      + [[file:AI/linearreg.org][Linear Regression]]
    + Agile
      + [[file:Agile/pargamticscrum.org][A Pragmatic Application of Scrum]]
+     + [[file:Agile/sprintbottleneck.org][A Sprint Bottleneck – Developer Driven Sprints]]
      + [[file:Agile/bugsnonbugs.org][Bugs, Non-Bugs and Scrum]]
+     + [[file:Agile/breakingtimebased.org][Estimating in Scrum : Breaking away from time based estimates.]]
      + [[file:Agile/agilesham.org][Is Agile a Sham]]
      + [[file:Agile/dailychecklist.org][My quick daily scrummaster checklist]]
      + [[file:Agile/sprintlength.org][Perhaps we need to change the length of the sprint?]]
