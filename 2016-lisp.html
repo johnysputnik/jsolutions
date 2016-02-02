@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Language for 2016 - Common Lisp</title>
-<!-- 2016-02-01 Mon 21:45 -->
+<!-- 2016-02-02 Tue 21:21 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="John Cumming" />
@@ -309,12 +309,10 @@ equivalent:
 
 <pre class="src src-lisp"><span class="linenr">5: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">The following lines are equivalent</span>
 <span class="linenr">6: </span>(equal (quote (1 2 3 4))
-<span class="linenr">7: </span>     '(1 2 3 4))
+<span class="linenr">7: </span>       '(1 2 3 4))
+<span class="linenr">8: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
 </pre>
 </div>
-<pre class="example">
-T
-</pre>
 
 <p>
 More details on collections can be found in <i>Collections</i>.
@@ -332,13 +330,11 @@ characters to be used without escaping:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">8: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">The following items in the list are equivalent</span>
-<span class="linenr">9: </span>(equal 'A\(B\) '|A(B)|)
+<pre class="src src-lisp"><span class="linenr"> 9: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">The following items in the list are equivalent</span>
+<span class="linenr">10: </span>(equal 'A\(B\) '|A(B)|)
+<span class="linenr">11: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
 </pre>
 </div>
-<pre class="example">
-T
-</pre>
 
 <p>
 A hash symbol is a macro symbol, known as the dispatching macro
@@ -347,11 +343,11 @@ character. There are many of these, for example:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">10: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">#' - function abbreviation</span>
-<span class="linenr">11: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">#\ - character object</span>
-<span class="linenr">12: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">,#+ - read-time conditional</span>
-<span class="linenr">13: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">#c - complex number</span>
-<span class="linenr">14: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">#( - vector</span>
+<pre class="src src-lisp"><span class="linenr">12: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">#' - function abbreviation</span>
+<span class="linenr">13: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">#\ - character object</span>
+<span class="linenr">14: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">,#+ - read-time conditional</span>
+<span class="linenr">15: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">#c - complex number</span>
+<span class="linenr">16: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">#( - vector</span>
 </pre>
 </div>
 
@@ -367,16 +363,16 @@ symbol used to splice a list into the template, for example:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">15: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">x</span> '(a b c))
-<span class="linenr">16: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">x</span>
-<span class="linenr">17: </span>`(x)
-<span class="linenr">18: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (x)</span>
-<span class="linenr">19: </span>`(,x)
-<span class="linenr">20: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ((a b c))</span>
-<span class="linenr">21: </span>`(,@x)
-<span class="linenr">22: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (a b c)</span>
-<span class="linenr">23: </span>`(x ,x ,@x foo ,(cadr x) bar ,(cdr x) baz ,@(cdr x))
-<span class="linenr">24: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (x (a b c) a b c foo b bar (b c) baz b c)</span>
+<pre class="src src-lisp"><span class="linenr">17: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">x</span> '(a b c))
+<span class="linenr">18: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">x</span>
+<span class="linenr">19: </span>`(x)
+<span class="linenr">20: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (x)</span>
+<span class="linenr">21: </span>`(,x)
+<span class="linenr">22: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; ((a b c))</span>
+<span class="linenr">23: </span>`(,@x)
+<span class="linenr">24: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (a b c)</span>
+<span class="linenr">25: </span>`(x ,x ,@x foo ,(cadr x) bar ,(cdr x) baz ,@(cdr x))
+<span class="linenr">26: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (x (a b c) a b c foo b bar (b c) baz b c)</span>
 </pre>
 </div>
 
@@ -393,8 +389,8 @@ the package in which a symbol is defined:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">25: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">reset is a symbol in the network package</span>
-<span class="linenr">26: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">(network:reset)</span>
+<pre class="src src-lisp"><span class="linenr">27: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">reset is a symbol in the network package</span>
+<span class="linenr">28: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">(network:reset)</span>
 </pre>
 </div>
 
@@ -409,12 +405,22 @@ always evaluates to itself and is constant. For example:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">27: </span>(eql '<span style="color: #859900;">:foo</span> <span style="color: #859900;">:foo</span>)
+<pre class="src src-lisp"><span class="linenr">29: </span>(eql '<span style="color: #859900;">:foo</span> <span style="color: #859900;">:foo</span>)
+<span class="linenr">30: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
 </pre>
 </div>
-<pre class="example">
-T
+
+<p>
+Keywords are interned in the package KEYWORD and are automatically
+exported from it:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">31: </span>(eql keyword:foo <span style="color: #859900;">:foo</span>)
+<span class="linenr">32: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
 </pre>
+</div>
 </div>
 </div>
 
@@ -454,48 +460,48 @@ the error based on several functions:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">28: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">First declare some data</span>
-<span class="linenr">29: </span><span style="color: #586e75; font-style: italic;">;;</span>
-<span class="linenr">30: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">data</span> '((0.1 . 1.1)
-<span class="linenr">31: </span>                     (0.9 . 3.2)
-<span class="linenr">32: </span>                     (2.1 . 5.9)
-<span class="linenr">33: </span>                     (3.2 . 7.2)
-<span class="linenr">34: </span>                     (3.9 . 9.0)
-<span id="coderef-data-1" class="coderef-off"><span class="linenr">35: </span>                     (5.1 . 11.2)))</span>
-<span class="linenr">36: </span>
-<span class="linenr">37: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">then some equations</span>
-<span class="linenr">38: </span><span style="color: #586e75; font-style: italic;">;;</span>
-<span class="linenr">39: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">equation-list</span>
-<span class="linenr">40: </span>  (list #'(<span style="color: #859900;">lambda</span> (x) (+ 1 (* 2 x)))
-<span class="linenr">41: </span>        #'(<span style="color: #859900;">lambda</span> (x) (+ 1 (* x x)))
-<span id="coderef-eqn-1" class="coderef-off"><span class="linenr">42: </span>        #'(<span style="color: #859900;">lambda</span> (x) (+ 1 x))))</span>
-<span class="linenr">43: </span>
-<span class="linenr">44: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">now create a function that applies a function</span>
-<span class="linenr">45: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">to a set of input data</span>
-<span class="linenr">46: </span><span style="color: #586e75; font-style: italic;">;;</span>
-<span class="linenr">47: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">apply-function</span> (f d)
-<span id="coderef-apply-1" class="coderef-off"><span class="linenr">48: </span>  (map 'list #'(<span style="color: #859900;">lambda</span> (x) (funcall f (car x))) d))</span>
-<span class="linenr">49: </span>
-<span class="linenr">50: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">A function that returns the error as the difference</span>
-<span class="linenr">51: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">between two values squared</span>
-<span class="linenr">52: </span><span style="color: #586e75; font-style: italic;">;;</span>
-<span id="coderef-sq-1" class="coderef-off"><span class="linenr">53: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">square-error</span> (test-data calc-data)</span>
-<span class="linenr">54: </span>  (expt (- test-data calc-data) 2))
-<span class="linenr">55: </span>
-<span class="linenr">56: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">A function that returns the sum of square errors</span>
-<span class="linenr">57: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">of a collection of data and the results</span>
-<span class="linenr">58: </span><span style="color: #586e75; font-style: italic;">;;</span>
-<span id="coderef-sumsq-1" class="coderef-off"><span class="linenr">59: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">sum-square-error</span> (f test-data)</span>
-<span class="linenr">60: </span>  (reduce #'+
-<span class="linenr">61: </span>          (map 'list
-<span class="linenr">62: </span>               #'(<span style="color: #859900;">lambda</span> (test calc)
-<span class="linenr">63: </span>                   (square-error (cdr test) calc))
-<span class="linenr">64: </span>               test-data (apply-function f test-data))))
-<span class="linenr">65: </span>
-<span class="linenr">66: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">Now we can run the sum of square errors across all equations</span>
-<span class="linenr">67: </span><span style="color: #586e75; font-style: italic;">;;</span>
-<span id="coderef-output-1" class="coderef-off"><span class="linenr">68: </span>(map 'list #'(<span style="color: #859900;">lambda</span> (eq) (sum-square-error eq data))</span>
-<span class="linenr">69: </span>     equation-list)
+<pre class="src src-lisp"><span class="linenr">33: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">First declare some data</span>
+<span class="linenr">34: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span class="linenr">35: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">data</span> '((0.1 . 1.1)
+<span class="linenr">36: </span>                     (0.9 . 3.2)
+<span class="linenr">37: </span>                     (2.1 . 5.9)
+<span class="linenr">38: </span>                     (3.2 . 7.2)
+<span class="linenr">39: </span>                     (3.9 . 9.0)
+<span id="coderef-data-1" class="coderef-off"><span class="linenr">40: </span>                     (5.1 . 11.2)))</span>
+<span class="linenr">41: </span>
+<span class="linenr">42: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">then some equations</span>
+<span class="linenr">43: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span class="linenr">44: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">equation-list</span>
+<span class="linenr">45: </span>  (list #'(<span style="color: #859900;">lambda</span> (x) (+ 1 (* 2 x)))
+<span class="linenr">46: </span>        #'(<span style="color: #859900;">lambda</span> (x) (+ 1 (* x x)))
+<span id="coderef-eqn-1" class="coderef-off"><span class="linenr">47: </span>        #'(<span style="color: #859900;">lambda</span> (x) (+ 1 x))))</span>
+<span class="linenr">48: </span>
+<span class="linenr">49: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">now create a function that applies a function</span>
+<span class="linenr">50: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">to a set of input data</span>
+<span class="linenr">51: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span class="linenr">52: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">apply-function</span> (f d)
+<span id="coderef-apply-1" class="coderef-off"><span class="linenr">53: </span>  (map 'list #'(<span style="color: #859900;">lambda</span> (x) (funcall f (car x))) d))</span>
+<span class="linenr">54: </span>
+<span class="linenr">55: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">A function that returns the error as the difference</span>
+<span class="linenr">56: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">between two values squared</span>
+<span class="linenr">57: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span id="coderef-sq-1" class="coderef-off"><span class="linenr">58: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">square-error</span> (test-data calc-data)</span>
+<span class="linenr">59: </span>  (expt (- test-data calc-data) 2))
+<span class="linenr">60: </span>
+<span class="linenr">61: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">A function that returns the sum of square errors</span>
+<span class="linenr">62: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">of a collection of data and the results</span>
+<span class="linenr">63: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span id="coderef-sumsq-1" class="coderef-off"><span class="linenr">64: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">sum-square-error</span> (f test-data)</span>
+<span class="linenr">65: </span>  (reduce #'+
+<span class="linenr">66: </span>          (map 'list
+<span class="linenr">67: </span>               #'(<span style="color: #859900;">lambda</span> (test calc)
+<span class="linenr">68: </span>                   (square-error (cdr test) calc))
+<span class="linenr">69: </span>               test-data (apply-function f test-data))))
+<span class="linenr">70: </span>
+<span class="linenr">71: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">Now we can run the sum of square errors across all equations</span>
+<span class="linenr">72: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span id="coderef-output-1" class="coderef-off"><span class="linenr">73: </span>(map 'list #'(<span style="color: #859900;">lambda</span> (eq) (sum-square-error eq data))</span>
+<span class="linenr">74: </span>     equation-list)
 </pre>
 </div>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -521,7 +527,7 @@ the error based on several functions:
 The <a href="#coderef-data-1"class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-data-1');" onmouseout="CodeHighlightOff(this, 'coderef-data-1');">data</a> is defined as a set of cons cells with the car equal to an x
 value and the cdr equal to a y value. This is the test data that will
 be used to check the equations. It uses defparameter, but could
-equally be defined inline at <a href="#coderef-output-1"class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-output-1');" onmouseout="CodeHighlightOff(this, 'coderef-output-1');">Line 68</a>.
+equally be defined inline at <a href="#coderef-output-1"class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-output-1');" onmouseout="CodeHighlightOff(this, 'coderef-output-1');">Line 73</a>.
 </p>
 
 <p>
@@ -680,18 +686,152 @@ using this gnuplot script:
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>cons
+
+<p>
+cons is used to construct lists, it puts a new element at the end
+of the list, or can be used for creating a pair:
+</p>
 </li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">75: </span>(cons 1 3)
+<span class="linenr">76: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (1 . 3)</span>
+<span class="linenr">77: </span>(cons 3 nil)
+<span class="linenr">78: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (3)</span>
+<span class="linenr">79: </span>(cons 5 '(1 2 3 4))
+<span class="linenr">80: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (5 1 2 3 4)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
 <li>car
+
+<p>
+Given a list car retrieves the first item in a list:
+</p>
 </li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">81: </span>(car '(1 2 3 4))
+<span class="linenr">82: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; 1</span>
+</pre>
+</div>
+
+<ul class="org-ul">
 <li>cdr
+
+<p>
+Given a list cdr retrieves the remaining list after the first
+element:
+</p>
 </li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">83: </span>(cdr '(1 2 3 4))
+<span class="linenr">84: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (2 3 4)</span>
+</pre>
+</div>
+
+<p>
+These can be nested to various levels for example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">85: </span>(cadr '(1 2 3 5))
+<span class="linenr">86: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; 2</span>
+<span class="linenr">87: </span>(cddr '(1 2 3 4))
+<span class="linenr">88: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (3 4)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
 <li>lambda
+
+<p>
+lambda is used to create a function special form involving a
+lambda expression:
+</p>
 </li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">89: </span>(<span style="color: #859900;">lambda</span> (x) (+ 1 x))
+<span class="linenr">90: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; #&lt;FUNCTION (LAMBDA (X)) {10035B665B}&gt;</span>
+</pre>
+</div>
+
+<p>
+The expression takes a lambda list and a form and returns a
+function.
+</p>
+
+<ul class="org-ul">
 <li>funcall
+
+<p>
+Funcall is used to call a function, which can be created with a
+lambda:
+</p>
 </li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">91: </span>(funcall (<span style="color: #859900;">lambda</span> (x) (+ 1 x)) 3)
+<span class="linenr">92: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; 4</span>
+</pre>
+</div>
+
+<p>
+However it becomes more useful when passing lambda expressions or
+functions as arguments (a little convoluted):
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">93: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">do-something</span> (x a)
+<span class="linenr">94: </span>  (funcall x a))
+<span class="linenr">95: </span>(<span style="color: #859900;">do-something</span> (<span style="color: #859900;">lambda</span> (x) (+ 1 x)) 2)
+<span class="linenr">96: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; 3</span>
+</pre>
+</div>
+
+<ul class="org-ul">
 <li>function
-partial functions
+
+<p>
+With the function function we can return a function from a
+function! This can be used to create a form of partial functions:
+</p>
 </li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr"> 97: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">multiplier</span> (n)
+<span class="linenr"> 98: </span>  (function (<span style="color: #859900;">lambda</span> (x) (* x n))))
+<span class="linenr"> 99: </span>
+<span class="linenr">100: </span>(funcall (multiplier 3) 4)
+<span class="linenr">101: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; 12</span>
+<span class="linenr">102: </span>
+<span class="linenr">103: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">doubler</span> (n)
+<span class="linenr">104: </span>  (funcall (multiplier 2) n))
+<span class="linenr">105: </span>
+<span class="linenr">106: </span>(doubler 10)
+<span class="linenr">107: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; 20</span>
+</pre>
+</div>
+
+
+<ul class="org-ul">
 <li>apply
 </li>
 <li>read
@@ -730,39 +870,16 @@ the atom predicate:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">70: </span>(atom 1)
+<pre class="src src-lisp"><span class="linenr">108: </span>(atom 1)
+<span class="linenr">109: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
+<span class="linenr">110: </span>(atom <span style="color: #859900;">:test</span>)
+<span class="linenr">111: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
+<span class="linenr">112: </span>(atom nil)
+<span class="linenr">113: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
+<span class="linenr">114: </span>(atom '())
+<span class="linenr">115: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
 </pre>
 </div>
-<pre class="example">
-T
-</pre>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp"><span class="linenr">71: </span>(atom <span style="color: #859900;">:test</span>)
-</pre>
-</div>
-<pre class="example">
-T
-</pre>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp"><span class="linenr">72: </span>(atom nil)
-</pre>
-</div>
-<pre class="example">
-T
-</pre>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp"><span class="linenr">73: </span>(atom '())
-</pre>
-</div>
-<pre class="example">
-T
-</pre>
 
 <p>
 However, they are not things that cannot be broken down any further:
@@ -770,36 +887,24 @@ However, they are not things that cannot be broken down any further:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">74: </span>(atom <span style="color: #2aa198;">"text"</span>)
+<pre class="src src-lisp"><span class="linenr">116: </span>(atom <span style="color: #2aa198;">"text"</span>)
+<span class="linenr">117: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
+<span class="linenr">118: </span>(atom #(1 2 3))
+<span class="linenr">119: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
 </pre>
 </div>
-<pre class="example">
-T
-</pre>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp"><span class="linenr">75: </span>(atom #(1 2 3))
-</pre>
-</div>
-<pre class="example">
-T
-</pre>
 
 <p>
 Symbols are atoms as well:
 </p>
 
-
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">76: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">test-atomicity</span> (x) (atom x))
-<span class="linenr">77: </span>(atom 'test-atomicity)
+<pre class="src src-lisp"><span class="linenr">120: </span>(<span style="color: #859900;">defun</span> <span style="color: #268bd2;">test-atomicity</span> (x) (atom x))
+<span class="linenr">121: </span>(atom 'test-atomicity)
+<span class="linenr">122: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
 </pre>
 </div>
-<pre class="example">
-T
-</pre>
 
 <p>
 And lambda expressions:
@@ -807,12 +912,10 @@ And lambda expressions:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">78: </span>(atom (<span style="color: #859900;">lambda</span> (x) (atom x)))
+<pre class="src src-lisp"><span class="linenr">123: </span>(atom (<span style="color: #859900;">lambda</span> (x) (atom x)))
+<span class="linenr">124: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
 </pre>
 </div>
-<pre class="example">
-T
-</pre>
 
 <p>
 Examples of some things that are not atoms:
@@ -820,30 +923,14 @@ Examples of some things that are not atoms:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">79: </span>(atom '(1 . 3))
+<pre class="src src-lisp"><span class="linenr">125: </span>(atom '(1 . 3))
+<span class="linenr">126: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; NIL</span>
+<span class="linenr">127: </span>(atom '(1 2 3))
+<span class="linenr">128: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; NIL</span>
+<span class="linenr">129: </span>(atom (cdr '(1 2 3)))
+<span class="linenr">130: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; NIL</span>
 </pre>
 </div>
-<pre class="example">
-NIL
-</pre>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp"><span class="linenr">80: </span>(atom '(1 2 3))
-</pre>
-</div>
-<pre class="example">
-NIL
-</pre>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp"><span class="linenr">81: </span>(atom (cdr '(1 2 3)))
-</pre>
-</div>
-<pre class="example">
-NIL
-</pre>
 </div>
 </div>
 
@@ -1154,7 +1241,7 @@ symbol macros
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: John Cumming</p>
-<p class="date">Created: 2016-02-01 Mon 21:45</p>
+<p class="date">Created: 2016-02-02 Tue 21:21</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

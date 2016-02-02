@@ -46,13 +46,12 @@
   operand or by using a shortcut single quote, the following are both
   equivalent:
 
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+#+BEGIN_SRC lisp +n -r
   ;; The following lines are equivalent
   (equal (quote (1 2 3 4))
-       '(1 2 3 4))
+         '(1 2 3 4))
+  ;; => T
 #+END_SRC
-#+RESULTS:
-: T
 
   More details on collections can be found in [[*Collections][Collections]].
 
@@ -62,12 +61,11 @@
   languages. However, the use of a vertical bar allows special
   characters to be used without escaping:
 
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+#+BEGIN_SRC lisp +n -r
   ;; The following items in the list are equivalent
   (equal 'A\(B\) '|A(B)|)
+  ;; => T
 #+END_SRC
-#+RESULTS:
-: T
 
   A hash symbol is a macro symbol, known as the dispatching macro
   character. There are many of these, for example:
@@ -86,7 +84,7 @@
   generating code, with a comma used to evaluate a form and an '@'
   symbol used to splice a list into the template, for example:
 
-#+BEGIN_SRC lisp +n -r :tangle yes
+#+BEGIN_SRC lisp +n -r
   (defparameter x '(a b c))
   ;; x
   `(x)
@@ -106,7 +104,7 @@
   Colons are used in 2 situations. Firstly it can be used to indicate
   the package in which a symbol is defined:
 
-#+BEGIN_SRC lisp +n -r :tangle yes
+#+BEGIN_SRC lisp +n -r
   ;; reset is a symbol in the network package
   ;; (network:reset)
 #+END_SRC
@@ -116,20 +114,18 @@
   It can also be used to denote a keyword, which is a symbol that
   always evaluates to itself and is constant. For example:
 
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+#+BEGIN_SRC lisp +n -r
   (eql ':foo :foo)
-#+END_SRCy
-#+RESULTS:
-: T
+  ;; => T
+#+END_SRC
 
   Keywords are interned in the package KEYWORD and are automatically
   exported from it:
 
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+#+BEGIN_SRC lisp +n -r
   (eql keyword:foo :foo)
+  ;; => T
 #+END_SRC
-#+RESULTS:
-: T
 
 * Example 1 - Sum of Square Errors
 
@@ -152,7 +148,7 @@
   Using lisp, we can write some code that takes a data set, computes
   the error based on several functions:
 
-#+BEGIN_SRC lisp +n -r -l ";(%s)" :tangle y :exports both
+#+BEGIN_SRC lisp +n -r -l ";(%s)" :exports both
   ;; First declare some data
   ;;
   (defparameter data '((0.1 . 1.1)
@@ -262,12 +258,100 @@ plot data u 1:2 w p lw 2 title 'data', \
 
 * NEXT Core functions
   - cons
+
+    cons is used to construct lists, it puts a new element at the end
+    of the list, or can be used for creating a pair:
+
+#+BEGIN_SRC lisp +n -r
+  (cons 1 3)
+  ;; => (1 . 3)
+  (cons 3 nil)
+  ;; => (3)
+  (cons 5 '(1 2 3 4))
+  ;; => (5 1 2 3 4)
+#+END_SRC
+
   - car
+
+    Given a list car retrieves the first item in a list:
+
+#+BEGIN_SRC lisp +n -r
+  (car '(1 2 3 4))
+  ;; => 1
+#+END_SRC
+
   - cdr
+
+    Given a list cdr retrieves the remaining list after the first
+    element:
+
+#+BEGIN_SRC lisp +n -r
+  (cdr '(1 2 3 4))
+  ;; => (2 3 4)
+#+END_SRC
+
+    These can be nested to various levels for example:
+
+#+BEGIN_SRC lisp +n -r
+  (cadr '(1 2 3 5))
+  ;; => 2
+  (cddr '(1 2 3 4))
+  ;; => (3 4)
+#+END_SRC
+  
   - lambda
+
+    lambda is used to create a function special form involving a
+    lambda expression:
+
+#+BEGIN_SRC lisp +n -r
+  (lambda (x) (+ 1 x))
+  ;; => #<FUNCTION (LAMBDA (X)) {10035B665B}>
+#+END_SRC
+
+    The expression takes a lambda list and a form and returns a
+    function.
+  
   - funcall
+
+    Funcall is used to call a function, which can be created with a
+    lambda:
+
+#+BEGIN_SRC lisp +n -r
+  (funcall (lambda (x) (+ 1 x)) 3)
+  ;; => 4
+#+END_SRC
+
+    However it becomes more useful when passing lambda expressions or
+    functions as arguments (a little convoluted):
+
+#+BEGIN_SRC lisp +n -r
+  (defun do-something (x a)
+    (funcall x a))
+  (do-something (lambda (x) (+ 1 x)) 2)
+  ;; => 3
+#+END_SRC
+
   - function
-    partial functions
+
+    With the function function we can return a function from a
+    function! This can be used to create a form of partial functions:
+
+#+BEGIN_SRC lisp +n -r
+  (defun multiplier (n)
+    (function (lambda (x) (* x n))))
+
+  (funcall (multiplier 3) 4)
+  ;; => 12
+
+  (defun doubler (n)
+    (funcall (multiplier 2) n))
+
+  (doubler 10)
+  ;; => 20
+#+END_SRC
+
+
   - apply
   - read
   - eval
@@ -284,81 +368,51 @@ plot data u 1:2 w p lw 2 title 'data', \
    Atoms are things that are not cons cells, and can be tested using
    the atom predicate:
 
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+#+BEGIN_SRC lisp +n -r
 (atom 1)
-#+END_SRC
-#+RESULTS:
-: T
-
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+;; => T
 (atom :test)
-#+END_SRC
-#+RESULTS:
-: T
-
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+;; => T
 (atom nil)
-#+END_SRC
-#+RESULTS:
-: T
-
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+;; => T
 (atom '())
+;; => T
 #+END_SRC
-#+RESULTS:
-: T
 
    However, they are not things that cannot be broken down any further:
 
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+#+BEGIN_SRC lisp +n -r
 (atom "text")
-#+END_SRC
-#+RESULTS:
-: T
-
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+;; => T
 (atom #(1 2 3))
+;; => T
 #+END_SRC
-#+RESULTS:
-: T
 
    Symbols are atoms as well:
 
-
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+#+BEGIN_SRC lisp +n -r
 (defun test-atomicity (x) (atom x))
 (atom 'test-atomicity)
+;; => T
 #+END_SRC
-#+RESULTS:
-: T
 
    And lambda expressions:
 
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+#+BEGIN_SRC lisp +n -r
 (atom (lambda (x) (atom x)))
+;; => T
 #+END_SRC
-#+RESULTS:
-: T
 
    Examples of some things that are not atoms:
 
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+#+BEGIN_SRC lisp +n -r
 (atom '(1 . 3))
-#+END_SRC
-#+RESULTS:
-: NIL
-
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+;; => NIL
 (atom '(1 2 3))
-#+END_SRC
-#+RESULTS:
-: NIL
-
-#+BEGIN_SRC lisp +n -r :tangle yes :exports both
+;; => NIL
 (atom (cdr '(1 2 3)))
+;; => NIL
 #+END_SRC
-#+RESULTS:
-: NIL
 
 ** Sequences
    Sequences are ordered lists of elements and can be manipulated by a
