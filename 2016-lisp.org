@@ -283,12 +283,14 @@ plot data u 1:2 w p lw 2 title 'data', \
   - cdr
 
     Given a list cdr retrieves the remaining list after the first
-    element:
+    element
 
 #+BEGIN_SRC lisp +n -r
   (cdr '(1 2 3 4))
   ;; => (2 3 4)
 #+END_SRC
+
+  - cadr / cddr etc
 
     These can be nested to various levels for example:
 
@@ -302,30 +304,25 @@ plot data u 1:2 w p lw 2 title 'data', \
   - lambda
 
     lambda is used to create a function special form involving a
-    lambda expression:
+    lambda expression. The expression takes a lambda list and a form
+    and returns a function:
 
 #+BEGIN_SRC lisp +n -r
   (lambda (x) (+ 1 x))
   ;; => #<FUNCTION (LAMBDA (X)) {10035B665B}>
 #+END_SRC
 
-    The expression takes a lambda list and a form and returns a
-    function.
-  
+    
   - funcall
 
     Funcall is used to call a function, which can be created with a
-    lambda:
+    lambda.  However it becomes more useful when passing lambda expressions or
+    functions as arguments (a little convoluted):
 
 #+BEGIN_SRC lisp +n -r
   (funcall (lambda (x) (+ 1 x)) 3)
   ;; => 4
-#+END_SRC
 
-    However it becomes more useful when passing lambda expressions or
-    functions as arguments (a little convoluted):
-
-#+BEGIN_SRC lisp +n -r
   (defun do-something (x a)
     (funcall x a))
   (do-something (lambda (x) (+ 1 x)) 2)
@@ -351,10 +348,19 @@ plot data u 1:2 w p lw 2 title 'data', \
   ;; => 20
 #+END_SRC
 
-
   - apply
+
+    The apply function is very similar to funcall, except it takes a
+    list as an argument:
+
+#+BEGIN_SRC lisp +n -r
+  (apply #'+ 100 '(4 5 6 7))
+  ;; => 122
+#+END_SRC
+
   - read
   - eval
+  - print
   - cond
   - quote
   - atom
@@ -484,6 +490,7 @@ plot data u 1:2 w p lw 2 title 'data', \
     - find-if-not
     - length
     - map
+    - mapcar
     - map-into
     - merge
     - mismatch
