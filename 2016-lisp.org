@@ -359,6 +359,34 @@ plot data u 1:2 w p lw 2 title 'data', \
 #+END_SRC
 
   - read
+
+    The read function reads a single s-expression, skipping whitespace
+    and comments and returns the lisp object denoted by the
+    s-expression.
+
+#+BEGIN_SRC lisp +n -r
+  ;; given a file code.lisp containing
+  ;;
+  ;; (1 2 3)
+  ;; 456
+  ;; "a string" ; this is a comment
+  ;; ((a b)
+  ;;  (c d))
+  ;;
+  (defparameter *s* (open "code.lisp"))
+  ;; => *S*
+  (read *s*)
+  ;; => (1 2 3)
+  (read *s*)
+  ;; => 456
+  (read *s*)
+  ;; => "a string"
+  (read *s*)
+  ;; ((A B) (C D))
+  (close *s*)
+  ;; => T
+#+END_SRC
+
   - eval
   - print
   - cond
