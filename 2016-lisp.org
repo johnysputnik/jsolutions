@@ -97,7 +97,6 @@
   ;; => (x (a b c) a b c foo b bar (b c) baz b c)
 #+END_SRC
 
-
   This is used extensively when writing macros. For more information
   on macros see [[*Macros][Macros]].
 
@@ -311,7 +310,6 @@ plot data u 1:2 w p lw 2 title 'data', \
   (lambda (x) (+ 1 x))
   ;; => #<FUNCTION (LAMBDA (X)) {10035B665B}>
 #+END_SRC
-
     
   - funcall
 
@@ -351,11 +349,16 @@ plot data u 1:2 w p lw 2 title 'data', \
   - apply
 
     The apply function is very similar to funcall, except it takes a
-    list as an argument:
+    list as an argument. This means that it can be used when the
+    number of arguments is unknown at compile time.
 
 #+BEGIN_SRC lisp +n -r
   (apply #'+ 100 '(4 5 6 7))
   ;; => 122
+  (defun add-to-ten (&rest args)
+    (apply #'+ 10 args))
+  (add-to-ten 1 2 3 4 5)
+  ;; => 25
 #+END_SRC
 
   - read
@@ -388,15 +391,77 @@ plot data u 1:2 w p lw 2 title 'data', \
 #+END_SRC
 
   - eval
+
+    The eval function just evaluates a lisp expression. It is used in
+    combination with read to execute lisp expressions:
+
+#+BEGIN_SRC lisp +n -r
+  (eval (+ 1 2))
+  ;; => 3
+  ;; given a file code.lisp with a line
+  ;; (+ 1 2)
+  (defparameter *s* (open "code.lisp"))
+  (eval (read *s*))
+  ;; => 3
+#+END_SRC
+    
   - print
+
+    The print function prints the representation of a lisp object.
+
+#+BEGIN_SRC lisp +n -r
+  (print 2)
+  ;; 2
+  ;; => 2
+  (print (eval (+ 1 2)))
+  ;; 3
+  ;; => 3
+#+END_SRC
+
   - cond
+
+    The primary conditional statement in lisp is th cond function:
+
+#+BEGIN_SRC lisp +n -r
+  (defun get-type-name (a)
+    (cond ((null a) "null")
+          ((atom a) "atom")
+          ((listp a) "list")
+          (t "unknown")))
+  (get-type-name nil)
+  ;; => "null"
+  (get-type-name 1)
+  ;; => "atom"
+  (get-type-name '(1))
+  ;; => "list"
+#+END_SRC
+
   - quote
+
+    The quote function is described [[*An%20Overview%20of%20Common%20Lisp%20Syntax][above]].
+
   - atom
+    
+    The atom function is outlined [[*Atoms][below]].
+
   - null
+
+    The null function determines if a symbol is nil:
+
+#+BEGIN_SRC lisp +n -r
+  (null nil)
+  ;; => T
+  (null 1)
+  ;; => nil
+  (null '())
+  ;; => T
+#+END_SRC
+
   - set setf setq
   - defun var parameter macro etc
   - equality checks
   - declare ?
+
 * Data Structures
 ** Atoms
    Atoms are things that are not cons cells, and can be tested using
@@ -448,7 +513,7 @@ plot data u 1:2 w p lw 2 title 'data', \
 ;; => NIL
 #+END_SRC
 
-** Sequences
+** NEXT Sequences
    Sequences are ordered lists of elements and can be manipulated by a
    variety of standard sequence functions. A sequence is either a
    vector or a list. Vectors are one dimensional arrays and Lists are
