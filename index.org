@@ -22,6 +22,9 @@
    + CompSci
      + [[file:CompSci/flexsystems.org][Gerald Jay Sussman on Flexible Systems]]
      + [[file:CompSci/monadsgonads.org][Monads and Gonads Notes]]
+   + FSharp
+     + [[file:FSharp/introtofsharp.org][An Introduction to Microsoft F#]]
+     + [[file:FSharp/progfsh.org][Programming F# by Chris Smith]]
    + Java
      + [[file:Java/introjavafx.org][Getting started with JavaFX]]
    + Mathematics

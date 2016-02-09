@@ -255,7 +255,7 @@ plot data u 1:2 w p lw 2 title 'data', \
 #+RESULTS:
 [[file:example1-plot.png]]
 
-* NEXT Core functions
+* Core functions
   - cons
 
     cons is used to construct lists, it puts a new element at the end
@@ -420,7 +420,7 @@ plot data u 1:2 w p lw 2 title 'data', \
 
   - cond
 
-    The primary conditional statement in lisp is th cond function:
+    The primary conditional statement in lisp is the cond function:
 
 #+BEGIN_SRC lisp +n -r
   (defun get-type-name (a)
@@ -457,10 +457,92 @@ plot data u 1:2 w p lw 2 title 'data', \
   ;; => T
 #+END_SRC
 
-  - set setf setq
-  - defun var parameter macro etc
-  - equality checks
-  - declare ?
+  - set, setf and setq
+
+    set is the original lisp function. setf is a shorthand function
+    meaning set field and setq a shorthand function meaning
+    set quote. One can think of set as setting value of symbols and
+    setf as setting the value of variables. setf is a macro allowing
+    various setting of things.
+
+#+BEGIN_SRC lisp +n -r
+  ;; The following are all equivalent
+  (set (quote *foo*) 42)
+  (setf (symbol-value '*foo*) 42)
+  (set '*foo* 42)
+  (setq *foo* 42)
+  ;; assigning to data structure
+  (setf (car x) 42)
+  ;; some more examples
+  (set ls '(1 2 3 4))   ;; ERROR ls has no value
+  (set 'ls '(1 2 3 4))  ;; OK
+  (setq ls '(1 2 3 4))  ;; OK
+  (setf ls '(1 2 3 4))  ;; OK
+  (setf (car ls) 10)    ;; ls -> '(10 2 3 4)
+#+END_SRC
+
+  - defvar and defparameter
+
+    defvar and defparameter are very similar, both bind a value to a
+    name. the difference is that defvar only binds the value if it is
+    not already bound. However, the value can still be changed with
+    setq:
+
+#+BEGIN_SRC lisp +n -r
+  (defvar *s* 2)
+  ;; => *S*
+  ,*s*
+  ;; => 2
+  (defvar *s* 3)
+  ,*s*
+  ;; => 2
+  (setq *s* 3)
+  ,*s*
+  ;; => 3
+  (defparameter *t* 2)
+  ,*t*
+  ;; => 2
+  (defparameter *t* 3)
+  ,*t*
+  ;; =>3
+#+END_SRC
+
+  - defconstant
+
+    defconstant is similar to defparameter and defvar, except the
+    value cannot be changed.
+
+  - defun
+
+    defun defines a function that can be called from other parts of
+    code. They are the primary abstraction mechanism in lisp and are
+    described [[*Functions][below]].
+
+  - defmacro
+
+    defmacro is used to define macros that are evaluated during
+    compilation, they are discussed [[*Macros][below]].
+
+  - equality predicates
+
+    There are several equality operators in lisp that perform
+    different functions:
+
+    (eq x y) is true if and only if x and y are identical objects.
+
+    (eql x y) is true if (eq x y) or x and y are numbers of the same
+    type and have the same value, or are character objects that
+    represent the same character.
+
+    (equal x y) is true if x and y are structurally similar
+    (isomorphic). It is often the case that x and y will have the same
+    printed representation.
+
+    (equalp x y) is true if (equal x y) is true or for numbers they
+    have the same value even if they are different types or for
+    characters that are equal but different case. For collections,
+    (equalp x y) is true if equalp is true for every element in the
+    collection.
 
 * Data Structures
 ** Atoms
@@ -623,6 +705,9 @@ plot data u 1:2 w p lw 2 title 'data', \
   currying / partial
   no side effects
   let / flet 
+* Example 2
+** TODO Decide on an example that uses the above.
+* Declare, declaim, proclaim
 * Control Operations
 * Error Handling
 * Lazyiness
