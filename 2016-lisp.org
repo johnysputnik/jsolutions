@@ -595,18 +595,52 @@ plot data u 1:2 w p lw 2 title 'data', \
 ;; => NIL
 #+END_SRC
 
-** NEXT Sequences
+** Sequences
    Sequences are ordered lists of elements and can be manipulated by a
    variety of standard sequence functions. A sequence is either a
    vector or a list. Vectors are one dimensional arrays and Lists are
    linked lists made up of cons cells and are discussed [[*Lists][here]].
-*** Arrays
+
+*** Arrays and Vectors
     - simple array
-    - bit array
-*** Vectors
-    - simple vector
+
+      Arrays are simple multi dimensional lists of fixed size with
+      elements that are arranged sequentially, rather than as a linked
+      list in the case of lisp lists:
+
+#+BEGIN_SRC lisp +n -r
+  ;; creates a 3 dimensional array with 10 elements in each dimensional
+  (defparameter *array* (make-array '(10 10 10)))
+  ;; creates an array with all elements initialised to 23
+  (defparameter *23-array* (make-array '(10 10) :initial-element 23))
+  ;; initialise with content
+  (defparameter *fib* (make-array '(5) :initial-contents '(1 2 3 5 8)))
+  ;; set a value of an array element
+  (setf (aref *23-array* 5 5) 7)
+  ;; an array with room for 2 elements, resizeable but empty
+  (defparameter *resizeable* (make-array '(2) :fill-pointer 0 :adjustable t))
+  (vector-push 'a *resizeable*)
+  (vector-push 'b *resizeable*)
+  (vector-push-extend 'c *resizeable*)
+  *resizeable*
+  ;; => #(A B C)
+  (vector-pop *resizeable*)
+  *resizeable*
+  ;; => #(A B)
+  (adjust-array *resizeable* '(2))
+#+END_SRC
+
     - bit vector
-*** Strings
+
+      Bit vector are efficient containers for bits that can be
+      manipulated with bitwise operations:
+
+#+BEGIN_SRC lisp +n -r
+  (bit-and #*1101000101000101 #*0100100010100101)
+  ;; = > #*0100000000000101
+#+END_SRC
+
+*** TODO Strings
     A string is a specialized vector with elements of type
     character. All the sequence functions [[*Manipulating%20Sequences][below]] can be applied to
     strings.
