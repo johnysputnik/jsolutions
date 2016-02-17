@@ -1,0 +1,159 @@
+#+TITLE: A simple Clojure javaFX application
+
+* Introduction
+
+  In a previous introduction to JavaFX we used Java to create a small
+  application, using an MVVM pattern. The original article can be
+  found [[file:~/dev/org/blog/Java/introjavafx.org][here]].
+
+  I thought it would be interesting to find out how to do it using
+  Clojure.
+
+* Leiningen Project File
+
+  The Leiningen project file defines the dependencies:
+
+#+BEGIN_SRC clojure +n -r
+  (defproject app "0.1.0-SNAPSHOT"
+    :description "FIXME: write description"
+    :url "http://example.com/FIXME"
+    :license {:name "Eclipse Public License"
+              :url "http://www.eclipse.org/legal/epl-v10.html"}
+    :dependencies [[org.clojure/clojure "1.7.0"]
+                   [com.oracle/javafx-runtime "2.2.0"]]
+    :aot :all
+    :main app.core)
+#+END_SRC 
+
+  The only dependency, other than clojure is the javafx runtime.
+
+* The FXML source
+
+  The application uses an FXML file to define the structure of the
+  UI. This should be placed in the resources folder:
+
+#+BEGIN_SRC xml +n -r
+  <?xml version="1.0" encoding="UTF-8"?>
+
+   <?import javafx.scene.control.TextField?>
+   <?import javafx.scene.layout.*?>
+   
+   <?import javafx.scene.control.Button?>
+   <?import javafx.scene.control.Label?>
+   <GridPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+             alignment="center" hgap="10" vgap="10" fx:controller="app.view.Main">
+      <children>
+         <TextField GridPane.rowIndex="0" fx:id="textField" />
+         <Label GridPane.rowIndex="1" fx:id="echoTextField"/>
+         <Button GridPane.rowIndex="2" fx:id="clearButton">Clear</Button>
+      </children>
+      <columnConstraints>
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+     </rowConstraints>
+   </GridPane>
+#+END_SRC
+
+* Some JavaFX macros
+
+  Some JavaFX macros are defined and placed in src/app:
+
+#+BEGIN_SRC clojure +n -r
+  ;; Some java fx macros
+  ;;
+  (ns app.jfx
+    (:import (javafx.beans.value ChangeListener)
+             (javafx.event ActionEvent EventHandler)
+             (javafx.scene Scene)
+             (javafx.fxml FXMLLoader)))
+
+  (defmacro fx-load-fxml [path]
+    `(let [loc# (clojure.java.io/resource ~path)]
+       (FXMLLoader/load loc#)))
+
+  (defmacro fx-add-text-listener [text-property action]
+    `(.addListener ~text-property
+                   (reify ChangeListener
+                     (changed [this obsval oldval newval]
+                       ~action))))
+
+  (defmacro fx-window [stage view title]
+    `(let [root# (.loadFxml ~view)]
+       (.setScene ~stage (Scene. root#))
+       (.setTitle ~stage ~title)
+       (.show ~stage)))
+
+  (defmacro fx-action [node action]
+    `(.setOnAction ~node
+                   (proxy [EventHandler] []
+                     (handle [^ActionEvent event#]
+                       ~action))))
+#+END_SRC
+
+* The controller class
+
+  The controller class is the code behind the FXML UI:
+
+#+BEGIN_SRC clojure +n -r
+  (ns app.view
+    (:gen-class
+     :name app.view.Main
+     :prefix view-
+     :methods [[loadFxml [] javafx.scene.Parent]])
+    (:import (javafx.scene Parent))
+    (:use [app.jfx]))
+
+  (defn view-loadFxml [this]
+    "Load the FXML and create a view for display in a parent"
+    (let [root (fx-load-fxml "window.fxml")x
+          ;; get references to the ids in the FXML
+          clear-button (.lookup root "#clearButton")
+          echo-text (.lookup root "#echoTextField")
+          edit-text (.lookup root "#textField")]
+
+      ;; add an action to the clear button
+
+      (fx-action clear-button
+                 (do
+                   (.setText echo-text "")
+                   (.setText edit-text "")))
+
+      ;; add a listener to the text property on the edit control
+
+      (fx-add-text-listener (.textProperty edit-text)
+                            (.setText echo-text
+                                      (.getText edit-text)))
+
+      ;; return the root
+
+      root))
+#+END_SRC
+
+* The main application class
+
+  The main class initialises the application and executes it:
+
+#+BEGIN_SRC clojure +n -r
+  ;; The javafx application with a main function and an
+  ;; overridden start method
+  ;;
+  (ns app.core
+    (:gen-class :extends javafx.application.Application)
+    (:import (javafx.application Application)
+             (javafx.scene Scene))
+    (:use [app.jfx]
+          [app.view]))
+
+  (defn -main [& args]
+    (Application/launch app.core args))
+
+  (defn -start [this stage]
+    (fx-window stage (app.view.Main.) "JavaFXML with Clojure"))
+#+END_SRC
+
+* Source code
+
+  The sourcecode is available on [[https://github.com/johnysputnik/clojure-javafx][GitHub]].

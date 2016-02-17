@@ -19,6 +19,8 @@
      + [[file:C++/iocvariadic.org][An IOC Container using Variadic Templates]]
      + [[file:C++/qtbuildnotes.org][Building Qt with VS2013]]
      + [[file:C++/qtxmlsyntax.org][Qt XML Syntax Highlighter]]
+   + Clojure
+     + [[file:Clojure/clojure-javafx.org][A simple Clojure javaFX application]]
    + CompSci
      + [[file:CompSci/flexsystems.org][Gerald Jay Sussman on Flexible Systems]]
      + [[file:CompSci/monadsgonads.org][Monads and Gonads Notes]]
