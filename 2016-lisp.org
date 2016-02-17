@@ -744,6 +744,9 @@ plot data u 1:2 w p lw 2 title 'data', \
 * Declare, declaim, proclaim
 * Control Operations
 * Error Handling
+  Conditions and restarts
+  http://www.gigamonkeys.com/book/beyond-exception-handling-conditions-and-restarts.html
+
 * Lazyiness
 * Streams
 * Macro Dispatching Characters
@@ -752,7 +755,10 @@ plot data u 1:2 w p lw 2 title 'data', \
 * Macros
 * Multimethods
 * CLOS
+  http://www.aiai.ed.ac.uk/~jeff/clos-guide.html
+
 * Packages
+  http://www.gigamonkeys.com/book/programming-in-the-large-packages-and-symbols.html
 * Standard Libraries
 * Important Libraries
 * Working with GNU Emacs and Slime

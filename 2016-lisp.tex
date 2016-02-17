@@ -1,4 +1,4 @@
-% Created 2016-02-08 Mon 20:43
+% Created 2016-02-10 Wed 20:32
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -130,7 +130,7 @@ symbol used to splice a list into the template, for example:
 \end{minted}
 
 This is used extensively when writing macros. For more information
-on macros see \hyperref[sec-13]{Macros}.
+on macros see \hyperref[sec-15]{Macros}.
 
 Colons are used in 2 situations. Firstly it can be used to indicate
 the package in which a symbol is defined:
@@ -140,7 +140,7 @@ the package in which a symbol is defined:
 ;; (network:reset)
 \end{minted}
 
-Packages are discussed in \hyperref[sec-16]{Packages}.
+Packages are discussed in \hyperref[sec-18]{Packages}.
 
 It can also be used to denote a keyword, which is a symbol that
 always evaluates to itself and is constant. For example:
@@ -293,7 +293,7 @@ plot data u 1:2 w p lw 2 title 'data', \
 \end{minted}
 \includegraphics[width=.9\linewidth]{example1-plot.png}
 
-\section{{\bfseries\sffamily NEXT} Core functions}
+\section{Core functions}
 \label{sec-4}
 \begin{itemize}
 \item cons
@@ -523,10 +523,96 @@ The null function determines if a symbol is nil:
 \end{minted}
 
 \begin{itemize}
-\item set setf setq
-\item defun var parameter macro etc
-\item equality checks
-\item declare ?
+\item set, setf and setq
+
+set is the original lisp function. setf is a shorthand function
+meaning set field and setq a shorthand function meaning
+set quote. One can think of set as setting value of symbols and
+setf as setting the value of variables. setf is a macro allowing
+various setting of things.
+\end{itemize}
+
+\begin{minted}[linenos,firstnumber=165]{lisp}
+;; The following are all equivalent
+(set (quote *foo*) 42)
+(setf (symbol-value '*foo*) 42)
+(set '*foo* 42)
+(setq *foo* 42)
+;; assigning to data structure
+(setf (car x) 42)
+;; some more examples
+(set ls '(1 2 3 4))   ;; ERROR ls has no value
+(set 'ls '(1 2 3 4))  ;; OK
+(setq ls '(1 2 3 4))  ;; OK
+(setf ls '(1 2 3 4))  ;; OK
+(setf (car ls) 10)    ;; ls -> '(10 2 3 4)
+\end{minted}
+
+\begin{itemize}
+\item defvar and defparameter
+
+defvar and defparameter are very similar, both bind a value to a
+name. the difference is that defvar only binds the value if it is
+not already bound. However, the value can still be changed with
+setq:
+\end{itemize}
+
+\begin{minted}[linenos,firstnumber=178]{lisp}
+(defvar *s* 2)
+;; => *S*
+*s*
+;; => 2
+(defvar *s* 3)
+*s*
+;; => 2
+(setq *s* 3)
+*s*
+;; => 3
+(defparameter *t* 2)
+*t*
+;; => 2
+(defparameter *t* 3)
+*t*
+;; =>3
+\end{minted}
+
+\begin{itemize}
+\item defconstant
+
+defconstant is similar to defparameter and defvar, except the
+value cannot be changed.
+
+\item defun
+
+defun defines a function that can be called from other parts of
+code. They are the primary abstraction mechanism in lisp and are
+described \hyperref[sec-7]{below}.
+
+\item defmacro
+
+defmacro is used to define macros that are evaluated during
+compilation, they are discussed \hyperref[sec-15]{below}.
+
+\item equality predicates
+
+There are several equality operators in lisp that perform
+different functions:
+
+(eq x y) is true if and only if x and y are identical objects.
+
+(eql x y) is true if (eq x y) or x and y are numbers of the same
+type and have the same value, or are character objects that
+represent the same character.
+
+(equal x y) is true if x and y are structurally similar
+(isomorphic). It is often the case that x and y will have the same
+printed representation.
+
+(equalp x y) is true if (equal x y) is true or for numbers they
+have the same value even if they are different types or for
+characters that are equal but different case. For collections,
+(equalp x y) is true if equalp is true for every element in the
+collection.
 \end{itemize}
 
 \section{Data Structures}
@@ -536,7 +622,7 @@ The null function determines if a symbol is nil:
 Atoms are things that are not cons cells, and can be tested using
 the atom predicate:
 
-\begin{minted}[linenos,firstnumber=165]{lisp}
+\begin{minted}[linenos,firstnumber=194]{lisp}
 (atom 1)
 ;; => T
 (atom :test)
@@ -549,7 +635,7 @@ the atom predicate:
 
 However, they are not things that cannot be broken down any further:
 
-\begin{minted}[linenos,firstnumber=173]{lisp}
+\begin{minted}[linenos,firstnumber=202]{lisp}
 (atom "text")
 ;; => T
 (atom #(1 2 3))
@@ -558,7 +644,7 @@ However, they are not things that cannot be broken down any further:
 
 Symbols are atoms as well:
 
-\begin{minted}[linenos,firstnumber=177]{lisp}
+\begin{minted}[linenos,firstnumber=206]{lisp}
 (defun test-atomicity (x) (atom x))
 (atom 'test-atomicity)
 ;; => T
@@ -566,14 +652,14 @@ Symbols are atoms as well:
 
 And lambda expressions:
 
-\begin{minted}[linenos,firstnumber=180]{lisp}
+\begin{minted}[linenos,firstnumber=209]{lisp}
 (atom (lambda (x) (atom x)))
 ;; => T
 \end{minted}
 
 Examples of some things that are not atoms:
 
-\begin{minted}[linenos,firstnumber=182]{lisp}
+\begin{minted}[linenos,firstnumber=211]{lisp}
 (atom '(1 . 3))
 ;; => NIL
 (atom '(1 2 3))
@@ -582,26 +668,59 @@ Examples of some things that are not atoms:
 ;; => NIL
 \end{minted}
 
-\subsection{{\bfseries\sffamily NEXT} Sequences}
+\subsection{Sequences}
 \label{sec-5-2}
 Sequences are ordered lists of elements and can be manipulated by a
 variety of standard sequence functions. A sequence is either a
 vector or a list. Vectors are one dimensional arrays and Lists are
-linked lists made up of cons cells and are discussed \hyperref[sec-5-2-4]{here}.
-\subsubsection{Arrays}
+linked lists made up of cons cells and are discussed \hyperref[sec-5-2-3]{here}.
+
+\subsubsection{Arrays and Vectors}
 \label{sec-5-2-1}
 \begin{itemize}
 \item simple array
-\item bit array
+
+Arrays are simple multi dimensional lists of fixed size with
+elements that are arranged sequentially, rather than as a linked
+list in the case of lisp lists:
 \end{itemize}
-\subsubsection{Vectors}
-\label{sec-5-2-2}
+
+\begin{minted}[linenos,firstnumber=217]{lisp}
+;; creates a 3 dimensional array with 10 elements in each dimensional
+(defparameter *array* (make-array '(10 10 10)))
+;; creates an array with all elements initialised to 23
+(defparameter *23-array* (make-array '(10 10) :initial-element 23))
+;; initialise with content
+(defparameter *fib* (make-array '(5) :initial-contents '(1 2 3 5 8)))
+;; set a value of an array element
+(setf (aref *23-array* 5 5) 7)
+;; an array with room for 2 elements, resizeable but empty
+(defparameter *resizeable* (make-array '(2) :fill-pointer 0 :adjustable t))
+(vector-push 'a *resizeable*)
+(vector-push 'b *resizeable*)
+(vector-push-extend 'c *resizeable*)
+*resizeable*
+;; => #(A B C)
+(vector-pop *resizeable*)
+*resizeable*
+;; => #(A B)
+(adjust-array *resizeable* '(2))
+\end{minted}
+
 \begin{itemize}
-\item simple vector
 \item bit vector
+
+Bit vector are efficient containers for bits that can be
+manipulated with bitwise operations:
 \end{itemize}
-\subsubsection{Strings}
-\label{sec-5-2-3}
+
+\begin{minted}[linenos,firstnumber=236]{lisp}
+(bit-and #*1101000101000101 #*0100100010100101)
+;; = > #*0100000000000101
+\end{minted}
+
+\subsubsection{{\bfseries\sffamily TODO} Strings}
+\label{sec-5-2-2}
 A string is a specialized vector with elements of type
 character. All the sequence functions \texttt{below} can be applied to
 strings.
@@ -648,7 +767,7 @@ strings.
 \end{itemize}
 \end{itemize}
 \subsubsection{Lists}
-\label{sec-5-2-4}
+\label{sec-5-2-3}
 \begin{itemize}
 \item Cons Cells
 \item Proper List
@@ -656,7 +775,7 @@ strings.
 \item Circular List
 \end{itemize}
 \subsubsection{Manipulating Sequences}
-\label{sec-5-2-5}
+\label{sec-5-2-4}
 \begin{itemize}
 \item concatenate
 \item copy-seq
@@ -725,31 +844,37 @@ strings.
 currying / partial
 no side effects
 let / flet 
-\section{Control Operations}
+\section{Example 2}
 \label{sec-8}
-\section{Error Handling}
+\subsection{{\bfseries\sffamily TODO} Decide on an example that uses the above.}
+\label{sec-8-1}
+\section{Declare, declaim, proclaim}
 \label{sec-9}
-\section{Lazyiness}
+\section{Control Operations}
 \label{sec-10}
-\section{Streams}
+\section{Error Handling}
 \label{sec-11}
-\section{Macro Dispatching Characters}
+\section{Lazyiness}
 \label{sec-12}
+\section{Streams}
+\label{sec-13}
+\section{Macro Dispatching Characters}
+\label{sec-14}
 set-macro-character
 symbol macros
 \section{Macros}
-\label{sec-13}
-\section{Multimethods}
-\label{sec-14}
-\section{CLOS}
 \label{sec-15}
-\section{Packages}
+\section{Multimethods}
 \label{sec-16}
-\section{Standard Libraries}
+\section{CLOS}
 \label{sec-17}
-\section{Important Libraries}
+\section{Packages}
 \label{sec-18}
-\section{Working with GNU Emacs and Slime}
+\section{Standard Libraries}
 \label{sec-19}
+\section{Important Libraries}
+\label{sec-20}
+\section{Working with GNU Emacs and Slime}
+\label{sec-21}
 % Emacs 24.5.1 (Org mode 8.2.10)
 \end{document}
