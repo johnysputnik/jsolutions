@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>My first venture into the world of jQuery</title>
+<!-- 2016-02-18 Thu 20:50 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="John Cumming" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet"
+                         href="/css/solarized-dark.css"
+                         type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id="my-header"><h2>jSolutions | <a href="/index.html">home</a></h2></div>
+</div>
+<div id="content">
+<h1 class="title">My first venture into the world of jQuery</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Introduction</a></li>
+<li><a href="#sec-2">Mouseover styles</a></li>
+<li><a href="#sec-3">Dynamic Content</a></li>
+<li><a href="#sec-4">RSS Feed</a></li>
+<li><a href="#sec-5">Summary</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Apologies to the javascript experts reading this, but my first foray
+into javascript has occured over the last couple of days. Here at
+cmgroup, we are re-writing the HTML output for our SCORM package
+publisher so I need to get up to speed, and fast, as I have very
+little Javascript experience. I'm not starting this completely blind
+as I can at least read javascript, having a background in C like
+languages, including Java.
+</p>
+
+<p>
+One of the libraries we use extensively is jQuery. For those that
+haven't read the home page: jQuery is a fast and concise JavaScript
+Library that simplifies HTML document traversing, event handling,
+animating, and Ajax interactions for rapid web development. I
+decided that give we use jQuery, that would be a good place to start
+with my dabbling.
+</p>
+
+<p>
+The two things I have looked at are some mouse over event handling,
+dynamically changing the Styles of the images using jQuery, and
+using jQuery to change the content of various text elements. I also
+used a jQuery plugin library called jGfeed, which retrieves RSS
+data. So I set about writing a home page for me. Firstly let me say
+that this homepage is not exactly production ready or fully styled
+and interactive, but rather a basis for my initial investigations. I
+am sure there are many quicker and cleaner ways of doing some of the
+stuff I have done, but this will do me for now. The homepage can be
+found here. If you look at the source, you will see the whole 'site'
+is just contained in one page, with interaction and content
+controlled by javascript. So what are the key points?
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Mouseover styles</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+My images have been defined as div elements in order to work with
+stylesheets:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html"><span class="linenr">1: </span>&lt;<span style="color: #268bd2;">div</span> <span style="color: #268bd2;">id</span>=<span style="color: #2aa198;">"img1"</span> <span style="color: #268bd2;">class</span>=<span style="color: #2aa198;">"img1"</span>&gt;&lt;/<span style="color: #268bd2;">div</span>&gt;
+</pre>
+</div>
+
+<p>
+I then have three styles defined as follows:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span class="linenr"> 2: </span><span style="color: #268bd2;">img1 </span>{
+<span class="linenr"> 3: </span>  <span style="color: #268bd2;">background-image</span>: url(<span style="color: #2aa198;">"images/1.jpg"</span>);
+<span class="linenr"> 4: </span>  <span style="color: #268bd2;">width</span>: 64px;
+<span class="linenr"> 5: </span>  <span style="color: #268bd2;">height</span>: 64px;
+<span class="linenr"> 6: </span>  <span style="color: #268bd2;">float</span>: left;
+<span class="linenr"> 7: </span>}
+<span class="linenr"> 8: </span><span style="color: #268bd2;">.selected </span>{
+<span class="linenr"> 9: </span>  <span style="color: #268bd2;">background-image</span>: url(<span style="color: #2aa198;">"images/selected.jpg"</span>);
+<span class="linenr">10: </span>  <span style="color: #268bd2;">width</span>: 64px;
+<span class="linenr">11: </span>  <span style="color: #268bd2;">height</span>: 64px;
+<span class="linenr">12: </span>  <span style="color: #268bd2;">float</span>: left;
+<span class="linenr">13: </span>  <span style="color: #268bd2;">border</span>: 2px;
+<span class="linenr">14: </span>  <span style="color: #268bd2;">border-color</span>:white;
+<span class="linenr">15: </span>}
+<span class="linenr">16: </span><span style="color: #268bd2;">.over </span>{
+<span class="linenr">17: </span>  <span style="color: #268bd2;">background-image</span>: url(<span style="color: #2aa198;">"images/over.jpg"</span>);
+<span class="linenr">18: </span>  <span style="color: #268bd2;">width</span>: 64px;
+<span class="linenr">19: </span>  <span style="color: #268bd2;">height</span>: 64px;
+<span class="linenr">20: </span>  <span style="color: #268bd2;">float</span>: left;
+<span class="linenr">21: </span>}
+</pre>
+</div>
+
+<p>
+On page load, the javscript runs the following method, which is a
+standard jQuery means of hooking up various even handlers:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-javascript"><span class="linenr">22: </span>$(document).ready(<span style="color: #859900;">function</span>(){
+<span class="linenr">23: </span>  ...
+<span class="linenr">24: </span>});
+</pre>
+</div>
+
+<p>
+within this we then handle the click, mouse over and mouse out
+events for the div defined above:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-javascript"><span class="linenr">25: </span>$(<span style="color: #2aa198;">"div.img1"</span>).click(<span style="color: #859900;">function</span> (){
+<span class="linenr">26: </span>    $(<span style="color: #2aa198;">this</span>).removeClass();
+<span class="linenr">27: </span>    $(<span style="color: #2aa198;">this</span>).addClass(<span style="color: #2aa198;">"selected"</span>);
+<span class="linenr">28: </span>        ... });
+<span class="linenr">29: </span>$(<span style="color: #2aa198;">"div.img1"</span>).mouseover(<span style="color: #859900;">function</span> (){
+<span class="linenr">30: </span>    $(<span style="color: #2aa198;">this</span>).removeClass();
+<span class="linenr">31: </span>    $(<span style="color: #2aa198;">this</span>).addClass(<span style="color: #2aa198;">"over"</span>);
+<span class="linenr">32: </span>        ... });
+<span class="linenr">33: </span>$(<span style="color: #2aa198;">"div.img1"</span>).mouseout(<span style="color: #859900;">function</span> () {
+<span class="linenr">34: </span>    $(<span style="color: #2aa198;">this</span>).removeClass();
+<span class="linenr">35: </span>    $(<span style="color: #2aa198;">this</span>).addClass(<span style="color: #2aa198;">"img1"</span>);
+<span class="linenr">36: </span>        ... });<span style="color: #2aa198;">'</span>
+</pre>
+</div>
+
+<p>
+This code is quite obvious as all it does is remove any existing
+classes defined on the div element and assign a new one.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Dynamic Content</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Dynamic content is just as simple. We have two areas of dynamic
+content defined in the html markup:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html"><span class="linenr">37: </span>&lt;<span style="color: #268bd2;">p</span> <span style="color: #268bd2;">id</span>=<span style="color: #2aa198;">"summary"</span>&gt;<span style="color: #268bd2;">&amp;nbsp;</span>&lt;/<span style="color: #268bd2;">p</span>&gt;
+<span class="linenr">38: </span>&lt;<span style="color: #268bd2;">div</span> <span style="color: #268bd2;">id</span>=<span style="color: #2aa198;">"content"</span>&gt;&lt;/<span style="color: #268bd2;">div</span>&gt;
+</pre>
+</div>
+
+<p>
+We shall come to the second one later, but for now we want to assign
+the summary content on mouse over, which we can do as follows:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-javascript"><span class="linenr">39: </span>$(<span style="color: #2aa198;">"div.img1"</span>).mouseover(<span style="color: #859900;">function</span> (){   
+<span class="linenr">40: </span>    $(<span style="color: #2aa198;">this</span>).removeClass();
+<span class="linenr">41: </span>    $(<span style="color: #2aa198;">this</span>).addClass(<span style="color: #2aa198;">"over"</span>); 
+<span class="linenr">42: </span>    $(summary).text(<span style="color: #2aa198;">"Sputnik Coding Blog on Wordpress.com"</span>);
+<span class="linenr">43: </span>});
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">RSS Feed</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+So far we have just added static text to an area of the page. It
+would be far more useful to demonstrate adding some data collated
+from another site to demonstrate dynamic content. For this I have
+used the RSS feed from this blog. Using the jGFeed plugin, we can
+retrieve this simply (using the jQuery support for AJAX) and
+display the content in the div element with id of content on
+clicking the image:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-javascript"><span class="linenr">44: </span>$(<span style="color: #2aa198;">"div.img1"</span>).click(<span style="color: #859900;">function</span> (){
+<span class="linenr">45: </span>    $(<span style="color: #2aa198;">this</span>).removeClass();
+<span class="linenr">46: </span>    $(<span style="color: #2aa198;">this</span>).addClass(<span style="color: #2aa198;">"selected"</span>);
+<span class="linenr">47: </span>
+<span class="linenr">48: </span>    $(content).html(<span style="color: #2aa198;">"loading ..."</span>);
+<span class="linenr">49: </span>
+<span class="linenr">50: </span>    $.jGFeed(<span style="color: #2aa198;">'http://sputnikdev.wordpress.com/feed/'</span>,
+<span class="linenr">51: </span>             <span style="color: #859900;">function</span>(<span style="color: #268bd2;">feed</span>){
+<span class="linenr">52: </span>                 <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">Check for errors</span>
+<span class="linenr">53: </span>                 <span style="color: #859900;">if</span>(!feed){
+<span class="linenr">54: </span>                     <span style="color: #859900;">return</span> <span style="color: #2aa198;">false</span>;
+<span class="linenr">55: </span>                 }
+<span class="linenr">56: </span>
+<span class="linenr">57: </span>                 $(content).html(<span style="color: #2aa198;">""</span>);
+<span class="linenr">58: </span>
+<span class="linenr">59: </span>                 $(content).append(feed.title);
+<span class="linenr">60: </span>                 $(content).append(<span style="color: #2aa198;">"&lt;/br&gt;"</span>);
+<span class="linenr">61: </span>                 $(content).append(<span style="color: #2aa198;">"&lt;/br&gt;"</span>);
+<span class="linenr">62: </span>
+<span class="linenr">63: </span>                 <span style="color: #859900;">for</span>(<span style="color: #859900;">var</span> <span style="color: #268bd2;">i</span>=0; i&lt;feed.entries.length; i++){
+<span class="linenr">64: </span>                     <span style="color: #859900;">var</span> <span style="color: #268bd2;">entry</span> = feed.entries[i];
+<span class="linenr">65: </span>
+<span class="linenr">66: </span>                     $(content).append(<span style="color: #2aa198;">'&lt;a href="'</span> +
+<span class="linenr">67: </span>                                       entry.link +
+<span class="linenr">68: </span>                                       <span style="color: #2aa198;">'"&gt;'</span> +
+<span class="linenr">69: </span>                                       entry.title +
+<span class="linenr">70: </span>                                       <span style="color: #2aa198;">'&lt;/a&gt;&lt;/br&gt;'</span>);
+<span class="linenr">71: </span>                     $(content).append(<span style="color: #2aa198;">"&lt;/br&gt;"</span>);
+<span class="linenr">72: </span>                     <span style="color: #859900;">for</span>(<span style="color: #859900;">var</span> <span style="color: #268bd2;">j</span>=0; j&lt;entry.categories.length; j++){
+<span class="linenr">73: </span>                         $(content).append(entry.categories[j]);
+<span class="linenr">74: </span>                         $(content).append(<span style="color: #2aa198;">","</span>);
+<span class="linenr">75: </span>                     }
+<span class="linenr">76: </span>                     $(content).append(<span style="color: #2aa198;">"&lt;/br&gt;"</span>);
+<span class="linenr">77: </span>                     $(content).append(entry.contentSnippet);
+<span class="linenr">78: </span>                     $(content).append(<span style="color: #2aa198;">"&lt;/br&gt;"</span>);
+<span class="linenr">79: </span>                     $(content).append(<span style="color: #2aa198;">"&lt;/br&gt;"</span>);
+<span class="linenr">80: </span>                 }
+<span class="linenr">81: </span>             },
+<span class="linenr">82: </span>             10);
+<span class="linenr">83: </span>});
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Summary</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+This has been a very quick introduction to jQuery, part of the
+reason I put these Blog entries up is to go over stuff that I have
+studied and written in an attempt to consolidate the concepts and
+thoughts I have had in my mind, but I hope it is useful to someone
+else reading this.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: John Cumming</p>
+<p class="date">Created: 2016-02-18 Thu 20:50</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

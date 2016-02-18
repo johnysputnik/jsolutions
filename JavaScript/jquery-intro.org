@@ -1,0 +1,179 @@
+#+TITLE: My first venture into the world of jQuery
+
+* Introduction
+
+  Apologies to the javascript experts reading this, but my first foray
+  into javascript has occured over the last couple of days. Here at
+  cmgroup, we are re-writing the HTML output for our SCORM package
+  publisher so I need to get up to speed, and fast, as I have very
+  little Javascript experience. I'm not starting this completely blind
+  as I can at least read javascript, having a background in C like
+  languages, including Java.
+
+  One of the libraries we use extensively is jQuery. For those that
+  haven't read the home page: jQuery is a fast and concise JavaScript
+  Library that simplifies HTML document traversing, event handling,
+  animating, and Ajax interactions for rapid web development. I
+  decided that give we use jQuery, that would be a good place to start
+  with my dabbling.
+
+  The two things I have looked at are some mouse over event handling,
+  dynamically changing the Styles of the images using jQuery, and
+  using jQuery to change the content of various text elements. I also
+  used a jQuery plugin library called jGfeed, which retrieves RSS
+  data. So I set about writing a home page for me. Firstly let me say
+  that this homepage is not exactly production ready or fully styled
+  and interactive, but rather a basis for my initial investigations. I
+  am sure there are many quicker and cleaner ways of doing some of the
+  stuff I have done, but this will do me for now. The homepage can be
+  found here. If you look at the source, you will see the whole 'site'
+  is just contained in one page, with interaction and content
+  controlled by javascript. So what are the key points?
+
+* Mouseover styles
+
+  My images have been defined as div elements in order to work with
+  stylesheets:
+
+#+BEGIN_SRC html +n -r
+  <div id="img1" class="img1"></div>
+#+END_SRC
+
+  I then have three styles defined as follows:
+
+#+BEGIN_SRC css +n -r
+  img1 {
+    background-image: url("images/1.jpg");
+    width: 64px;
+    height: 64px;
+    float: left;
+  }
+  .selected {
+    background-image: url("images/selected.jpg");
+    width: 64px;
+    height: 64px;
+    float: left;
+    border: 2px;
+    border-color:white;
+  }
+  .over {
+    background-image: url("images/over.jpg");
+    width: 64px;
+    height: 64px;
+    float: left;
+  }
+#+END_SRC
+
+  On page load, the javscript runs the following method, which is a
+  standard jQuery means of hooking up various even handlers:
+
+#+BEGIN_SRC javascript +n -r
+  $(document).ready(function(){
+    ...
+  });
+#+END_SRC
+
+  within this we then handle the click, mouse over and mouse out
+  events for the div defined above:
+
+#+BEGIN_SRC javascript +n -r
+  $("div.img1").click(function (){
+      $(this).removeClass();
+      $(this).addClass("selected");
+          ... });
+  $("div.img1").mouseover(function (){
+      $(this).removeClass();
+      $(this).addClass("over");
+          ... });
+  $("div.img1").mouseout(function () {
+      $(this).removeClass();
+      $(this).addClass("img1");
+          ... });'
+#+END_SRC
+
+  This code is quite obvious as all it does is remove any existing
+  classes defined on the div element and assign a new one.
+
+* Dynamic Content
+
+  Dynamic content is just as simple. We have two areas of dynamic
+  content defined in the html markup:
+
+#+BEGIN_SRC html +n -r
+  <p id="summary">&nbsp;</p>
+  <div id="content"></div>
+#+END_SRC
+
+  We shall come to the second one later, but for now we want to assign
+  the summary content on mouse over, which we can do as follows:
+
+#+BEGIN_SRC javascript +n -r
+  $("div.img1").mouseover(function (){   
+      $(this).removeClass();
+      $(this).addClass("over"); 
+      $(summary).text("Sputnik Coding Blog on Wordpress.com");
+  });
+#+END_SRC
+
+* RSS Feed
+
+  So far we have just added static text to an area of the page. It
+  would be far more useful to demonstrate adding some data collated
+  from another site to demonstrate dynamic content. For this I have
+  used the RSS feed from this blog. Using the jGFeed plugin, we can
+  retrieve this simply (using the jQuery support for AJAX) and
+  display the content in the div element with id of content on
+  clicking the image:
+
+#+BEGIN_SRC javascript +n -r
+  $("div.img1").click(function (){
+      $(this).removeClass();
+      $(this).addClass("selected");
+
+      $(content).html("loading ...");
+
+      $.jGFeed('http://sputnikdev.wordpress.com/feed/',
+               function(feed){
+                   // Check for errors
+                   if(!feed){
+                       return false;
+                   }
+
+                   $(content).html("");
+
+                   $(content).append(feed.title);
+                   $(content).append("</br>");
+                   $(content).append("</br>");
+
+                   for(var i=0; i<feed.entries.length; i++){
+                       var entry = feed.entries[i];
+
+                       $(content).append('<a href="' +
+                                         entry.link +
+                                         '">' +
+                                         entry.title +
+                                         '</a></br>');
+                       $(content).append("</br>");
+                       for(var j=0; j<entry.categories.length; j++){
+                           $(content).append(entry.categories[j]);
+                           $(content).append(",");
+                       }
+                       $(content).append("</br>");
+                       $(content).append(entry.contentSnippet);
+                       $(content).append("</br>");
+                       $(content).append("</br>");
+                   }
+               },
+               10);
+  });
+#+END_SRC
+
+* Summary
+
+  This has been a very quick introduction to jQuery, part of the
+  reason I put these Blog entries up is to go over stuff that I have
+  studied and written in an attempt to consolidate the concepts and
+  thoughts I have had in my mind, but I hope it is useful to someone
+  else reading this.
+
+

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Interface types and Data Template</title>
+<!-- 2016-02-18 Thu 20:51 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="John Cumming" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet"
+                         href="/css/solarized-dark.css"
+                         type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id="my-header"><h2>jSolutions | <a href="/index.html">home</a></h2></div>
+</div>
+<div id="content">
+<h1 class="title">Interface types and Data Template</h1>
+<p>
+In a previous post I mentioned that there was an error in the
+declaration and wire up of the templates, which I inadvertantly left
+in the presentation. I am in the process of removing these from the
+presentation and will briefly explain what the problem was and what
+the solution could be. It is probably a reasonably common problem to
+encounter.
+</p>
+
+<p>
+I had declared my Content Control as follows:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-xml"><span class="linenr">1: </span>&lt;<span style="color: #268bd2;">ContentControl</span> <span style="color: #859900;">x</span>:<span style="color: #268bd2;">Name</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">SelectedDirectoryView</span><span style="color: #2aa198;">"</span>
+<span class="linenr">2: </span>                <span style="color: #268bd2;">Grid.Row</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">0</span><span style="color: #2aa198;">"</span> <span style="color: #268bd2;">Content</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">{Binding}</span><span style="color: #2aa198;">"</span>
+<span class="linenr">3: </span>                <span style="color: #268bd2;">ContentTemplate</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">{StaticResource SelectedDirectoryViewTemplate}</span><span style="color: #2aa198;">"</span>/&gt;
+</pre>
+</div>
+
+<p>
+And my Data Template as follows:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-xml"><span class="linenr"> 4: </span>&lt;<span style="color: #268bd2;">DataTemplate</span> <span style="color: #859900;">x</span>:<span style="color: #268bd2;">Key</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">SelectedDirectoryViewTemplate</span><span style="color: #2aa198;">"</span>
+<span class="linenr"> 5: </span>              <span style="color: #268bd2;">DataType</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">{x:Type vm:ISelectedDirectoryViewModel}</span><span style="color: #2aa198;">"</span> &gt;
+<span class="linenr"> 6: </span>  <span style="color: #586e75; font-style: italic;">&lt;!--</span><span style="color: #586e75; font-style: italic;"> File Picker </span><span style="color: #586e75; font-style: italic;">--&gt;</span>
+<span class="linenr"> 7: </span>  &lt;<span style="color: #268bd2;">Grid</span> <span style="color: #268bd2;">Grid.Row</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">0</span><span style="color: #2aa198;">"</span>  <span style="color: #268bd2;">HorizontalAlignment</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">Stretch</span><span style="color: #2aa198;">"</span> <span style="color: #268bd2;">Margin</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">0,0,0,5</span><span style="color: #2aa198;">"</span>&gt;
+<span class="linenr"> 8: </span>    &lt;<span style="color: #268bd2;">Grid.ColumnDefinitions</span>&gt;
+<span class="linenr"> 9: </span>      &lt;<span style="color: #268bd2;">ColumnDefinition</span> /&gt;
+<span class="linenr">10: </span>      &lt;<span style="color: #268bd2;">ColumnDefinition</span> <span style="color: #268bd2;">Width</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">Auto</span><span style="color: #2aa198;">"</span>/&gt;
+<span class="linenr">11: </span>    &lt;/<span style="color: #268bd2;">Grid.ColumnDefinitions</span>&gt;
+<span class="linenr">12: </span>    &lt;<span style="color: #268bd2;">TextBox</span> <span style="color: #268bd2;">Grid.Column</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">0</span><span style="color: #2aa198;">"</span> <span style="color: #268bd2;">IsReadOnly</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">True</span><span style="color: #2aa198;">"</span> <span style="color: #268bd2;">IsEnabled</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">False</span><span style="color: #2aa198;">"</span>
+<span class="linenr">13: </span>             <span style="color: #268bd2;">Text</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">{Binding DirectoryPath, Mode=OneWay}</span><span style="color: #2aa198;">"</span>/&gt;
+<span class="linenr">14: </span>    &lt;<span style="color: #268bd2;">Button</span> <span style="color: #268bd2;">Grid.Column</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">1</span><span style="color: #2aa198;">"</span> <span style="color: #268bd2;">Margin</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">5,0,0,0</span><span style="color: #2aa198;">"</span>
+<span class="linenr">15: </span>            <span style="color: #268bd2;">Command</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">{Binding OpenCommand}</span><span style="color: #2aa198;">"</span>&gt;
+<span class="linenr">16: </span>      Select Directory
+<span class="linenr">17: </span>    &lt;/<span style="color: #268bd2;">Button</span>&gt;
+<span class="linenr">18: </span>  &lt;/<span style="color: #268bd2;">Grid</span>&gt;
+<span class="linenr">19: </span>&lt;/<span style="color: #268bd2;">DataTemplate</span>&gt;
+</pre>
+</div>
+
+<p>
+While this works in my example, it should not be needed to explicitly
+declare ContentTemplate on the ContentControl. So what was the problem
+and what was the solution.
+</p>
+
+<p>
+Removing the ContentTemplate attribute on ContentControl caused
+nothing to be displayed and this was a result of 2 things:
+</p>
+
+<ol class="org-ol">
+<li>The DataTemplate has an explicit key causing it not be applied
+imlicitly to the ContentControl.
+</li>
+<li>The DataTemplate declares the DataType attribute as
+ISelectedDirectoryViewModel, which is an interface type. Interface
+types cannot be used as DataTypes for DataTemplates: 
+</li>
+</ol>
+
+<p>
+The solution was quite simple, obviously remove the key, but then make
+ISelectedDirectoryViewModel an abstract class rather than an
+interface, and I have a template that can be applied to any type that
+derives from ISelectedDirectoryViewModel, which was what I was
+intending in the code.
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: John Cumming</p>
+<p class="date">Created: 2016-02-18 Thu 20:51</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

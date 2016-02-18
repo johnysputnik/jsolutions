@@ -29,6 +29,8 @@
      + [[file:FSharp/progfsh.org][Programming F# by Chris Smith]]
    + Java
      + [[file:Java/introjavafx.org][Getting started with JavaFX]]
+   + JavaScript
+     + [[file:JavaScript/jquery-intro.org][My first venture into the world of jQuery]]
    + Mathematics
      + [[file:Mathematics/matrix.org][Basic Matrix Mathematics]]
      + [[file:Mathematics/e.org][Some notes on e]]
@@ -36,6 +38,9 @@
      + [[file:Testing/autovsunit.org][Automated UI Testing over Unit Testing]]
      + [[file:Testing/prototypes.org][Prototypes: Brief Thoughts]]
      + [[file:Testing/specflowselenium.org][Specflow and Selenium]]
+   + dotNet
+     + [[file:dotNet/interface-datatemplate.org][Interface types and Data Template]]
+     + [[file:dotNet/prism.org][Prism - Composite Applications in C#]]
    + [[file:about.org][About the Website]]
    + [[file:2016-lisp.org][Language for 2016 - Common Lisp]]
    + [[file:books.org][My Library]]
