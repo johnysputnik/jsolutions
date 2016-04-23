@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Language for 2016 - Common Lisp</title>
-<!-- 2016-02-17 Wed 20:29 -->
+<!-- 2016-04-23 Sat 13:36 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="John Cumming" />
@@ -200,12 +200,12 @@ for the JavaScript code in this tag.
 <li><a href="#sec-5-2">Sequences</a>
 <ul>
 <li><a href="#sec-5-2-1">Arrays and Vectors</a></li>
-<li><a href="#sec-5-2-2"><span class="todo TODO">TODO</span> Strings</a></li>
+<li><a href="#sec-5-2-2">Strings</a></li>
 <li><a href="#sec-5-2-3">Lists</a></li>
 <li><a href="#sec-5-2-4">Manipulating Sequences</a></li>
 </ul>
 </li>
-<li><a href="#sec-5-3">Hash Tables</a></li>
+<li><a href="#sec-5-3"><span class="todo TODO">TODO</span> Hash Tables</a></li>
 <li><a href="#sec-5-4">Trees</a></li>
 <li><a href="#sec-5-5">Association Lists</a></li>
 <li><a href="#sec-5-6">Property Lists</a></li>
@@ -234,6 +234,8 @@ for the JavaScript code in this tag.
 <li><a href="#sec-19">Standard Libraries</a></li>
 <li><a href="#sec-20">Important Libraries</a></li>
 <li><a href="#sec-21">Working with GNU Emacs and Slime</a></li>
+<li><a href="#sec-22">Something about read eval</a></li>
+<li><a href="#sec-23">Somethine about lisp development workflow</a></li>
 </ul>
 </div>
 </div>
@@ -1185,6 +1187,24 @@ Examples of some things that are not atoms:
 <span class="linenr">216: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; NIL</span>
 </pre>
 </div>
+
+<p>
+Conversion between types using coerce
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">217: </span>(coerce '(a b c) 'vector) =&gt;  #(A B C)
+<span class="linenr">218: </span>(coerce 'a 'character) =&gt;  #\A
+<span class="linenr">219: </span>(coerce 4.56 'complex) =&gt;  #C(4.56 0.0)
+<span class="linenr">220: </span>(coerce 4.5s0 'complex) =&gt;  #C(4.5s0 0.0s0)
+<span class="linenr">221: </span>(coerce 7/2 'complex) =&gt;  7/2
+<span class="linenr">222: </span>(coerce 0 'short-float) =&gt;  0.0s0
+<span class="linenr">223: </span>(coerce 3.5L0 'float) =&gt;  3.5L0
+<span class="linenr">224: </span>(coerce 7/2 'float) =&gt;  3.5
+<span class="linenr">225: </span>(coerce (cons 1 2) t) =&gt;  (1 . 2)
+</pre>
+</div>
 </div>
 </div>
 
@@ -1215,25 +1235,25 @@ list in the case of lisp lists:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">217: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">creates a 3 dimensional array with 10 elements in each dimensional</span>
-<span class="linenr">218: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">*array*</span> (make-array '(10 10 10)))
-<span class="linenr">219: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">creates an array with all elements initialised to 23</span>
-<span class="linenr">220: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">*23-array*</span> (make-array '(10 10) <span style="color: #859900;">:initial-element</span> 23))
-<span class="linenr">221: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">initialise with content</span>
-<span class="linenr">222: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">*fib*</span> (make-array '(5) <span style="color: #859900;">:initial-contents</span> '(1 2 3 5 8)))
-<span class="linenr">223: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">set a value of an array element</span>
-<span class="linenr">224: </span>(setf (aref *23-array* 5 5) 7)
-<span class="linenr">225: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">an array with room for 2 elements, resizeable but empty</span>
-<span class="linenr">226: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">*resizeable*</span> (make-array '(2) <span style="color: #859900;">:fill-pointer</span> 0 <span style="color: #859900;">:adjustable</span> t))
-<span class="linenr">227: </span>(vector-push 'a *resizeable*)
-<span class="linenr">228: </span>(vector-push 'b *resizeable*)
-<span class="linenr">229: </span>(vector-push-extend 'c *resizeable*)
-<span class="linenr">230: </span>*resizeable*
-<span class="linenr">231: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; #(A B C)</span>
-<span class="linenr">232: </span>(vector-pop *resizeable*)
-<span class="linenr">233: </span>*resizeable*
-<span class="linenr">234: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; #(A B)</span>
-<span class="linenr">235: </span>(adjust-array *resizeable* '(2))
+<pre class="src src-lisp"><span class="linenr">226: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">creates a 3 dimensional array with 10 elements in each dimensional</span>
+<span class="linenr">227: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">*array*</span> (make-array '(10 10 10)))
+<span class="linenr">228: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">creates an array with all elements initialised to 23</span>
+<span class="linenr">229: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">*23-array*</span> (make-array '(10 10) <span style="color: #859900;">:initial-element</span> 23))
+<span class="linenr">230: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">initialise with content</span>
+<span class="linenr">231: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">*fib*</span> (make-array '(5) <span style="color: #859900;">:initial-contents</span> '(1 2 3 5 8)))
+<span class="linenr">232: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">set a value of an array element</span>
+<span class="linenr">233: </span>(setf (aref *23-array* 5 5) 7)
+<span class="linenr">234: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">an array with room for 2 elements, resizeable but empty</span>
+<span class="linenr">235: </span>(<span style="color: #859900;">defparameter</span> <span style="color: #268bd2;">*resizeable*</span> (make-array '(2) <span style="color: #859900;">:fill-pointer</span> 0 <span style="color: #859900;">:adjustable</span> t))
+<span class="linenr">236: </span>(vector-push 'a *resizeable*)
+<span class="linenr">237: </span>(vector-push 'b *resizeable*)
+<span class="linenr">238: </span>(vector-push-extend 'c *resizeable*)
+<span class="linenr">239: </span>*resizeable*
+<span class="linenr">240: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; #(A B C)</span>
+<span class="linenr">241: </span>(vector-pop *resizeable*)
+<span class="linenr">242: </span>*resizeable*
+<span class="linenr">243: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; #(A B)</span>
+<span class="linenr">244: </span>(adjust-array *resizeable* '(2))
 </pre>
 </div>
 
@@ -1249,97 +1269,196 @@ manipulated with bitwise operations:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="linenr">236: </span>(bit-and #*1101000101000101 #*0100100010100101)
-<span class="linenr">237: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">= &gt; #*0100000000000101</span>
+<pre class="src src-lisp"><span class="linenr">245: </span>(bit-and #*1101000101000101 #*0100100010100101)
+<span class="linenr">246: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">= &gt; #*0100000000000101</span>
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-sec-5-2-2" class="outline-4">
-<h4 id="sec-5-2-2"><span class="todo TODO">TODO</span> Strings</h4>
+<h4 id="sec-5-2-2">Strings</h4>
 <div class="outline-text-4" id="text-5-2-2">
 <p>
 A string is a specialized vector with elements of type
 character. All the sequence functions <i>below</i> can be applied to
 strings.
 </p>
+
 <ul class="org-ul">
 <li>Manipulating the case of a string
-<ul class="org-ul">
-<li>string-upcase
-</li>
-<li>string-downcase
-</li>
-<li>string-capitalize
-</li>
-<li>nstring-upcase
-</li>
-<li>nstring-downcase
-</li>
-<li>nstring-capitalize
+
+<p>
+The case of strings can be manipulated, either as a whole string
+or based on a start and end index:
+</p>
 </li>
 </ul>
-</li>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">247: </span>(string-upcase <span style="color: #2aa198;">"test"</span>)
+<span class="linenr">248: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "TEST"</span>
+<span class="linenr">249: </span>(string-downcase <span style="color: #2aa198;">"TEST"</span>)
+<span class="linenr">250: </span>
+<span class="linenr">251: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "test"</span>
+<span class="linenr">252: </span>(string-capitalize <span style="color: #2aa198;">"sOmE stRIng"</span>)
+<span class="linenr">253: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "Some String"</span>
+<span class="linenr">254: </span>
+<span class="linenr">255: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">all the string functions take a start and end key paramater</span>
+<span class="linenr">256: </span>(string-upcase <span style="color: #2aa198;">"test"</span> <span style="color: #859900;">:start</span> 1 <span style="color: #859900;">:end</span> 3)
+<span class="linenr">257: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "tESt"</span>
+<span class="linenr">258: </span>
+<span class="linenr">259: </span>(setq data <span style="color: #2aa198;">"test"</span>)
+<span class="linenr">260: </span>
+<span class="linenr">261: </span>(nstring-upcase (da a <span style="color: #859900;">:start</span> 2 <span style="color: #859900;">:end</span> 4)
+<span class="linenr">262: </span>data
+<span class="linenr">263: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "teST"</span>
+</pre>
+</div>
+
+<ul class="org-ul">
 <li>Trimming strings
-<ul class="org-ul">
-<li>string-trim
-</li>
-<li>string-left-trim
-</li>
-<li>string-right-trim
+
+<p>
+Strings can be trimmed based on a list of characters, either
+supplied as another string, or as an explicit list of
+characters:
+</p>
 </li>
 </ul>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">264: </span>(string-trim <span style="color: #2aa198;">" "</span> <span style="color: #2aa198;">"   ddd "</span>)
+<span class="linenr">265: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "ddd"</span>
+<span class="linenr">266: </span>(string-trim <span style="color: #2aa198;">"."</span> <span style="color: #2aa198;">"...ddd "</span>)
+<span class="linenr">267: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "ddd "</span>
+<span class="linenr">268: </span>(string-left-trim <span style="color: #2aa198;">"."</span> <span style="color: #2aa198;">"...ddd..."</span>)
+<span class="linenr">269: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "ddd..."</span>
+<span class="linenr">270: </span>(string-right-trim <span style="color: #2aa198;">"."</span> <span style="color: #2aa198;">"..ddd..."</span>)
+<span class="linenr">271: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "...ddd"</span>
+<span class="linenr">272: </span>(string-left-trim <span style="color: #2aa198;">".ab"</span> <span style="color: #2aa198;">"ba...ddd..."</span>)
+<span class="linenr">273: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "ddd..."</span>
+<span class="linenr">274: </span>(string-right-trim '(#\Space #\e #\t) <span style="color: #2aa198;">" trim me "</span>)
+<span class="linenr">275: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">" trim m"</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Converting to and from symbols
+
+<p>
+symbols can be converted to strings and vice versa:
+</p>
 </li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">276: </span>(symbol-name 'test)
+<span class="linenr">277: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "TEST"</span>
+<span class="linenr">278: </span>(symbol-name 'Test)
+<span class="linenr">279: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "TEST"</span>
+<span class="linenr">280: </span>(symbol-name '|Test|)
+<span class="linenr">281: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "Test"</span>
+<span class="linenr">282: </span>
+<span class="linenr">283: </span>(intern <span style="color: #2aa198;">"TEST"</span>)
+<span class="linenr">284: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; TEST</span>
+<span class="linenr">285: </span>(intern <span style="color: #2aa198;">"test"</span>)
+<span class="linenr">286: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; |test|</span>
+<span class="linenr">287: </span>
+<span class="linenr">288: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">a use of this could be to execute a command based on a string</span>
+<span class="linenr">289: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">combined with a funcall:</span>
+<span class="linenr">290: </span>(funcall (intern <span style="color: #2aa198;">"CONS"</span>) 1 2)
+<span class="linenr">291: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; (1 . 2)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
 <li>Converting to and from strings
-<ul class="org-ul">
-<li>intern
-</li>
-<li>symbol-name
-</li>
-<li>string
-</li>
-<li>coerce
-</li>
-<li>parse-integer
-</li>
-<li>read-from-string
-</li>
-<li>write-to-string
 </li>
 </ul>
-</li>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">292: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">parsing integers from strins</span>
+<span class="linenr">293: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span class="linenr">294: </span>(parse-integer <span style="color: #2aa198;">"123"</span>) 
+<span class="linenr">295: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt;  123, 3</span>
+<span class="linenr">296: </span>(parse-integer <span style="color: #2aa198;">"123"</span> <span style="color: #859900;">:start</span> 1 <span style="color: #859900;">:radix</span> 5) 
+<span class="linenr">297: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt;  13, 3</span>
+<span class="linenr">298: </span>(parse-integer <span style="color: #2aa198;">"no-integer"</span> <span style="color: #859900;">:junk-allowed</span> t) 
+<span class="linenr">299: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt;  NIL, 0</span>
+<span class="linenr">300: </span>
+<span class="linenr">301: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">parse the printed representation of an object</span>
+<span class="linenr">302: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span class="linenr">303: </span>(read-from-string <span style="color: #2aa198;">" 1 3 5"</span> t nil <span style="color: #859900;">:start</span> 2) 
+<span class="linenr">304: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt;  3, 5</span>
+<span class="linenr">305: </span>(read-from-string <span style="color: #2aa198;">"(a b c)"</span>) 
+<span class="linenr">306: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt;  (A B C), 7</span>
+<span class="linenr">307: </span>
+<span class="linenr">308: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">combine with eval:</span>
+<span class="linenr">309: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span class="linenr">310: </span>(eval (read-from-string <span style="color: #2aa198;">"(+ 1 2)"</span>))
+<span class="linenr">311: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; 3</span>
+<span class="linenr">312: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">and combine with print</span>
+<span class="linenr">313: </span>(print (eval (read-from-string <span style="color: #2aa198;">"(+ 1 2)"</span>)))
+<span class="linenr">314: </span>
+<span class="linenr">315: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">creating a printed representation of an object</span>
+<span class="linenr">316: </span><span style="color: #586e75; font-style: italic;">;; </span>
+<span class="linenr">317: </span>(write-to-string '(+ 1 2))
+<span class="linenr">318: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "(+ 1 2)"</span>
+<span class="linenr">319: </span>(<span style="color: #859900;">defmacro</span> <span style="color: #268bd2;">my-inc</span> (x) `(+ 1 ,x))
+<span class="linenr">320: </span>(write-to-string (my-inc 2))
+<span class="linenr">321: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "3"</span>
+<span class="linenr">322: </span>(write-to-string '(my-inc 2))
+<span class="linenr">323: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "(MY-INC 2)"</span>
+<span class="linenr">324: </span>(write-to-string (macroexpand '(my-inc 2)))
+<span class="linenr">325: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; "(+ 1 2)"</span>
+</pre>
+</div>
+
+<ul class="org-ul">
 <li>Comparing strings
-<ul class="org-ul">
-<li>string=
-</li>
-<li>string/=
-</li>
-<li>string-equal
-</li>
-<li>string-not-equal
-</li>
-<li>string&lt;
-</li>
-<li>string&gt;
-</li>
-<li>string&lt;=
-</li>
-<li>string&gt;=
-</li>
-<li>string-lessp
-</li>
-<li>string-greaterp
-</li>
-<li>string-not-lessp
-</li>
-<li>string-not-greaterp
 </li>
 </ul>
-</li>
-</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span class="linenr">326: </span>(string= <span style="color: #2aa198;">"test"</span> <span style="color: #2aa198;">"test"</span>)
+<span class="linenr">327: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
+<span class="linenr">328: </span>(string= <span style="color: #2aa198;">"test"</span> <span style="color: #2aa198;">"Test"</span>)
+<span class="linenr">329: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; NIL</span>
+<span class="linenr">330: </span>(string-equal <span style="color: #2aa198;">"test"</span> <span style="color: #2aa198;">"Test"</span>)
+<span class="linenr">331: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
+<span class="linenr">332: </span>(string= <span style="color: #2aa198;">"John C"</span> <span style="color: #2aa198;">"John D"</span> <span style="color: #859900;">:start1</span> 0 <span style="color: #859900;">:end1</span> 4 <span style="color: #859900;">:start2</span> 0 <span style="color: #859900;">:end2</span> 4)
+<span class="linenr">333: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
+<span class="linenr">334: </span>(string/= <span style="color: #2aa198;">"test"</span> <span style="color: #2aa198;">"test"</span>)
+<span class="linenr">335: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; NIL</span>
+<span class="linenr">336: </span>(string/= <span style="color: #2aa198;">"test"</span> <span style="color: #2aa198;">"Test"</span>)
+<span class="linenr">337: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; T</span>
+<span class="linenr">338: </span>(string-not-equal <span style="color: #2aa198;">"test"</span> <span style="color: #2aa198;">"Test"</span>)
+<span class="linenr">339: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; NIL</span>
+<span class="linenr">340: </span>
+<span class="linenr">341: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">also lexical greater than less than equivalents:</span>
+<span class="linenr">342: </span><span style="color: #586e75; font-style: italic;">;;</span>
+<span class="linenr">343: </span>(string&lt; <span style="color: #2aa198;">"a"</span> <span style="color: #2aa198;">"ab"</span>)
+<span class="linenr">344: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; 1</span>
+<span class="linenr">345: </span>(string&lt; <span style="color: #2aa198;">"ab"</span> <span style="color: #2aa198;">"abc"</span>)
+<span class="linenr">346: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; 2</span>
+<span class="linenr">347: </span>(string-lessp <span style="color: #2aa198;">"ab"</span> <span style="color: #2aa198;">"aBc"</span>)
+<span class="linenr">348: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; 2</span>
+<span class="linenr">349: </span>(string&gt; <span style="color: #2aa198;">"ab"</span> <span style="color: #2aa198;">"ab"</span>)
+<span class="linenr">350: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; NIL</span>
+<span class="linenr">351: </span>(string&gt;= <span style="color: #2aa198;">"ab"</span> <span style="color: #2aa198;">"ab"</span>)
+<span class="linenr">352: </span><span style="color: #586e75; font-style: italic;">;; </span><span style="color: #586e75; font-style: italic;">=&gt; 2</span>
+</pre>
 </div>
 </div>
+</div>
+
+
 <div id="outline-container-sec-5-2-3" class="outline-4">
 <h4 id="sec-5-2-3">Lists</h4>
 <div class="outline-text-4" id="text-5-2-3">
@@ -1453,8 +1572,9 @@ strings.
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-5-3" class="outline-3">
-<h3 id="sec-5-3">Hash Tables</h3>
+<h3 id="sec-5-3"><span class="todo TODO">TODO</span> Hash Tables</h3>
 </div>
 <div id="outline-container-sec-5-4" class="outline-3">
 <h3 id="sec-5-4">Trees</h3>
@@ -1558,10 +1678,16 @@ symbol macros
 <div id="outline-container-sec-21" class="outline-2">
 <h2 id="sec-21">Working with GNU Emacs and Slime</h2>
 </div>
+<div id="outline-container-sec-22" class="outline-2">
+<h2 id="sec-22">Something about read eval</h2>
+</div>
+<div id="outline-container-sec-23" class="outline-2">
+<h2 id="sec-23">Somethine about lisp development workflow</h2>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: John Cumming</p>
-<p class="date">Created: 2016-02-17 Wed 20:29</p>
+<p class="date">Created: 2016-04-23 Sat 13:36</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

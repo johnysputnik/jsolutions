@@ -1,4 +1,4 @@
-% Created 2016-02-10 Wed 20:32
+% Created 2016-04-07 Thu 21:49
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -724,32 +724,94 @@ manipulated with bitwise operations:
 A string is a specialized vector with elements of type
 character. All the sequence functions \texttt{below} can be applied to
 strings.
+
 \begin{itemize}
 \item Manipulating the case of a string
-\begin{itemize}
-\item string-upcase
-\item string-downcase
-\item string-capitalize
-\item nstring-upcase
-\item nstring-downcase
-\item nstring-capitalize
+
+The case of strings can be manipulated, either as a whole string
+or based on a start and end index:
 \end{itemize}
+
+\begin{minted}[linenos,firstnumber=238]{lisp}
+(string-upcase "test")
+;; => "TEST"
+(string-downcase "TEST")
+;; => "test"
+(string-capitalize "sOmE stRIng")
+;; => "Some String"
+
+;; all the string functions take a start and end key paramater
+(string-upcase "test" :start 1 :end 3)
+;; => "tESt"
+
+(setq data "test")
+(nstring-upcase data :start 2 :end 4)
+data
+;; => "teST"
+\end{minted}
+
+\begin{itemize}
 \item Trimming strings
-\begin{itemize}
-\item string-trim
-\item string-left-trim
-\item string-right-trim
+
+Strings can be trimmed based on a list of characters, either
+supplied as another string, or as an explicit list of
+characters:
 \end{itemize}
-\item Converting to and from strings
+
+\begin{minted}[linenos,firstnumber=253]{lisp}
+(string-trim " " "   ddd ")
+;; => "ddd"
+(string-trim "." "...ddd ")
+;; => "ddd "
+(string-left-trim "." "...ddd...")
+;; => "ddd..."
+(string-right-trim "." "..ddd...")
+;; => "...ddd"
+(string-left-trim ".ab" "ba...ddd...")
+;; => "ddd..."
+(string-right-trim '(#\Space #\e #\t) " trim me ")
+;; " trim m"
+\end{minted}
+
 \begin{itemize}
-\item intern
-\item symbol-name
+\item Converting to and from symbols
+
+symbols can be converted to strings and vice versa:
+\end{itemize}
+
+\begin{minted}[linenos,firstnumber=265]{lisp}
+(symbol-name 'test)
+;; => "TEST"
+(symbol-name 'Test)
+;; => "TEST"
+(symbol-name '|Test|)
+;; => "Test"
+
+(intern "TEST")
+;; => TEST
+(intern "test")
+;; => |test|
+
+;; a use of this could be to execute a command based on a string
+;; combined with a funcall:
+(funcall (intern "CONS") 1 2)
+;; => (1 . 2)
+\end{minted}
+
+\begin{itemize}
+\item Converting to and from strings
+
+\begin{itemize}
 \item string
 \item coerce
 \item parse-integer
 \item read-from-string
 \item write-to-string
 \end{itemize}
+\end{itemize}
+
+
+\begin{itemize}
 \item Comparing strings
 \begin{itemize}
 \item string=
@@ -766,6 +828,8 @@ strings.
 \item string-not-greaterp
 \end{itemize}
 \end{itemize}
+
+
 \subsubsection{Lists}
 \label{sec-5-2-3}
 \begin{itemize}
@@ -823,7 +887,8 @@ strings.
 \item substitute-if
 \item substitute-if-not
 \end{itemize}
-\subsection{Hash Tables}
+
+\subsection{{\bfseries\sffamily TODO} Hash Tables}
 \label{sec-5-3}
 \subsection{Trees}
 \label{sec-5-4}
@@ -854,6 +919,9 @@ let / flet
 \label{sec-10}
 \section{Error Handling}
 \label{sec-11}
+Conditions and restarts
+\url{http://www.gigamonkeys.com/book/beyond-exception-handling-conditions-and-restarts.html}
+
 \section{Lazyiness}
 \label{sec-12}
 \section{Streams}
@@ -868,8 +936,11 @@ symbol macros
 \label{sec-16}
 \section{CLOS}
 \label{sec-17}
+\url{http://www.aiai.ed.ac.uk/~jeff/clos-guide.html}
+
 \section{Packages}
 \label{sec-18}
+\url{http://www.gigamonkeys.com/book/programming-in-the-large-packages-and-symbols.html}
 \section{Standard Libraries}
 \label{sec-19}
 \section{Important Libraries}
