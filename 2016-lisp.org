@@ -800,13 +800,56 @@ plot data u 1:2 w p lw 2 title 'data', \
   ;; => 2
 #+END_SRC
 
-
 *** Lists
-    - Cons Cells
-    - Proper List
-    - Dotted List
-    - Circular List
-*** Manipulating Sequences
+
+    Cons cells are the basic data structure in lisp and provide a
+    building block for lots of different structures. A basic cons cell
+    can be constructed using cons:
+
+#+BEGIN_SRC lisp +n -r
+  (cons 1 2)
+  ;; => (1 . 2)
+#+END_SRC
+
+    This creates a dotted pair:
+
+    [[file:cons-cell.png][Cons Cell]]
+
+    When combined these cons cells can be used to create lists:
+
+#+BEGIN_SRC lisp +n -r
+  ;; A dotted list
+  (cons 1 (cons 2 (cons 3 4)))
+  ;; => (1 2 3 . 4)
+  ;; A proper list
+  (cons 1 (cons 2 (cons 3 (cons 4 nil))))
+  ;; => (1 2 3 4)
+#+END_SRC
+
+    Although using list is a simpler way of achieving the creation of
+    lists:
+
+#+BEGIN_SRC lisp +n -r
+  (list 1 2 3 4)
+  ;; => (1 2 3 4)
+#+END_SRC
+
+    The elements of these lists can then be accessed with car and cdr
+    and various other functions of similar name:
+
+#+BEGIN_SRC lisp +n -r
+  (car '(1 2 3 4))
+  ;; => 1
+  (cdr '(1 2 3 4))
+  ;; (2 3 4)
+  (cadr '(1 2 3 4))
+  ;; => 2
+  (cddr '(1 2 3 4))
+  ;; => (3 4)
+#+END_SRC
+    
+
+*** NEXT Manipulating Sequences
     - concatenate
     - copy-seq
     - count
@@ -834,6 +877,7 @@ plot data u 1:2 w p lw 2 title 'data', \
     - nsubstitute
     - nsubstitute-if
     - nsubstitute-if-not
+    - pop
     - position
     - position-if
     - position-if-not
@@ -854,39 +898,41 @@ plot data u 1:2 w p lw 2 title 'data', \
     - substitute-if-not
 
 ** TODO Hash Tables
-** Trees
-** Association Lists
-** Property Lists
-** Records
-** Structures
-** Classes
-* Creating Variables
-* Functions
+** TODO Trees
+** TODO Association Lists
+** TODO Property Lists
+** TODO Records
+** TODO Structures
+** TODO Classes
+* TODO Creating Variables
+* TODO Functions
   currying / partial
   no side effects
   let / flet 
-* Example 2
+* TODO Example 2
 ** TODO Decide on an example that uses the above.
-* Declare, declaim, proclaim
-* Control Operations
-* Error Handling
+* TODO Declare, declaim, proclaim
+* TODO Control Operations
+* TODO Error Handling
   Conditions and restarts
   http://www.gigamonkeys.com/book/beyond-exception-handling-conditions-and-restarts.html
 
-* Lazyiness
-* Streams
-* Macro Dispatching Characters
+* TODO Lazyiness
+* TODO Streams
+* TODO Macro Dispatching Characters
   set-macro-character
   symbol macros
-* Macros
-* Multimethods
-* CLOS
+* TODO Macros
+* TODO Multimethods
+* TODO CLOS
   http://www.aiai.ed.ac.uk/~jeff/clos-guide.html
 
-* Packages
+* TODO Packages
   http://www.gigamonkeys.com/book/programming-in-the-large-packages-and-symbols.html
-* Standard Libraries
-* Important Libraries
-* Working with GNU Emacs and Slime
-* Something about read eval
-* Somethine about lisp development workflow
+* TODO Standard Libraries
+* TODO Important Libraries
+* TODO Example 3
+  Some kind of web service?
+* TODO Working with GNU Emacs and Slime
+* TODO Something about read eval
+* TODO Something about lisp development workflow
