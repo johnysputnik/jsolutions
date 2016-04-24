@@ -813,7 +813,7 @@ plot data u 1:2 w p lw 2 title 'data', \
 
     This creates a dotted pair:
 
-    [[file:cons-cell.png][Cons Cell]]
+    [[file:cons-cell.png]]
 
     When combined these cons cells can be used to create lists:
 
