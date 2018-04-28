@@ -1,47 +1,16 @@
 #+TITLE: Home
 
-   + AI
-     + [[file:AI/logicalreg.org][Basic Logical Regression]]
-     + [[file:AI/linearreg.org][Linear Regression]]
-   + Agile
-     + [[file:Agile/pargamticscrum.org][A Pragmatic Application of Scrum]]
-     + [[file:Agile/sprintbottleneck.org][A Sprint Bottleneck – Developer Driven Sprints]]
-     + [[file:Agile/bugsnonbugs.org][Bugs, Non-Bugs and Scrum]]
-     + [[file:Agile/breakingtimebased.org][Estimating in Scrum : Breaking away from time based estimates.]]
-     + [[file:Agile/agilesham.org][Is Agile a Sham]]
-     + [[file:Agile/dailychecklist.org][My quick daily scrummaster checklist]]
-     + [[file:Agile/sprintlength.org][Perhaps we need to change the length of the sprint?]]
-     + [[file:Agile/scrumestimatingexp.org][Scrum Estimating Experiences]]
-     + [[file:Agile/techdebtrefactor.org][Technical Debt and Refactoring]]
-     + [[file:Agile/demopc.org][The benefits of a demo PC]]
-   + C++
-     + [[file:C++/objectfactory.org][A C++ Object Factory]]
-     + [[file:C++/iocvariadic.org][An IOC Container using Variadic Templates]]
-     + [[file:C++/qtbuildnotes.org][Building Qt with VS2013]]
-     + [[file:C++/qtxmlsyntax.org][Qt XML Syntax Highlighter]]
-   + Clojure
-     + [[file:Clojure/clojure-javafx.org][A simple Clojure javaFX application]]
-   + CompSci
-     + [[file:CompSci/flexsystems.org][Gerald Jay Sussman on Flexible Systems]]
-     + [[file:CompSci/monadsgonads.org][Monads and Gonads Notes]]
-   + FSharp
-     + [[file:FSharp/introtofsharp.org][An Introduction to Microsoft F#]]
-     + [[file:FSharp/progfsh.org][Programming F# by Chris Smith]]
-   + Java
-     + [[file:Java/introjavafx.org][Getting started with JavaFX]]
-   + JavaScript
-     + [[file:JavaScript/jquery-intro.org][My first venture into the world of jQuery]]
-   + Mathematics
-     + [[file:Mathematics/matrix.org][Basic Matrix Mathematics]]
-     + [[file:Mathematics/e.org][Some notes on e]]
-   + Testing
-     + [[file:Testing/autovsunit.org][Automated UI Testing over Unit Testing]]
-     + [[file:Testing/prototypes.org][Prototypes: Brief Thoughts]]
-     + [[file:Testing/specflowselenium.org][Specflow and Selenium]]
-   + dotNet
-     + [[file:dotNet/interface-datatemplate.org][Interface types and Data Template]]
-     + [[file:dotNet/prism.org][Prism - Composite Applications in C#]]
-   + [[file:about.org][About the Website]]
-   + [[file:2016-lisp.org][Language for 2016 - Common Lisp]]
-   + [[file:books.org][My Library]]
-   + [[file:notes.org][My Todo List]]
+   + 2011
+     + [[file:2011/bugsnonbugs.org][Bugs, Non-Bugs and Scrum]]
+     + [[file:2011/dailychecklist.org][My quick daily scrummaster checklist]]
+     + [[file:2011/sprintlength.org][Perhaps we need to change the length of the sprint?]]
+     + [[file:2011/scrumestimatingexp.org][Scrum Estimating Experiences]]
+     + [[file:2011/techdebtrefactor.org][Technical Debt and Refactoring]]
+     + [[file:2011/demopc.org][The benefits of a demo PC]]
+   + 2012
+     + [[file:2012/pargamticscrum.org][A Pragmatic Application of Scrum]]
+     + [[file:2012/sprintbottleneck.org][A Sprint Bottleneck – Developer Driven Sprints]]
+     + [[file:2012/breakingtimebased.org][Estimating in Scrum : Breaking away from time based estimates.]]
+     + [[file:2012/agilesham.org][Is Agile a Sham]]
+   + [[file:about.org][About Me]]
+   + [[file:books.org][My Reading List]]

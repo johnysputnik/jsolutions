@@ -1,25 +1,21 @@
-#+TITLE: About the Website
-
-* About this website
-
-  My goal as a developer has always been to keep learning. I spend a
-  lot of time tinkering with new languages and frameworks and not
-  enough time sharing my experiences and knowledge. I wanted an easy
-  way to integrate my sharing and learning with my work as a freelance
-  developer. My time as a freelance developer appears to be coming to
-  an end, but that is not going to stop me from continuing to learn
-  and share.
-
-  Being a big fan of emacs, in particular the marvelous org-mode
-  package, I wanted to use this as a basis for a solution that would
-  enable rapid sharing of my thoughts, ideas and experience.
-
-  This page is dedicated to my thought process and the solution I am
-  evolving to meet this need.
-
-* About me
+#+TITLE: About Me
   
   My name is John Cumming, I live in Gloucester with my wife and son
-  and have been working as a software engineer since 1997. I enjoy
-  cycling, mountaineering, music, art and support the greatest rugby
+  and have been working in software engineering since 1997. 
+
+  My passion is getting teams working well, delivering measurable solutions to
+  validated problems. I strive to encourage all individuals to act as change
+  agents within their organisation. I love to see people successful.
+  
+  My background is software engineering having been involved with a variety of
+  products, platforms and technologies as researcher, engineer, architect,
+  consultant and team lead. 
+
+  I have been responsible for creating, contributing and advising on many high
+  quality, pragmatic solutions to a wide variety of software related challenges.
+
+  I love embracing the unknown and work best in startup type environments. I am
+  always looking to push myself and learn through new challenges.
+
+  I enjoy cycling, mountaineering, music, art and support the greatest rugby
   team in the world, Gloucester Rugby.

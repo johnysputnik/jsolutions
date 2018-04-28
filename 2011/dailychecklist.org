@@ -1,0 +1,36 @@
+#+TITLE: My quick daily scrummaster checklist
+
+* Introduction
+
+It's been a while since I posted on my blog and I hope it is not
+feeling neglected due to my lack of attention. I have been spending a
+lot of time recently planning for my wedding and of course working
+hard on project work. As I prepare to have a few weeks away from work
+I thought I would put together a checklist that I try to go through
+mentally before each Daily Scrum.
+
+I am sure there are many more things that could be added to the list
+for your own application of scrum, but for ours, which works as it
+does, with few team members (3), remote working, non-dedicated
+resources and the many distractions we have, this is my quick
+checklist.
+
+* Checklist
+
+  1. Is the backlog estimated as much as it needs to, are there any
+     outstanding new items that impact the delivery of the current
+     release that have no estimates.
+  2. Check the burndown /  burnup charts to get a quick snapshot of
+     progress. I keep mentioning the report to everyone, but I don’t
+     know if anyone other than me ever bothers to view it??!!
+  3. Chase up the PO on items for Signing off.
+  4. Check that upcoming items that haven’t been started have User
+     Acceptance Criteria ready for the team
+  5. Ensure that the items that are being worked on are In Progress
+     and assigned to the correct person
+  6. Check that items that are not being worked on are either
+     New/Approved and have no person assigned to them…. Although there
+     are probably some exceptions to this?
+
+As I said, its a simple checklist that suits our team. What would be
+your checklist?
