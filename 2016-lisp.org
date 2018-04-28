@@ -848,31 +848,63 @@ plot data u 1:2 w p lw 2 title 'data', \
   ;; => (3 4)
 #+END_SRC
     
-
 *** NEXT Manipulating Sequences
-    - concatenate
-    - copy-seq
-    - count
-    - count-if
-    - count-if-not
-    - delete
-    - delete-duplicates
-    - delete-if
-    - delete-if-not
-    - elt
-    - every
-    - fill
+
+    As lisp is a processor of lists, there are a lot of functions for
+    manipulating sequences, here are some of them:
+
+#+BEGIN_SRC lisp +n -r
+
+(length "abc")
+;; => 3
+
+(fill '(1 2 3 4) 4)
+;; (4 4 4 4)
+
+(concatenate 'list '(1 2 3) '(4 5 6))
+;; => (1 2 3 4 5 6)
+(concatenate 'string "test" " me")
+;; => "test me"
+
+(copy-seq '(1 2 3))
+;; => (1 2 3)
+
+(count #\t "test")
+;; => 2
+(count-if #'upper-case-p "The Crying of Lot 49" :start 4)
+;; => 2
+
+(delete #\t "test")
+;; => "es"
+(delete-duplicates '(1 2 2 3 4 5 5 6 6 6))
+;; => (1 2 3 4 5 6)
+(delete-if #'evenp '(1 2 3 4 5 6))
+;; => (1 3 5)
+
+(elt '(1 2 3 4) 3)
+;; => 4
+
+(every #'evenp '(2 4 6 8))
+;; => T
+(every #'evenp '(2 4 6 8 9))
+;; => NIL
+(some #'evenp '(1 2 3 4 5))
+;; => T
+(notany #'evenp '(1 2 3 4 5))
+;; => NIL
+
+
+#+END_SRC
+
+
     - find
     - find-if
     - find-if-not
-    - length
     - map
     - mapcar
     - map-into
     - merge
     - mismatch
-    - notany
-    - notevery
     - nreverse
     - nsubstitute
     - nsubstitute-if
@@ -889,7 +921,6 @@ plot data u 1:2 w p lw 2 title 'data', \
     - replace
     - reverse
     - search
-    - some
     - sort
     - stable-sort
     - subseq
@@ -929,6 +960,11 @@ plot data u 1:2 w p lw 2 title 'data', \
 
 * TODO Packages
   http://www.gigamonkeys.com/book/programming-in-the-large-packages-and-symbols.html
+* TODO Systems
+  ASDF
+  Quicklisp
+  cl-launch
+  buildapp
 * TODO Standard Libraries
 * TODO Important Libraries
 * TODO Example 3
