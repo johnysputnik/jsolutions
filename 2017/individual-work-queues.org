@@ -1,0 +1,101 @@
+#+TITLE: Dysfunction: Individual Work Queues
+
+* Introduction
+
+  While working with a team recently, I observed some strange behaviour around
+  individual work queues. This is an outline of my thoughts on it.
+
+* Background
+
+  A seriously blocking JIRA issue did not seem to be moving on the board. It had
+  been assigned to someone, who appeared to know nothing about it and assumed it
+  was still with someone else. It soon became bvious that this other person was
+  indeed the 'owner' of the issue.
+
+  This ownership had been assigned at sprint planning. The practice was to
+  assign ownership to individuals to try and manage the sprint. Hopefully
+  warning bells are starting to ring?
+
+  So this owner had assigned it to the person who knew nothing about it to
+  review, but had not communicated this. Several people in the team agreed that
+  it should not have been assigned to this person, despite the team being used
+  to operating on this task push basis.
+
+  I agreed that the owner should not have assigned it to the other person, but
+  that then other person should have assigned it to himself and become the
+  assignee, ie. He should have pulled the work through the workflow.
+
+  The others said this was not the way the team worked and that it should have
+  stayed assigned to the owner until the end of the sprint, and it was their
+  responsibility to see it to Done.
+
+  I asked why was it their responsibility, surely it was the team's
+  responsibility. They agreed that it was the team’s responsibility, but the way they planned
+  meant they needed to know the velocity of each individual team member to plan.
+
+  I asked why they were using individual velocity rather than team velocity.
+
+  They said that individuals have different velocity and capacity so in order to
+  plan, tasks are estimated then assigned to each individual to ensure that the
+  whole sprint backlog can be committed to by each member.
+
+  At this point I stated I was very uncomfortable with this, it felt like the
+  team wasn’t really working as a team (probably a bit unfair!), or at least
+  using methods that weren’t conducive to good team operation.
+
+  They said it had worked up until now and didn’t see a reason for changing
+
+  I confirmed that now wasn’t the time to change but perhaps we were getting to
+  the root cause of the problems with the JIRA task at the start of the
+  discussion and in order to stop these scenarios increasing and to operate
+  better as a whole team, we should perhaps look at the way in which we
+  estimate, plan and assign tasks.
+
+* Observations
+
+  The team are used to working together as a unit and it works very well
+  and the team are happy - this is a good thing and I should not underestimate
+  this.
+
+  The team are doing bad queuing by creating a queue for each individual in a team
+  rather than a single queue for the whole team - check out any reference on
+  queue theory.
+
+  The creation of individual queues to forecast and plan is failing, very few
+  sprints acheive the planned velocity and the team consistently over commit. This is no
+  surprise as the task needs more than one person to complete so shouldn’t be in
+  an individuals ‘queue'.
+
+  There is also an underlying ‘I think I’ll get all my tasks done this sprint’
+  attitude to tasks. Does this indicate a true shared ownership of tasks
+
+  The queue is currently constrained by the upstream process. This is forecast
+  based scheduling, which fails as we have uncertainty entering sprints and need
+  to embrace that uncertainty.
+
+  We should be using demand based scheduling at this task level granularity
+  (lean principles) - the queue should be constrained by the downstream process
+  and pulled by the new assignee. That way we will be able to constrain our
+  capacity and optimise our flow better.
+
+  We should not be calculating individual velocity at all - this could be really
+  bad in the long run with a large team.
+
+  We should know from looking at JIRA who is working on a task by the assignee.
+
+  Having said that, the overemphasis on JIRA as a means of communication is in
+  clear violation of individuals and interaction over processes and tools. And
+  the data available in the tool is leading to micro management and lack of team
+  based self organisation. 
+
+* Coaching Needs
+
+  The following areas have been identifed as worthy of some team coaching, in
+  order to expose the root cause of the dysfunctions:
+  
+  - Individuals and interations over processes and tools.
+  - Responding to change over following a plan.
+  - Self organization.
+  - Build projects around motivated individuals and trust them to get the job
+    done.
+  - Queue thoery and work in progress limits.
