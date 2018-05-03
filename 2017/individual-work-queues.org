@@ -90,6 +90,10 @@
 
 * Coaching Needs
 
+  Agile coaching is always a mix of coaching, mentoring, role modelling and
+  instruction. In order to be effective as an agile coach, diffrent scenarios
+  require a different approach.
+
   The following areas have been identifed as worthy of some team coaching, in
   order to expose the root cause of the dysfunctions:
   
