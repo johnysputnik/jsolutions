@@ -1,0 +1,190 @@
+#+TITLE: My Agile Coaching Journey
+
+* Introduction
+
+I have been using agile approaches and techniques for many years now, more years
+than I care to remember and am now reflecting on what I have learnt, how I have
+grown and where I want to go in the future.
+
+This post is an opportunity for me to share my experience and learning through
+that period. Hopefully it will be helpful, encouraging or maybe just interesting
+to some people out there.
+
+* Overview
+
+My agile journey started in the early 2000s through XP. I began to see the value
+of ‘turning up the good’ on practices in XP. I saw how agile principles such as
+customer collaboration over contract negotiation was an improvement on our
+previous waterfall / V-model approach.
+
+I was introduced to Scrum at Nokia in about 2007. I went on the CSM course and
+soon started valuing the framework that it provided in encouraging all
+stakeholders to engage in a process of collaboration, incremental discovery and
+continuous improvement.
+
+I moved to Content Master in 2011 where I began my coaching journey properly.
+Initially my approach was one of instruction and role modelling but I was keen
+to help the team discover solutions for themselves and adapt the way they
+collaborated with stakeholders but also see their effort rewarded through
+validation by end users.
+
+I then worked as a freelance developer for 4 years, primarily for one customer.
+My main goal here, from a coaching perspective, was to try and help the owners
+understand that timely user feedback was essential in ensuring success of the
+project and reduce wasted effort. This appeared to fall on deaf ears.
+
+I moved to MASS in 2016 where I began coaching across several teams and
+individuals, including senior management to help them understand why and how an
+agile approach (particularly Scrum) could help them meet the challenges they
+faced.
+
+While at MASS I was responsible for creating and running a product development
+capability for one of our customers. It was here that the penny dropped and the
+coaching component of ‘agile coaching’ became better understood, appreciated and
+practiced. 
+
+Since then I have been actively coaching in the role of innovation lead.
+
+I am as keen to learn as I am to help people learn. The desire for adventure and
+the embracing of the unknown is something that has been with me from a young
+age. This is something that drives me towards embracing new ways of thinking,
+approaches and input from disciplines and activity outside the normal sphere of
+agile practices, such as art, poetry and philosophy. I don’t pretend to be an
+expert in any of these but believe that anything that expresses the human
+condition is valuable input to coaching.
+
+I often talk of my weakness in wanting to please people, while this has caused
+me problems with over commitment at times, I have now come to realise the value
+of that when it comes to empathy with the coachee. While my listening skills
+could always be improved, this is something that has become more apparent and
+encouraging to me.
+
+* My Coaching Approach
+
+Coaching is still a journey of discovery for me. I am actively coaching,
+learning as I go and hoping that I can help the teams and individuals I work
+with find success.
+
+In my role of innovation lead, I take a coaching stance to help the company,
+departments, teams and individuals understand how they can contribute to the
+growth of the company through innovation and solve the problems they see from
+their own unique perspective.
+
+My experience in agile approaches, lean thinking and validated learning help in
+this role, but I see myself primarily as an enabler, encourager and role model
+rather than a commander, authority or even expert.
+
+I am hungry to learn about different fields that can contribute to development
+of highly successful and rewarding companies and teams and incorporate that into
+leading and coaching wherever I can.
+
+I receive coaching from an experienced coach as a means to help me develop, but also for
+the coaching role model it provides, to help me develop my coaching skills and
+hone my coaching toolset.
+
+In the spirit of the agile manifesto I believe the things on the right have
+value in coaching but that those on the left have more value:
+
+ - Trusting people over trusting techniques.
+ - Looking for good over correcting behaviour.
+ - Powerful questions over providing solutions.
+ - Building independence over providing a safety net.
+
+* My coaching goals
+
+I continually need to remember to develop my listening skills in order to
+empathise and understand others better in a coaching scenario.
+
+I also need to develop my skills, toolsets and confidence in coaching senior
+management, particularly in respect to innovation.
+
+Another aspect of my future learning is to look for ways in which I can provide
+input into education. I am already involved with a local school, from a
+technical as well as a coaching/mentoring perspective, but believe there is a
+lot that can be learnt from agile principles that apply within education.
+
+* Recent Learning
+** Team Dynamics
+
+   My role is often within a team that is diverse, geographically split, has
+   individuals who are in the team as a secondary function and have very different
+   skills and backgrounds. 
+
+   I have been reading about team dynamics through books such as Coaching Agile
+   Teams, Peopleware and 5 Dysfunctions of a team.
+
+   It has helped me not only help guide teams to think about their environment and
+   how it contributes to their effectiveness, but also to understand different
+   characters at play and different relationships, through battle mapping.
+
+   I have become more aware that I do try to please people, but also accept that
+   perhaps this helps me be more empathic towards people and this helps me be more
+   effective as a coach.
+
+   I have also now started to help teams see that low levels of conflict can be
+   beneficial to being an effective team but that trust is absolutely essential to
+   achieving this.
+
+** Innovation
+   One of my growing responsibilities is to provide coaching around innovation.
+   I have spent time studying theory, frameworks and techniques through reading
+   and conversations with others.
+
+
+   This has given me a perspective of learning as all important within an
+   organisation and that clearly applies to the PDCA cycle, agile approaches and
+   innovation. I can better help people identify opportunities to maximise learning
+   through feedback and see learning as key to successful agile delivery. (4th
+   Generation R&D)
+
+   I am also discovering new and holistic approaches to innovation that ensure
+   that all aspects of the organisation contribute to innovation and growth,
+   this expands the principle of cross function and self organising teams into
+   the wider organisation. This is helping me very much involve everyone in the
+   innovation conversation and ensuring that the organisation as a whole can
+   identify and execute innovation on a wider scale. (10 types of innovation,
+   Business Model Generation).
+
+** Futurism
+
+   Futurism was an art movement of the early 20th century that called for the
+   rejection of the past and the relentless march to modernity. It was an
+   artistic movement that emphasised movement and motion and dynamism. It
+   embraced modern city life, rejected stasis.
+
+   While it is extreme and it arguably contributed to some pretty extreme
+   consequences throughout Europe in the 20th century, it portrays the
+   excitement of the unknown, the future and change, which is the complex world
+   where agile approaches thrive:
+
+   “I appeal to the young, to those who are thirsty for the new, the actual, the
+   lively. They follow me, faithful and fearless, along the roads of the future,
+   gloriously preceded by my, by our, intrepid brothers, the Futurist poets and
+   painters, beautiful with violence, daring with rebellion and luminous with
+   the animation of genius.”
+
+   While, that is not my approach to coaching, I do like to aspects of other
+   fields and how they relate to coaching, agile approaches, innovation and
+   other aspects of what I do professionally. Bringing those aspects into
+   conversations, discussions and debate makes the work place a richer place.
+
+* Certification
+
+  The journey is always ongoing, I feel the potential for learning is
+  continually expanding. As part of my journey I have applied for Certified Team
+  Coach.
+
+  I believe certification is primarily a sign of professional commitment to and
+  appreciation of a particular discipline or approach. It is certainly not a
+  sign of ‘having arrived’ but rather a recognition of a particular phase along
+  a personal development journey.
+
+  Although the primary reasons are personal satisfaction, there is also a need
+  for agile coaches amongst our customer base and the certification provides
+  some degree of confidence in an individual to be competent and experienced.
+
+  Also, the process of certification enables me to focus on my own development
+  as a coach, where my strengths and weaknesses are and where I need to focus my
+  efforts in improving, but also what I can skills and tools I can leverage to
+  best help others succeed.
+

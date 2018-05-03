@@ -1,7 +1,7 @@
 #+TITLE: About Me
   
   My name is John Cumming, I live in Gloucester with my wife and son
-  and have been working in software engineering since 1997. 
+  and have been working in software engineering since 1996. 
 
   My passion is getting teams working well, delivering measurable solutions to
   validated problems. I strive to encourage all individuals to act as change
