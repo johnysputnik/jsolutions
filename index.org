@@ -12,5 +12,9 @@
      + [[file:2012/sprintbottleneck.org][A Sprint Bottleneck – Developer Driven Sprints]]
      + [[file:2012/breakingtimebased.org][Estimating in Scrum : Breaking away from time based estimates.]]
      + [[file:2012/agilesham.org][Is Agile a Sham]]
+   + 2017
+     + [[file:2017/individual-work-queues.org][Dysfunction: Individual Work Queues]]
+   + 2018
+     + [[file:2018/coaching-journey.org][My Agile Coaching Journey]]
    + [[file:about.org][About Me]]
    + [[file:books.org][My Reading List]]

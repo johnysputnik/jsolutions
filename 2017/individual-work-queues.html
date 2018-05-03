@@ -6,7 +6,7 @@
 <!-- 2018-05-03 Thu 08:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Scrum Estimating Experiences</title>
+<title>Dysfunction: Individual Work Queues</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="John Cumming" />
 <style type="text/css">
@@ -234,225 +234,180 @@ for the JavaScript code in this tag.
 <div id="my-header"><h2>jSolutions | <a href="/index.html">home</a></h2></div>
 </div>
 <div id="content">
-<h1 class="title">Scrum Estimating Experiences</h1>
+<h1 class="title">Dysfunction: Individual Work Queues</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6f1afb8">Introduction</a></li>
-<li><a href="#org52730c1">Team A - Desktop Product Team</a></li>
-<li><a href="#org092a1a3">Team B - Service Development Team</a></li>
-<li><a href="#org1a348b2">What we are trying to achieve with estimates</a>
-<ul>
-<li><a href="#orgbbe832f">Backlog Management</a></li>
-<li><a href="#org92bb9b7">Velocity</a></li>
-<li><a href="#org657e278">Dangers</a></li>
-</ul>
-</li>
-<li><a href="#org6bb8485">Summary</a></li>
+<li><a href="#org3d97890">Introduction</a></li>
+<li><a href="#org51b2550">Background</a></li>
+<li><a href="#org9c058cb">Observations</a></li>
+<li><a href="#orgfba3d4a">Coaching Needs</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6f1afb8" class="outline-2">
-<h2 id="org6f1afb8">Introduction</h2>
-<div class="outline-text-2" id="text-org6f1afb8">
+<div id="outline-container-org3d97890" class="outline-2">
+<h2 id="org3d97890">Introduction</h2>
+<div class="outline-text-2" id="text-org3d97890">
 <p>
-I recently posted about Estimating in Scrum and why time based
-estimating can be problematic and why a focus on the team enables
-estimation and velocity to be more than just a measure of effort.
-</p>
-
-<p>
-However, we have some very different teams trying to use Scrum,
-where the assumptions made in that post only partially apply, so I
-thought I'd share some of my experiences and thoughts on how to
-manage estimating. As with all Scrum projects, we are in a constant
-state of inspect and adapt, so these thoughts are based on my
-understanding on the date of the post and may change over time. We
-are constantly looking to improve the team's ability to deliver
-business value in a predictable and incremental manner in a way that
-can cope with the shifting priorities of the business.
-</p>
-
-<p>
-It is also worth mentioning that these teams are small, so the
-impact of resourcing changes have a significant impact on Velocity
-and make planning a challenge.
+While working with a team recently, I observed some strange behaviour around
+individual work queues. This is an outline of my thoughts on it.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org52730c1" class="outline-2">
-<h2 id="org52730c1">Team A - Desktop Product Team</h2>
-<div class="outline-text-2" id="text-org52730c1">
+<div id="outline-container-org51b2550" class="outline-2">
+<h2 id="org51b2550">Background</h2>
+<div class="outline-text-2" id="text-org51b2550">
 <p>
-This team is responsible for the development of a desktop product,
-currently consists of 2 dedicated  developers and 1 non-dedicated
-tester. By dedicated I obviously mean resource wise, not motivation
-wise :) There is a strong sense of 'team' in Team A, despite some
-remote working going on, so the following assumptions hold true:
-</p>
-
-<ol class="org-ol">
-<li>The team can estimate well in a relative manner and come to a
-consensus on the point value of a story.</li>
-<li>The team can organise itself well to manage the sprint backlog
-and work together, help each other etc.</li>
-<li>There is a strong sense of the team committing to a sprint,
-rather than individuals.</li>
-<li>Therefore, a consensus based estimation as outlined in my
-previous post seems to be working quite well and the last 3
-sprints (out of a total of 4) velocity have been consistent, with
-expectation of an increase in velocity becoming apparent over
-time.</li>
-</ol>
-
-<p>
-There is lots of room for improvement in this team, particularly in
-terms of backlog management and definition of done / feature
-completion, but we're getting there and its all smiles: Scrum looks
-like it is working.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org092a1a3" class="outline-2">
-<h2 id="org092a1a3">Team B - Service Development Team</h2>
-<div class="outline-text-2" id="text-org092a1a3">
-<p>
-This team is very different. It currently has 3 developers, 2 of
-whom are not dedicated and again one non dedicated tester. As the
-product is made up of a large collection of deployable components,
-the responsibility for an individual component usually rests on the
-shoulders of an individual developer. The sense of 'team' is less
-than that of Team A. This is the nature of the product and not a
-reflection of the teams ability to work as a team. The team is also
-distibuted around the UK and physically meet up Monday mornings for
-sprint planning.
+A seriously blocking JIRA issue did not seem to be moving on the board. It had
+been assigned to someone, who appeared to know nothing about it and assumed it
+was still with someone else. It soon became bvious that this other person was
+indeed the 'owner' of the issue.
 </p>
 
 <p>
-The team also has a backlog that is proving difficult to estimate as
-the features are more Epics than Stories. This is being addresses by
-the PO. However, questions are being raised as to how to 'do
-Architecture' with Scrum. This is a subject outside the scope of
-this post, hoepfully I can come back to it later.
+This ownership had been assigned at sprint planning. The practice was to
+assign ownership to individuals to try and manage the sprint. Hopefully
+warning bells are starting to ring?
 </p>
 
 <p>
-We therefore find that the assumptions that hold true for team A do
-not hold true for team B and it is questionable whether estimation
-should be a consensus, when the commitment to deliver a Story is
-placed on an individual.
+So this owner had assigned it to the person who knew nothing about it to
+review, but had not communicated this. Several people in the team agreed that
+it should not have been assigned to this person, despite the team being used
+to operating on this task push basis.
 </p>
 
 <p>
-So how do we go about estimating these stories?
-</p>
-</div>
-</div>
-
-<div id="outline-container-org1a348b2" class="outline-2">
-<h2 id="org1a348b2">What we are trying to achieve with estimates</h2>
-<div class="outline-text-2" id="text-org1a348b2">
-<p>
-So back to basics, what are estimates in Scrum trying to achieve.
-</p>
-
-<ol class="org-ol">
-<li>Relative effort required to complete a story can be calculated.</li>
-<li>Velocity of development can be measured</li>
-<li>Based on velocity, resource capacity and backlog size, roadmaps
-can be managed</li>
-<li>Product release can be managed</li>
-</ol>
-
-<p>
-Ultimately we are trying to achieve the predictable release of the
-product, by managing our expectation that is based on velocity and
-the relative size of features.
+I agreed that the owner should not have assigned it to the other person, but
+that then other person should have assigned it to himself and become the
+assignee, ie. He should have pulled the work through the workflow.
 </p>
 
 <p>
-In Team A, the estimates and velocity are related to the team and it
-all works (more or less) very nicely, but here is where we come up
-against our first problem in Team B. Stories are not 'owned' by the
-team but 'owned' by an individual. We have to look at a way of
-measuring velocity and estimating that recognises the way the
-product is developed:
+The others said this was not the way the team worked and that it should have
+stayed assigned to the owner until the end of the sprint, and it was their
+responsibility to see it to Done.
 </p>
-</div>
 
-<div id="outline-container-orgbbe832f" class="outline-3">
-<h3 id="orgbbe832f">Backlog Management</h3>
-<div class="outline-text-3" id="text-orgbbe832f">
 <p>
-The backlog needs estimating, we have decided not to use a
-consensus, but rather the assigned developer will estimate
-it. Therefore when we estimate the backlog, we assign a developer
-to that Story and take their estimate, along with the testers
-estimate. Our backlog could then become partitioned into 'Developer
-Backlogs' - TFS helps us manage this quite nicely. If a Story is
-moved from one developer to another, then it is re-estimated. This
-may throw our Release burndown, but then you would want it to, as
-the developer change may imply that it will take a different length
-of time to deliver. The individual developer can then estimate
-relatively to their own set of stories.
+I asked why was it their responsibility, surely it was the team's
+responsibility. They agreed that it was the team’s responsibility, but the way they planned
+meant they needed to know the velocity of each individual team member to plan.
+</p>
+
+<p>
+I asked why they were using individual velocity rather than team velocity.
+</p>
+
+<p>
+They said that individuals have different velocity and capacity so in order to
+plan, tasks are estimated then assigned to each individual to ensure that the
+whole sprint backlog can be committed to by each member.
+</p>
+
+<p>
+At this point I stated I was very uncomfortable with this, it felt like the
+team wasn’t really working as a team (probably a bit unfair!), or at least
+using methods that weren’t conducive to good team operation.
+</p>
+
+<p>
+They said it had worked up until now and didn’t see a reason for changing
+</p>
+
+<p>
+I confirmed that now wasn’t the time to change but perhaps we were getting to
+the root cause of the problems with the JIRA task at the start of the
+discussion and in order to stop these scenarios increasing and to operate
+better as a whole team, we should perhaps look at the way in which we
+estimate, plan and assign tasks.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org92bb9b7" class="outline-3">
-<h3 id="org92bb9b7">Velocity</h3>
-<div class="outline-text-3" id="text-org92bb9b7">
+<div id="outline-container-org9c058cb" class="outline-2">
+<h2 id="org9c058cb">Observations</h2>
+<div class="outline-text-2" id="text-org9c058cb">
 <p>
-The velocity of each individual developer then needs to be measured
-AND NOT COMPARED TO EACH OTHER. From this a Developer burndown can
-be produced giving the PO an idea as to when the individual
-backlogs will be complete.
+The team are used to working together as a unit and it works very well
+and the team are happy - this is a good thing and I should not underestimate
+this.
 </p>
 
 <p>
-As the product progresses and stories shift developer, it makes the
-task of managing release a little more complicated as the Product
-Backlog (the complete backlog) will only be complete when the last
-developer has completed their backlog. I would expect that this may
-necessitate shifting stories between developers as mentioned above.
+The team are doing bad queuing by creating a queue for each individual in a team
+rather than a single queue for the whole team - check out any reference on
+queue theory.
+</p>
+
+<p>
+The creation of individual queues to forecast and plan is failing, very few
+sprints acheive the planned velocity and the team consistently over commit. This is no
+surprise as the task needs more than one person to complete so shouldn’t be in
+an individuals ‘queue'.
+</p>
+
+<p>
+There is also an underlying ‘I think I’ll get all my tasks done this sprint’
+attitude to tasks. Does this indicate a true shared ownership of tasks
+</p>
+
+<p>
+The queue is currently constrained by the upstream process. This is forecast
+based scheduling, which fails as we have uncertainty entering sprints and need
+to embrace that uncertainty.
+</p>
+
+<p>
+We should be using demand based scheduling at this task level granularity
+(lean principles) - the queue should be constrained by the downstream process
+and pulled by the new assignee. That way we will be able to constrain our
+capacity and optimise our flow better.
+</p>
+
+<p>
+We should not be calculating individual velocity at all - this could be really
+bad in the long run with a large team.
+</p>
+
+<p>
+We should know from looking at JIRA who is working on a task by the assignee.
+</p>
+
+<p>
+Having said that, the overemphasis on JIRA as a means of communication is in
+clear violation of individuals and interaction over processes and tools. And
+the data available in the tool is leading to micro management and lack of team
+based self organisation. 
 </p>
 </div>
 </div>
 
-<div id="outline-container-org657e278" class="outline-3">
-<h3 id="org657e278">Dangers</h3>
-<div class="outline-text-3" id="text-org657e278">
+<div id="outline-container-orgfba3d4a" class="outline-2">
+<h2 id="orgfba3d4a">Coaching Needs</h2>
+<div class="outline-text-2" id="text-orgfba3d4a">
 <p>
-The dangers of doing this way is that the team is not accountable
-as a team, but rather as individuals, which can of course cause all
-kinds of problems between them. For example, as stated above, an
-individual's velocity should not be measured against another's. It
-becomes even more important to not estimate in time as a result as
-there could be all kinds of conclusions drawn on developers
-relative velocity that would not be helpful for both the individual
-and the product.
+Agile coaching is always a mix of coaching, mentoring, role modelling and
+instruction. In order to be effective as an agile coach, diffrent scenarios
+require a different approach.
 </p>
-</div>
-</div>
-</div>
 
-<div id="outline-container-org6bb8485" class="outline-2">
-<h2 id="org6bb8485">Summary</h2>
-<div class="outline-text-2" id="text-org6bb8485">
 <p>
-In the real world, teams are never ideal teams. There is often
-resource that is non dedicated, and teams often work with a specific
-responsibility for a product component. All of this makes for a
-scenario where Scrum has to be adapted to perform in a way to meet
-the goals it intends to achieve. With a bit of thought this is
-possible, but not without its dangers. Managing the Product Backlog
-as a set of Developer Backlogs may be a way forward and only time
-will tell.
+The following areas have been identifed as worthy of some team coaching, in
+order to expose the root cause of the dysfunctions:
 </p>
+
+<ul class="org-ul">
+<li>Individuals and interations over processes and tools.</li>
+<li>Responding to change over following a plan.</li>
+<li>Self organization.</li>
+<li>Build projects around motivated individuals and trust them to get the job
+done.</li>
+<li>Queue thoery and work in progress limits.</li>
+</ul>
 </div>
 </div>
 </div>
