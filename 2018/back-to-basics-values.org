@@ -1,0 +1,125 @@
+#+TITLE: Back to Basics Agile - Our Values
+
+Yesterday, I was described as a magpie, always distracted by shiny new things.
+We all have our weaknesses. One of our weaknesses as engineers is that we like
+finding and using tools to make our lives easier. The Atlassian suite of tools
+is ubiquitous amongst software development teams, particularly agile teams
+(other cloud hosted collaboration suites are available). Are these kind of tools
+a distraction and as engineers do we let these tools get in the way of applying
+the agile principles and values?
+
+In this post, I want to share some of my experiences of how easy it is to drift
+away from our values when presented with new and shiny things such as the
+collaboration tools that many of us use.
+
+* It's all about people
+
+"Individuals and interactions over processes and tools" - we know it well. The
+first item on our manifesto for agile software development. We know that
+processes and tools have some value and we use them, rightly so. But does our
+enthusiasm for using every available feature distract us from the component that
+we value highly - individuals and interactions?
+
+So many times I have seen, and fallen into the trap myself, of overusing
+commenting within JIRA. The ability to comment means I can quickly 'share' my
+thoughts with my team mates and get on with my tasks. I've often heard the
+statement "All you need to know about the story should be in the ticket."
+
+Am I really sharing when I do this, or am I just 'firing and forgetting' and
+contributing to an individualist culture within my team?
+
+Shared documentation is not the same as shared understanding and those tickets
+in JIRA are not the User Stories. Putting aside the obvious that the User owns
+the Story, the ticket is a placeholder, a reminder for the conversations and
+interactions that individuals have had. It is in these interactions between
+people that the knowledge is created and exists and while the tool may prove
+useful, it is good to remind ourselves that it is not where the knowledge lies.
+
+*Challenge: Is the teams use of tools encouraging real interaction and
+developing a shared understanding within the whole team?*
+
+* People have goals
+
+Working software over comprehensive documentation - There aren't many software
+engineers I know who like producing documentation as most just want to know they
+have software that works. 
+
+We automate our builds and tests, linking them to our tickets and have a warm
+feeling that we are continuously integrating and delivering. There is nothing
+wrong with this and indeed this is a usually a sign that the team is delivering
+well and it often forms part of a healthy definition of done. It also provides a
+simple means to document and provide traceability through our development
+process.
+
+But is working software really just about building, passing tests and running
+correctly? Should working software really be valuable software?
+
+Valuable software is software that helps users meet their goals. Our task as
+agile teams is to deliver value incrementally to our users. Valuable software is
+about it meeting user goals. It's easy to get trapped by process and tools, and
+see success as our ability to create a healthy build and deployment environment
+that ensures correctly functioning software, but "working" is measured by more
+than this.
+
+*Challenge: Does the definition of done capture a real measure of successfully
+working software?*
+
+* People are complex
+
+Adapting to change over following a plan is something that we know is needed
+when we are dealing with the uncertainties we face when developing software. We
+know that our users are complex and we need to adapt to changes in understanding
+as we progress.
+
+It is so easy to add new items to the backlog in many of the tools that we use.
+Many teams evolve their backlog as a list of suggestions, ideas and technical
+tasks encouraging everyone to contribute. Does the ease and simplicity of adding
+new items really contribute to adapting to change, or does it just decrease the
+clarity and focus of the product backlog?
+
+Adapting to change is not just responding to the whims and wishes of the users
+or other stakeholders, it is a measure of the teams ability to increase its
+understanding and learning of the users' goals and how that learning translates
+to effective and successful delivery. A product backlog that is focussed on that
+learning, rather than just a list of ideas, might help.
+
+*Challenge: How can increasing understanding of end user value and its delivery
+be demonstrated by the team?*
+
+* We work better together
+
+Customer collaboration is something we actively encourage, with participation in
+sprint reviews to allow for user feedback. Many teams use user story mapping to
+build a product backlog that is aligned with user needs. These forms of
+collaboration are highly valuable.
+
+Our tools enable us to build our backlogs, plan our sprints in advance,
+demonstrate progress through various reports and provide predicted completion
+dates based on velocity and backlog size. These are valuable when discussing
+progress with users. However, does this lead to a desire to get agreement on the
+list of stories up front and commit to these rather than encouraging a
+collaborative journey towards value? Is our commitment as a team to deliver
+features or to collaborate? Is it both?
+
+As agile teams we recognise the value of collaboration with our users and should
+look for ways in which we can commit to this collaboration.
+
+*Challenge: How are we committing to collaboration as well as committing to
+delivery?*
+
+* Summary
+
+I have shared some of my experiences of how tools can and do get in the way of
+demonstrating the agile values that we are looking to live out as agile teams.
+Many of these experiences I've shared have obvious overlap. The valuable tools
+that we use are abused, due to our desire as engineers to find and use tools
+that help us do our job. I'm sure you have many more experiences like this.
+
+We need to continually inspect and adapt our approaches to tools to ensure we
+are respecting the value of individuals and interactions,  working software,
+adapting to change and customer collaboration.
+
+*Challenge: How does the use of tools affect the team's ability to live out
+agile values?*
+
+
