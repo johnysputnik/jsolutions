@@ -40,7 +40,7 @@
                  :auto-sitemap t
                  :sitemap-filename "index.org"
                  :sitemap-title "Home"
-                 :html-preamble "<div id=\"my-header\"><h2>jSolutions | <a href=\"/index.html\">home</a></h2></div>"
+                 :html-preamble "<div id=\"my-header\"><h2>John's Draft Blog | <a href=\"/index.html\">home</a></h2></div>"
                  :html-head "<link rel=\"stylesheet\"
                          href=\"/css/solarized-dark.css\"
                          type=\"text/css\"/>"))))

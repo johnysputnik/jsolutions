@@ -34,3 +34,4 @@
 *.fls
 _minted-2016-lisp
 ltxpng
+.DS_Store
