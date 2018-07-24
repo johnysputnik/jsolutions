@@ -1,0 +1,115 @@
+#+TITLE: Revisiting - Estimating
+
+I have been looking forward to revisiting some of my old blog posts for some
+time. I wanted to see how my thinking has changed since first writing them. Over the weekend, a
+colleague told me that he had read my posts on estimating and found them very
+interesting. I took this prompt to revisit them.
+
+My thoughts on estimating have changed a lot and experience has led me to
+think very differently about the value of estimating.
+
+* Post 1 - Breaking away from time based estimating
+
+The original post can be found here:
+[[http://www.jsolutions.co.uk/2012/breakingtimebased.html][Post 1]]
+
+The first article looks at how estimating using units of time is not a good
+means of estimating the effort required for a team to complete a set of tasks.
+
+It attempted to demonstrate that using abstract units - story points - to estimate
+resulted in a very similar forecast of the time to complete with less effort and
+little need to change estimates based on who was working on the task.
+The article highlighted that forecasting in Scrum is through an adaptive,
+historical measure of progress of the whole team, rather than the sum of
+predictive measures of individuals within the team.
+
+It also highlighted that velocity could be used as a metric of improvement: As
+the team gets more efficient, one would expect velocity to go up.
+
+* Post 2 - Scrum estimating experiences
+
+The original post can be found here:
+[[http://www.jsolutions.co.uk/2011/scrumestimatingexp.html][Post 2]]
+
+In the second post, I wrote about 3 different teams and the different
+challenges the teams face when estimating.
+
+The article highlighted what I believed to be important goals of estimating:
+
+- Calculate the relative effort required to complete a story.
+- Measure the velocity of development.
+- Manage roadmaps using velocity, resource capacity and backlog size.
+- Manage product releases.
+
+"Ultimately we are trying to achieve the predictable release of the product, by
+managing our expectation that is based on velocity and the relative size of
+features."
+
+* Estimating is not about forecasting
+
+Estimating is not about forecasting? This goes against what many of us see as
+the prime purpose of estimating. I certainly believed that to be the case as can
+be seen in both my posts.
+
+A forecast is only valid if nothing, or very little, changes between now and
+completion. However, the complex nature of the problems we are trying to solve
+means we have high levels of unknown and lots to learn on our
+journey towards delivering real end user value. Using estimates as forecasts is
+assuming that any learning is of less value than our current
+understanding. This is rareley the case and we should assume the opposite -
+learning is of more value than our current understanding.
+
+My original thinking assumed that roadmaps and releases were planned and set
+with little adaptation along the way. Was I valuing following a plan over
+adapting to change?
+
+So if estimates are not for forecasting, what are they for?
+
+The reason for estimates within an agile team is not about the estimated size of
+the task. It is the discussion as to WHY it is of a certain size that holds the
+value in estimating.
+
+Discussing estimates, or more importantly what's involved in getting a task
+done, provides an opportunity for shared understanding that shared documentation
+can rarely accomplish, let alone a single story point figure.
+
+Often there really is no benefit in even recording the story points against a
+story, as the #noestimates movement espouses. The discussion and consensus is
+important, but the value arrived at ralrely is. 
+
+*Challenge: What would be the result of your team dropping story points?*
+
+* Metrics can be gamed
+
+I mentioned in the first post that velocity is a metric that can be used to show
+improvements: As the team get more efficient, velocity goes up.
+
+This can clearly be gamed by the team should they want to. A subtle increase in
+story point estimates will appear to make the team appear more efficient, when
+really nothing is changing.
+
+Using an issue count as a velocity, rather than story points can also be gamed,
+in an interesting way. If issue count is the metric used, then the only way to
+game the metric is to make issues smaller. This has the side effect of reducing
+work in progress by making batch sizes smaller. Gaming metrics does not always have to
+be negative, the choice of metrics can be used to encourage positive side effects.
+
+*Challenge: How can you encourage positive side effects from the way you
+estimate?*
+
+* Summary
+
+In this post, I have highlighted why treating estimates as a means to
+forecasting goes against the agile value of adapting to change and assumes new
+learning to be less important than current understanding. 
+
+Story points are still useful and can be used by the team to measure its
+efficiency but can easily be gamed to distort results, especially if the metric
+is used by people external to the team, to measure the teams effectiveness.
+
+I'm sure my thinking will change again, as it has done since first writing the
+posts, but in ways that I don't yet know. I am not going to assume that my
+current understanding is of more value than what can be learned in the future.
+
+
+

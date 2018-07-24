@@ -17,5 +17,6 @@
    + 2018
      + [[file:2018/back-to-basics-values.org][Back to Basics Agile - Our Values]]
      + [[file:2018/coaching-journey.org][My Agile Coaching Journey]]
+     + [[file:2018/estimating-revisited.org][Revisiting - Estimating]]
    + [[file:about.org][About Me]]
    + [[file:books.org][My Reading List]]
