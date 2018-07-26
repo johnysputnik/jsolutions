@@ -1,9 +1,87 @@
-#+TITLE: My Reading List
+#+TITLE: My Professional Bookshelf
 
-* Introduction
+My name is John and I'm a bookaholic...
 
-This is a list of books that I have read and would recommend to anyone looking
-to learn and grow their understanding of agile values, principles and
-approaches.
+* Reading
+  - Business Model Generation - Osterwalder
+  - Agile Retrospectives - Derby & Larsen
+  - THe principles of product development flow - Reinertsen
 
+* To read (in current priority)
+  - Diagnosing and Changing Organizational Culture - Cameron & Quinn
+  - A sense of urgency - Kotter
+  - Leading change - Kotter
+  - Complex Adaptive Leadership - Obelensky
+  - Complex Adaptive Systems - Miller & Page
+  - I am right, you arr wrong - De Bono
+  - An Introduction to Decision Theory - Peterson
+  - A Seat at the Table - Schwartz
+  - Impact Mapping - Adzic
+  - Effective Teamwork - West
 
+* Read - Agile & Innovation
+  - Fourth Generation R&D - Miller & Morris
+  - Business Model Generation - Osterwalder
+  - 10 Types of Innovation - Keeley
+  - The Lean Startup - Reis
+  - The five dysfunctions of a team - Lencioni
+  - The lean toolbox - Bicheno & Holweg
+  - Switch - Heath & Heath
+  - Start with Why - Sinek
+  - User Story Mapping - Patton
+  - Product Mastery - Watts
+  - Scrum Mastery - Watts
+  - Continuous Delivery - Humble & Farley
+  - Agile Testing - Crispin & Gregory
+  - Peopleware - DeMarco & Lister
+  - Agile Estimating & Planning - Cohn
+  - Coaching Agile Teams - Adkins
+  - User Stories Applied - Cohn
+  - Agile Retrospectives - Derby & Larsen
+  - Extreme Programming Explained - Beck
+
+* Read - Digital Typography
+  - Digital Typography - Knuth
+  - The Geometry of Type - Coles
+  - Thinking with Type - Lupton
+  - The elements of typographical style - Bringhurst
+  - Type on screen - Lupton
+  - Type & Typography - Baines & Haslam
+  - Grid Systems, principles of organising type - Elam
+  - Just my type - Garfield
+
+* Read - Visual & Interactive Design
+  - The visual display of quantative information - Tufte
+  - Visual explanations - Tufte
+  - Envisioning Information - Tufte
+  - About Face 3 - Cooper, Reimann & Cronin
+  - Designing Interfaces - Tidwell
+  - Graphic Design Rules - Adams  et. al.
+  - Simple & Usable - Colborne
+  - Universal Principles of Design - Lidwell, Holden & Butler
+
+* Read - Artificial Intelligence & Machine Learning
+  - Machine Learning. A Probabilistic Approach - Murphy
+  - Bio-Inspered Artificial Intelligence - Floreano & Mattiussi
+  - Paradigms of AI Programming in Lisp - Norvig
+  - Expert Systems, Principles & Programming - Giarratano & Riley
+
+* Read - Cryptography & Security
+  - Applied Cryptography - Schneier
+  - Beautiful Security - Oram & Viega
+  - Modern Cryptanalysis - Swenson
+
+* Read - Software Engineering & C++
+  - Structure & Interpretaiton of Computer Programms - Abelson & Sussman
+  - Design Patterns - Gamma et. al.
+  - Exceptional C++ - Sutter
+  - More Exceptional C++ - Sutter
+  - Effective C++ - Meyers
+  - More Effective C++ - Meyers
+  - Effective STL - Meyers
+  - C++ Template Metaprogramming - Abrahams & Gurtovey
+  - Modern C++ Design - Alexandrescu
+  - Exceptional C++ Style - Sutter
+  - C++ Coding Standards - Sutter & Alexandrescu
+  - Advanced C++ - Coplein
+  - Reversing - Eilam
