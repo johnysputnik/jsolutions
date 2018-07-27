@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-07-22 Sun 17:51 -->
+<!-- 2018-07-27 Fri 11:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Dysfunction: Individual Work Queues</title>
+<title>Problems with Individual Work Queues</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="John Cumming" />
 <style type="text/css">
@@ -234,186 +234,223 @@ for the JavaScript code in this tag.
 <div id="my-header"><h2>John's Draft Blog | <a href="/index.html">home</a></h2></div>
 </div>
 <div id="content">
-<h1 class="title">Dysfunction: Individual Work Queues</h1>
+<h1 class="title">Problems with Individual Work Queues</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1624e3d">Introduction</a></li>
-<li><a href="#orgd4dd635">Background</a></li>
-<li><a href="#orge5b74eb">Observations</a></li>
-<li><a href="#org54270ee">Coaching Needs</a></li>
+<li><a href="#org9675fc4">What happened</a></li>
+<li><a href="#org416cb6a">My hypotheses</a>
+<ul>
+<li><a href="#org26025ee">A desire for predictability due to continual overcommitment</a></li>
+<li><a href="#org99cadbd">The team is not truly being allowed to self organise</a></li>
+<li><a href="#org3842726">A lack of understanding of basic queue theory and demand based tasking</a></li>
+</ul>
+</li>
+<li><a href="#orgf594da4">Summary</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org1624e3d" class="outline-2">
-<h2 id="org1624e3d">Introduction</h2>
-<div class="outline-text-2" id="text-org1624e3d">
 <p>
-While working with a team recently, I observed some strange behaviour around
-individual work queues. This is an outline of my thoughts on it.
+How well are you working as a team? You might be producing some great software
+together, but does that mean there is no room for improvement? One of the key
+agile practices is that of inspecting and adapting: Looking for improvements
+that can increase our effectiveness in delivering value to our end users.
+</p>
+
+<p>
+Recently, I was working with a team that was delievering real value to its
+users, helping them reach positive outcomes in situations constrained by the
+realities of limited knowledge and limited budget.
+The team was enabling them to do their jobs and had a fantastic understanding of
+the customer needs through a great Product Owner.
+</p>
+
+<p>
+However, there is always opportunity for improvement that can help the team grow
+in its understanding and effectiveness. This team was no different and some
+strange behaviour around the flow of tasks in a sprint had started to emerge.
+This post outlines what was going on and the challenges the team needed to face.
+I'm sure this is a common issue for many teams, especially distributed teams.
+</p>
+
+<div id="outline-container-org9675fc4" class="outline-2">
+<h2 id="org9675fc4">What happened</h2>
+<div class="outline-text-2" id="text-org9675fc4">
+<p>
+Like many teams, this team used JIRA to manage both the product backlog and the
+sprint backlog. The team was having its daily scrum towards the end of the
+sprint and it was clear that a single task in the sprint backlog was blocking a
+lot of other activity.
+</p>
+
+<p>
+The person who was assigned it in JIRA appeared to know nothing about the
+task, depsite it being in progress, and assumed that another team member was
+looking at it.
+</p>
+
+<p>
+This other person was indeed the accepted 'owner' of the task as they had been
+assigned it in sprint planning. This was the normal practice for this team: To
+assign all tasks to individuals within sprint planning.
+</p>
+
+<p>
+The owner had chosen to assign it to the person who was now responsible for it
+but this had not been communicated. Several people on the team also questioned
+whether it should have even been assigned to that person as it should have
+stayed as assigned to the 'owner' until complete as it was agreed in sprint
+planning that it was their responsibility to see it to 'Done'.
+</p>
+
+<p>
+The team believed that it was the team's responsibility to deliver the sprint
+goal, through the sprint backlog, but that it needed to stay assigned to the
+owner to calculate individual velocity to assist with planning and forecasting.
+In planning each individual needed to know their individual task list in order
+to commit to the sprint.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd4dd635" class="outline-2">
-<h2 id="orgd4dd635">Background</h2>
-<div class="outline-text-2" id="text-orgd4dd635">
+<div id="outline-container-org416cb6a" class="outline-2">
+<h2 id="org416cb6a">My hypotheses</h2>
+<div class="outline-text-2" id="text-org416cb6a">
 <p>
-A seriously blocking JIRA issue did not seem to be moving on the board. It had
-been assigned to someone, who appeared to know nothing about it and assumed it
-was still with someone else. It soon became bvious that this other person was
-indeed the 'owner' of the issue.
+The team, including the Scrum Master for the team did not see any need to
+change as they felt it had worked up until
+now, despite the team rarely delivering the whole sprint. I was not going to
+push a team to look at this should it choose not to, but I was keen to do a
+bit of analysis myself to see how I could best hold a mirror up to them in
+order to see things for themselves.
 </p>
 
 <p>
-This ownership had been assigned at sprint planning. The practice was to
-assign ownership to individuals to try and manage the sprint. Hopefully
-warning bells are starting to ring?
+These were some of my hypotheses:
+</p>
+</div>
+
+<div id="outline-container-org26025ee" class="outline-3">
+<h3 id="org26025ee">A desire for predictability due to continual overcommitment</h3>
+<div class="outline-text-3" id="text-org26025ee">
+<p>
+"What you can't measure you can't manage" - it's a very common phrase.
 </p>
 
 <p>
-So this owner had assigned it to the person who knew nothing about it to
-review, but had not communicated this. Several people in the team agreed that
-it should not have been assigned to this person, despite the team being used
-to operating on this task push basis.
+The scrum master may want a better measure of predictability in order to
+forecast and plan. As with most people on any team, he wanted to know that
+value was being created and he wanted to do his job well. He equated doing
+the job well with controlling the delivery - he was more a delivery manager
+than a scrum master.
 </p>
 
 <p>
-I agreed that the owner should not have assigned it to the other person, but
-that then other person should have assigned it to himself and become the
-assignee, ie. He should have pulled the work through the workflow.
+However, this predictability was proving difficult, if not impossible to
+attain and the desire to get a more fine grained measure in order to control
+the delivery of value better was causing problems.
 </p>
 
 <p>
-The others said this was not the way the team worked and that it should have
-stayed assigned to the owner until the end of the sprint, and it was their
-responsibility to see it to Done.
+The desire for predictability, at least in terms of velocity and forecasting,
+could be futile in this team as knowledge is changing between each planning
+session. Forecasting only really works when what we understand now is of
+greater value than what we could learn through the delivery. This is not
+usually the case with projects requiring an agile approach.
 </p>
 
 <p>
-I asked why was it their responsibility, surely it was the team's
-responsibility. They agreed that it was the team’s responsibility, but the way they planned
-meant they needed to know the velocity of each individual team member to plan.
-</p>
-
-<p>
-I asked why they were using individual velocity rather than team velocity.
-</p>
-
-<p>
-They said that individuals have different velocity and capacity so in order to
-plan, tasks are estimated then assigned to each individual to ensure that the
-whole sprint backlog can be committed to by each member.
-</p>
-
-<p>
-At this point I stated I was very uncomfortable with this, it felt like the
-team wasn’t really working as a team (probably a bit unfair!), or at least
-using methods that weren’t conducive to good team operation.
-</p>
-
-<p>
-They said it had worked up until now and didn’t see a reason for changing
-</p>
-
-<p>
-I confirmed that now wasn’t the time to change but perhaps we were getting to
-the root cause of the problems with the JIRA task at the start of the
-discussion and in order to stop these scenarios increasing and to operate
-better as a whole team, we should perhaps look at the way in which we
-estimate, plan and assign tasks.
+*Challenge: What are the side effects of measuring the team's effectiveness
+the way you currently are? There may be positive as well as negative side
+effects.*
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge5b74eb" class="outline-2">
-<h2 id="orge5b74eb">Observations</h2>
-<div class="outline-text-2" id="text-orge5b74eb">
+<div id="outline-container-org99cadbd" class="outline-3">
+<h3 id="org99cadbd">The team is not truly being allowed to self organise</h3>
+<div class="outline-text-3" id="text-org99cadbd">
 <p>
-The team are used to working together as a unit and it works very well
-and the team are happy - this is a good thing and I should not underestimate
-this.
+During the sprint planning, there was a clear attitude from the team of "I
+think I'll get all my tasks done this sprint". The team, while delivering
+value to the users, was often not working as a team. Commitment was very much
+on an individual basis, rather than as a whole team. Commitment was also to
+the product owner and scrum master rather than to each other.
 </p>
 
 <p>
-The team are doing bad queuing by creating a queue for each individual in a team
-rather than a single queue for the whole team - check out any reference on
-queue theory.
+The team were involved with assigning tasks at sprint planning, but self
+organisation to deliver a shared goal - even a shared sprint - was not being
+used to any significant degree. The team were working as individuals a lot of the time
+and had a reasonable degree of effectiveness. Imagine how more effective they
+could be if true team self organisation was allowed to flourish?
 </p>
 
 <p>
-The creation of individual queues to forecast and plan is failing, very few
-sprints acheive the planned velocity and the team consistently over commit. This is no
-surprise as the task needs more than one person to complete so shouldn’t be in
-an individuals ‘queue'.
+When the team explicitly swarmed around specific problems or a set of problems
+for a day as it sometimes did, everyone remarked how effective it was and
+that these sessions were the most enjoyable as a team.
 </p>
 
 <p>
-There is also an underlying ‘I think I’ll get all my tasks done this sprint’
-attitude to tasks. Does this indicate a true shared ownership of tasks
-</p>
-
-<p>
-The queue is currently constrained by the upstream process. This is forecast
-based scheduling, which fails as we have uncertainty entering sprints and need
-to embrace that uncertainty.
-</p>
-
-<p>
-We should be using demand based scheduling at this task level granularity
-(lean principles) - the queue should be constrained by the downstream process
-and pulled by the new assignee. That way we will be able to constrain our
-capacity and optimise our flow better.
-</p>
-
-<p>
-We should not be calculating individual velocity at all - this could be really
-bad in the long run with a large team.
-</p>
-
-<p>
-We should know from looking at JIRA who is working on a task by the assignee.
-</p>
-
-<p>
-Having said that, the overemphasis on JIRA as a means of communication is in
-clear violation of individuals and interaction over processes and tools. And
-the data available in the tool is leading to micro management and lack of team
-based self organisation. 
+<b>Challenge: How can you as a team increase your effectiveness by applying the
+principle of self oprganisation?</b>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org54270ee" class="outline-2">
-<h2 id="org54270ee">Coaching Needs</h2>
-<div class="outline-text-2" id="text-org54270ee">
+<div id="outline-container-org3842726" class="outline-3">
+<h3 id="org3842726">A lack of understanding of basic queue theory and demand based tasking</h3>
+<div class="outline-text-3" id="text-org3842726">
 <p>
-Agile coaching is always a mix of coaching, mentoring, role modelling and
-instruction. In order to be effective as an agile coach, diffrent scenarios
-require a different approach.
+Basic queue theory shows that for variable work, which is the case for most
+software development, a single shared queue with multiple workers is the most
+efficient. Just look at the ticketing system in place in many UK post
+offices. Multiple queues, while giving the apperance of maximising the use of
+the team's capacity, usually fails to do so.
 </p>
 
 <p>
-The following areas have been identifed as worthy of some team coaching, in
-order to expose the root cause of the dysfunctions:
+The queues are also currently constrained by the upstream process. This is
+forecast based scheduling and fails as we have uncertainty and task
+variability and need to adapt to that. By using demand based scheduling, with
+team members pulling from a single queue, the downstream process constrains
+the queue and flow of work can be better optimised.
 </p>
 
-<ul class="org-ul">
-<li>Individuals and interations over processes and tools.</li>
-<li>Responding to change over following a plan.</li>
-<li>Self organization.</li>
-<li>Build projects around motivated individuals and trust them to get the job
-done.</li>
-<li>Queue thoery and work in progress limits.</li>
-</ul>
+<p>
+<b>Challenge: How can we better optimise the flow of our work items?</b>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf594da4" class="outline-2">
+<h2 id="orgf594da4">Summary</h2>
+<div class="outline-text-2" id="text-orgf594da4">
+<p>
+It's sometimes difficult for a team producing high value to see where it is
+creating waste. Sometimes teams adapt to behaviour that is potentially
+negative and deliver despite the odds - A clear vision and empathy with the
+users goes a long way to overcome them.
+</p>
+
+<p>
+Although understanding of some basic principles can help, self organisation is 
+critical to becoming more effective and the control from management
+needs to be relinquished somewhat for this to happen.
+</p>
+
+<p>
+<b>Challenge: Where have you become accepting or even oblivious of waste?</b>
+</p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: John Cumming</p>
-<p class="date">Created: 2018-07-22 Sun 17:51</p>
+<p class="date">Created: 2018-07-27 Fri 11:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

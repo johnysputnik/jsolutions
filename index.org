@@ -13,7 +13,7 @@
      + [[file:2012/breakingtimebased.org][Estimating in Scrum : Breaking away from time based estimates.]]
      + [[file:2012/agilesham.org][Is Agile a Sham]]
    + 2017
-     + [[file:2017/individual-work-queues.org][The Problem with Individual Work Queues]]
+     + [[file:2017/individual-work-queues.org][Problems with Individual Work Queues]]
    + 2018
      + [[file:2018/back-to-basics-values.org][Back to Basics Agile - Our Values]]
      + [[file:2018/coaching-journey.org][My Agile Coaching Journey]]
